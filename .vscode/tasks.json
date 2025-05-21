@@ -1,0 +1,26 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "shell",
+			"label": "make (build)",
+			"command": "make",
+			"problemMatcher": [
+				"$gcc"
+			],
+			"group": {
+				"kind" : "build",
+				"isDefault": true
+			},
+			"detail": "Compila o projeto utilizando make."
+		},
+
+		{
+			"label" : "make (clean)",
+			"type": "shell",
+			"command" : "make clean",
+			"problemMatcher" : [],
+			"detail": "Limpa os arquivos compilados do projeto."
+		}
+	]
+}
