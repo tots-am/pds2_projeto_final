@@ -1,4 +1,3 @@
-
 # Nome do Compilador C++
 CXX = g++
 
@@ -6,11 +5,9 @@ CXX = g++
 CXXFLAGS = -std=c++11 -Wall -Wextra -g
 
 # Bibliotecas a serem linkadas
-# Se você tem pkg-config instalado, instale com: sudo apt-get install pkg-config
 ALLEGRO_LIBS = $(shell pkg-config --libs allegro-5 allegro_primitives-5 allegro_dialog-5 allegro_main-5)
-# Se precisarmos de mais bibliotecas do allegro pode adicionar no futuro
 
-# Adicione outras bibliotecas
+# Outras bibliotecas
 LIBS = $(ALLEGRO_LIBS)
 
 # Nome do Executável Final
@@ -19,40 +16,46 @@ TARGET = flappyBird
 # Diretórios
 SRC_DIR = src
 OBJ_DIR = obj
-INC_DIR = include # Se você tiver seus próprios cabeçalhos em um diretório 'include'
+INC_DIR = include
+BUILD_DIR = build
+
+# Caminho completo do executável
+TARGET_PATH = $(BUILD_DIR)/$(TARGET)
 
 # Adiciona o diretório de includes ao CXXFLAGS
 CXXFLAGS += -I$(INC_DIR)
 
-
-# Encontra todos os arquivos .cpp no diretório SRC_DIR
+# Encontra todos os arquivos .cpp
 SRCS = $(wildcard $(SRC_DIR)/*.cpp)
 
-# Gera a lista de arquivos objeto a partir dos arquivos fonte, colocando-os em OBJ_DIR
-# Ex: src/main.cpp -> obj/main.o
+# Gera os arquivos .o em OBJ_DIR
 OBJS = $(patsubst $(SRC_DIR)/%.cpp,$(OBJ_DIR)/%.o,$(SRCS))
 
+# Regra padrão
+all: $(BUILD_DIR) $(OBJ_DIR) $(TARGET_PATH)
 
-all: $(TARGET)
+# Criação de diretórios
+$(BUILD_DIR):
+	@mkdir -p $@
 
-# Regra para linkar o executável final
-$(TARGET): $(OBJS)
-	@echo "Linking $(TARGET)..."
+$(OBJ_DIR):
+	@mkdir -p $@
+
+# Regra para linkar o executável no diretório build
+$(TARGET_PATH): $(OBJS)
+	@echo "Linking $@..."
 	$(CXX) $^ -o $@ $(LIBS)
-	@echo "$(TARGET) built successfully."
+	@echo "Build successful: $@"
 
-# Regra para compilar arquivos .cpp em arquivos .o
+# Compilar .cpp para .o
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp
-	@mkdir -p $(OBJ_DIR) # Cria o diretório obj se não existir
 	@echo "Compiling $<..."
 	$(CXX) $(CXXFLAGS) -c $< -o $@
 
-# Regra para limpar os arquivos gerados
+# Limpeza
 clean:
 	@echo "Cleaning up..."
-	rm -f $(OBJ_DIR)/*.o $(TARGET)
+	rm -rf $(OBJ_DIR) $(BUILD_DIR)
 	@echo "Cleanup complete."
 
-# Regra "phony" para evitar conflitos com arquivos chamados 'all' ou 'clean'
 .PHONY: all clean
-
