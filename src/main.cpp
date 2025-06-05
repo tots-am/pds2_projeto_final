@@ -153,6 +153,26 @@ int main(){
             switch (state)
             {
                 case inStartMenu:
+                    posY = (SCREEN_HEIGHT/2) + 10;
+                    velY = 0;
+                    al_draw_filled_rounded_rectangle(150, 200, 650, 400, 10, 10, al_map_rgb(255, 255, 255));
+                    al_draw_rounded_rectangle(150, 200, 650, 400, 10, 10, al_map_rgb(0,0,0), 5);
+                    al_draw_text(
+                        font_arial, 
+                        al_map_rgb(0,0,0), 
+                        SCREEN_WIDTH/2, 
+                        SCREEN_HEIGHT/2 - FONT_SIZE, 
+                        ALLEGRO_ALIGN_CENTER, 
+                        "Bem vindo ao Jogo!"
+                    );
+                    al_draw_text(
+                        font_arial, 
+                        al_map_rgb(0,0,0), 
+                        SCREEN_WIDTH/2, 
+                        SCREEN_HEIGHT/2 + FONT_SIZE/2, 
+                        ALLEGRO_ALIGN_CENTER, 
+                        "Aperte ENTER para começar"
+                    );
                     break;
 
                 case inGame:
