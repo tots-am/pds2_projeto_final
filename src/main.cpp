@@ -226,7 +226,29 @@ int main(){
 
             al_flip_display();
         }
+        //Eventos que acontecem quando uma tecla é apertada
+        else if (event.type == ALLEGRO_EVENT_KEY_DOWN) {
+            switch (event.keyboard.keycode) {
+                case ALLEGRO_KEY_SPACE:
+                    jump = true;
+                    break;
+                
+                case ALLEGRO_KEY_ENTER:
+                    if(state == inGameOver){
+                        posY = (SCREEN_HEIGHT/2) + 10;
+                        state = inStartMenu;
+                    } 
 
+                    else if(state == inStartMenu){
+                        state = inGame;
+                    }
+                    break;
+
+                case ALLEGRO_KEY_ESCAPE:
+                    endGame = true;
+                    break;
+            }
+        }
         
     }
     
