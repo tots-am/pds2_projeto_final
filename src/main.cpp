@@ -249,6 +249,14 @@ int main(){
                     break;
             }
         }
+        //Eventos que acontecem quando uma tecla é soltada
+        else if (event.type == ALLEGRO_EVENT_KEY_UP) {
+            switch (event.keyboard.keycode) {
+                case ALLEGRO_KEY_SPACE:
+                    jump = false;
+                    break;
+            }
+        }
         
     }
     
