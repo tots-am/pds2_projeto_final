@@ -138,6 +138,9 @@ int main(){
     // Loop principal
     while (!endGame)
     {
+        ALLEGRO_EVENT event;
+        al_wait_for_event(eventQueue, &event);
+
         
     }
     
