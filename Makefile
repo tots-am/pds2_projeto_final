@@ -5,7 +5,7 @@ CXX = g++
 CXXFLAGS = -std=c++11 -Wall -Wextra -g
 
 # Bibliotecas a serem linkadas
-ALLEGRO_LIBS = $(shell pkg-config --libs allegro-5 allegro_primitives-5 allegro_dialog-5 allegro_main-5 allegro_ttf-5)
+ALLEGRO_LIBS = $(shell pkg-config --libs allegro-5 allegro_primitives-5 allegro_image-5 allegro_audio-5 allegro_dialog-5 allegro_main-5 allegro_ttf-5)
 
 # Outras bibliotecas
 LIBS = $(ALLEGRO_LIBS)
