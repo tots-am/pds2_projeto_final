@@ -120,6 +120,26 @@ int main(){
     al_register_event_source(eventQueue, al_get_timer_event_source(timer));
     al_register_event_source(eventQueue, al_get_keyboard_event_source());
 
+    // Inicia o timer
+    al_start_timer(timer);
+
+    // Variaveis do Jogo
+    bool endGame = false;               // Detecta se jogo acabou
+    gameState state = inStartMenu;      // Tela Inicial do Jogo
+    const float gravidade = 1;          // Gravidade
+
+    // Variaveis do Bird
+    const float posX = SCREEN_WIDTH/4;  // Posição do passaro em X
+    float posY;                         // Posição do passaro em Y
+    float velY;                         // Velocidade do passaro em Y
+    const float jumpSpeed = 15;         // Velocidade do pulo do passaro
+    bool jump = false;                  // Variavel se esta pulando ou nao
+
+    // Loop principal
+    while (!endGame)
+    {
+        
+    }
     
 
     return 0;
