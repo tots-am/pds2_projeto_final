@@ -27,7 +27,11 @@ enum gameState{
 };
 
 int main(){
+    // Iniciando objetos do Allegro
     ALLEGRO_DISPLAY *display = NULL;
+    ALLEGRO_EVENT_QUEUE *eventQueue = NULL;
+    ALLEGRO_TIMER *timer = NULL;
+
 
     al_init();
     al_init_primitives_addon();
