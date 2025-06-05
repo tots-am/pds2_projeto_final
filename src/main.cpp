@@ -141,9 +141,17 @@ int main(){
         ALLEGRO_EVENT event;
         al_wait_for_event(eventQueue, &event);
 
-        
+        //Eventos que ocorrem em todo frame
+        if(event.type == ALLEGRO_EVENT_TIMER){
+            // Desenha o background
+            al_draw_bitmap(background, 0, 0, 0);
+
+            // Desenha a base
+            al_draw_bitmap(base, 0, 550, 0);
+        }
+
+        al_flip_display();
     }
     
-
     return 0;
 }
