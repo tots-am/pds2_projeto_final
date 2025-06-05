@@ -223,9 +223,11 @@ int main(){
                 case inScoreBoard:
                     break;
             }
+
+            al_flip_display();
         }
 
-        al_flip_display();
+        
     }
     
     return 0;
