@@ -257,6 +257,10 @@ int main(){
                     break;
             }
         }
+        //Sair quando usuario aperta o X-inho
+        else if (event.type == ALLEGRO_EVENT_DISPLAY_CLOSE) {
+            endGame = true;
+        }
         
     }
     
