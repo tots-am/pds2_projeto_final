@@ -148,6 +148,22 @@ int main(){
 
             // Desenha a base
             al_draw_bitmap(base, 0, 550, 0);
+
+            // Switch para escolher em qual tela do jogo o Usuario está
+            switch (state)
+            {
+                case inStartMenu:
+                    break;
+
+                case inGame:
+                    break;
+
+                case inGameOver:
+                    break;
+
+                case inScoreBoard:
+                    break;
+            }
         }
 
         al_flip_display();
