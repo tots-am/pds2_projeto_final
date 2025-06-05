@@ -176,6 +176,24 @@ int main(){
                     break;
 
                 case inGame:
+                    if(!jump){
+                        velY += gravidade;
+                        posY += velY;
+                    } else {
+                        velY = -jumpSpeed;
+                        posY += velY;
+                        jump = false;
+                    }
+
+                    if(posY >= 530){
+                        state = inGameOver;
+                    }
+
+                    if(posY <= 0){
+                        velY = 0;
+                        posY = 0;
+                    }
+                    al_draw_bitmap(bird, posX, posY, 0);
                     break;
 
                 case inGameOver:
