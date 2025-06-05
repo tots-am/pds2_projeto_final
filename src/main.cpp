@@ -262,7 +262,10 @@ int main(){
             endGame = true;
         }
         
-        // Destrutores dos objetos allegro
+        
+    }
+
+    // Destrutores dos objetos allegro
         al_destroy_display(display);
         al_destroy_event_queue(eventQueue);
         al_destroy_bitmap(background);
@@ -270,7 +273,6 @@ int main(){
         al_destroy_bitmap(bird);
         al_destroy_font(font_arial);
         al_destroy_timer(timer);
-    }
     
     return 0;
 }
