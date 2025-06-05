@@ -115,5 +115,12 @@ int main(){
         return -1;
     }
 
+    // Especificar de onde pode vir os eventos
+    al_register_event_source(eventQueue, al_get_display_event_source(display));
+    al_register_event_source(eventQueue, al_get_timer_event_source(timer));
+    al_register_event_source(eventQueue, al_get_keyboard_event_source());
+
+    
+
     return 0;
 }
