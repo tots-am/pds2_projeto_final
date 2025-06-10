@@ -1,5 +1,6 @@
 #ifndef BIRD_CLASS_HPP
 #define BIRD_CLASS_HPP
+
 #include <iostream>
 #include <allegro5/allegro.h>
 #include <allegro5/allegro_image.h>
@@ -30,14 +31,12 @@ class Bird{
     void gravity();
 
     void draw();
-    void forced_draw(float pox_x, float pos_y);
-    void forced_update(float pox_x, float pos_y);
     void update();
 
+    void forced_draw(float pox_x, float pos_y);
+    void forced_update(float pox_x, float pos_y);
+
 };
-
-
-
 
 
 
