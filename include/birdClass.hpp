@@ -1,0 +1,37 @@
+#ifndef BIRD_CLASS_HPP
+#define BIRD_CLASS_HPP
+#include <iostream>
+#include <allegro5/allegro.h>
+#include <allegro5/allegro_image.h>
+#include <string>
+
+class Bird{
+
+    ALLEGRO_BITMAP *bird;
+    float pos_x, pos_y;
+    float vel_y;
+    std::string BIRD_IMG_PATH;
+
+
+    public:
+
+    Bird(float pos_x_inicial, float pos_y_inicial, const std::string& bird_img_path);
+    Bird(const std::string& bird_img_path);
+
+    float get_pos_y() const;
+    float get_pos_x() const;
+    float get_vel_y() const;
+    std::string get_path() const;
+    ALLEGRO_BITMAP *get_bitmap() const;
+
+
+    void draw(int pos_x, int pos_y);
+
+};
+
+
+
+
+
+
+#endif

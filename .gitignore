@@ -1,2 +1,19 @@
 obj
 build
+
+
+
+# Vscode
+.vscode/c_cpp_properties.json
+.vscode/settings.json
+
+# Compiled Object files
+*.slo
+*.lo
+*.o
+*.obj
+
+# Exec
+
+*.exe
+*.out
