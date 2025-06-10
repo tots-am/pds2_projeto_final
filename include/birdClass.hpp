@@ -18,6 +18,8 @@ class Bird{
     Bird(float pos_x_inicial, float pos_y_inicial, const std::string& bird_img_path);
     Bird(const std::string& bird_img_path);
 
+    ~Bird();
+
     float get_pos_y() const;
     float get_pos_x() const;
     float get_vel_y() const;
@@ -25,7 +27,9 @@ class Bird{
     ALLEGRO_BITMAP *get_bitmap() const;
 
 
-    void draw(int pos_x, int pos_y);
+    void draw();
+    void draw(float pox_x, float pos_y);
+    void update(float pox_x, float pos_y);
 
 };
 
