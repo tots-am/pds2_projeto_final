@@ -26,10 +26,13 @@ class Bird{
     std::string get_path() const;
     ALLEGRO_BITMAP *get_bitmap() const;
 
+    void jump();
+    void gravity();
 
     void draw();
-    void draw(float pox_x, float pos_y);
-    void update(float pox_x, float pos_y);
+    void forced_draw(float pox_x, float pos_y);
+    void forced_update(float pox_x, float pos_y);
+    void update();
 
 };
 
