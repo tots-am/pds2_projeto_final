@@ -32,15 +32,21 @@ TEST_SUITE("Bird Class Test"){
         CHECK_THROWS_AS(Bird(100, 150, caminho), const std::runtime_error&);
     };
 
-    TEST_CASE_FIXTURE(AllegroInit, "Update axis"){
-        Bird p(100, 150, "assets/sprites/yellowbird-midflap.png");
-        
-        p.update(105.0, 200);
+    TEST_CASE_FIXTURE(AllegroInit, "Gravity Test"){
+        Bird p(400.0, 300.0, "assets/sprites/yellowbird-midflap.png");
 
-        CHECK(p.get_pos_x() == 105.0);
-        CHECK(p.get_pos_y() == 200);
-    }
+        float sim_vel_y = 0.0;
+        float sim_y = 300.0;
 
+        for(int i = 0; i < 100; i++){
+            p.gravity();
+            p.update();
+            
+            sim_vel_y += 0.7;
+            sim_y += sim_vel_y;
 
+            CHECK(p.get_pos_y() == sim_y);
+        }
+    };
 
 }

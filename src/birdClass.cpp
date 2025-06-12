@@ -3,18 +3,28 @@
 
 // Construtores e destrutores
 
-Bird::Bird(float pos_x_inicial, float pos_y_inicial, const std::string &bird_img_path) : vel_y(0.0f), pos_x(pos_x_inicial), pos_y(pos_y_inicial),
-BIRD_IMG_PATH(bird_img_path), bird(al_load_bitmap(bird_img_path.c_str())){
-    if(bird == nullptr){
-        throw std::runtime_error("Erro ao inicializar o pássaro: " + bird_img_path);
-    }
-}
+Bird::Bird(float pos_x_inicial, float pos_y_inicial, const std::string &bird_img_path) : 
+        vel_y(0.0f),
+        pos_x(pos_x_inicial), pos_y(pos_y_inicial),
+        BIRD_IMG_PATH(bird_img_path), 
+        bird(al_load_bitmap(bird_img_path.c_str())),
+        largura_obj(al_get_bitmap_width(bird)), altura_obj(al_get_bitmap_height(bird))
+    {
+        if (bird == nullptr) {
+            throw std::runtime_error("Erro ao inicializar o pássaro: " + bird_img_path);
+        }
+    }   
 
-Bird::Bird(const std::string& bird_img_path) : vel_y(0), BIRD_IMG_PATH(bird_img_path), bird(al_load_bitmap(bird_img_path.c_str())){
-        if(bird == nullptr){
-        throw std::runtime_error("Erro ao inicializar o pássaro: " + bird_img_path);
+Bird::Bird(const std::string& bird_img_path) : 
+        vel_y(0.0f), 
+        BIRD_IMG_PATH(bird_img_path), 
+        bird(al_load_bitmap(bird_img_path.c_str())),
+        largura_obj(al_get_bitmap_width(bird)), altura_obj(al_get_bitmap_height(bird))
+    {
+        if (bird == nullptr) {
+            throw std::runtime_error("Erro ao inicializar o pássaro: " + bird_img_path);
+        }
     }
-}
 
 Bird::~Bird(){
     if(bird) al_destroy_bitmap(bird);
@@ -22,24 +32,35 @@ Bird::~Bird(){
 
 // Funções
 
-void Bird::forced_draw(float pos_x, float pos_y){
+void Bird::forced_draw(float pos_x, float pos_y) {
     al_draw_bitmap(bird, pos_x, pos_y, 0);
 }
 
-void Bird::forced_update(float pos_x, float pos_y){
+void Bird::forced_update(float pos_x, float pos_y) {
     this-> pos_x = pos_x;
     this-> pos_y = pos_y;
 }
 
-void Bird::draw(){
+void Bird::draw() {
     al_draw_bitmap(bird, this-> pos_x, this-> pos_y, 0);
 
 }
 
 void Bird::update(){
-    pos_y += vel_y;
-}
 
+    pos_y += vel_y;
+
+    if (pos_y - altura_obj/2 < 0) {
+        pos_y = altura_obj/2; 
+        vel_y = 0;        
+    }
+    
+    if (pos_y + altura_obj/2 > 600) {
+        pos_y = 600 - altura_obj/2; 
+        vel_y = 0;         
+    }
+
+}
 void Bird::jump(){
     vel_y = -10;
 }
@@ -47,9 +68,12 @@ void Bird::jump(){
 void Bird::gravity(){
     if (vel_y < 0) { 
         vel_y += 0.4; 
-    } else { 
-        vel_y += 0.7; 
+    } 
+    else { 
+         vel_y += 0.7; 
     }
+
+    vel_y *= 0.98;
 }
 
 // Getters

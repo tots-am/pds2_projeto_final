@@ -8,8 +8,11 @@
 
 class Bird{
 
+    enum Estados {PULO, MORTO};
+
     ALLEGRO_BITMAP *bird;
     float pos_x, pos_y;
+    float largura_obj, altura_obj; 
     float vel_y;
     std::string BIRD_IMG_PATH;
 
@@ -24,6 +27,7 @@ class Bird{
     float get_pos_y() const;
     float get_pos_x() const;
     float get_vel_y() const;
+    bool borda_hit() const;
     std::string get_path() const;
     ALLEGRO_BITMAP *get_bitmap() const;
 
