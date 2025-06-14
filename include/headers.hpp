@@ -1,3 +1,0 @@
-/*
-  Apagar esse arquivo apos iniciar o desenvolvimento
-*/
