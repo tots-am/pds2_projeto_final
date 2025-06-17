@@ -15,16 +15,13 @@ Bird::Bird(float pos_x_inicial, float pos_y_inicial, const std::string &bird_img
         }
     }   
 
-Bird::Bird(const std::string& bird_img_path) : 
-        vel_y(0.0f), 
-        BIRD_IMG_PATH(bird_img_path), 
-        bird(al_load_bitmap(bird_img_path.c_str())),
-        largura_obj(al_get_bitmap_width(bird)), altura_obj(al_get_bitmap_height(bird))
-    {
-        if (bird == nullptr) {
-            throw std::runtime_error("Erro ao inicializar o pássaro: " + bird_img_path);
-        }
-    }
+Bird::Bird() :
+    vel_y(0.0f),
+    pos_x(0.0f), pos_y(0.0f),
+    BIRD_IMG_PATH(nullptr),
+    bird(nullptr),
+    largura_obj(0.0f), altura_obj(0.0f)
+    {}    
 
 Bird::~Bird(){
     if(bird) al_destroy_bitmap(bird);

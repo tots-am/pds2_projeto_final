@@ -1,14 +1,15 @@
 #ifndef BIRD_CLASS_HPP
 #define BIRD_CLASS_HPP
+/** @file birdClass.hpp */
 
 #include <iostream>
 #include <allegro5/allegro.h>
 #include <allegro5/allegro_image.h>
 #include <string>
 
-class Bird{
 
-    enum Estados {PULO, MORTO};
+
+class Bird{
 
     ALLEGRO_BITMAP *bird;
     float pos_x, pos_y;
@@ -16,11 +17,11 @@ class Bird{
     float vel_y;
     std::string BIRD_IMG_PATH;
 
-
     public:
 
+
     Bird(float pos_x_inicial, float pos_y_inicial, const std::string& bird_img_path);
-    Bird(const std::string& bird_img_path);
+    Bird();
 
     ~Bird();
 
