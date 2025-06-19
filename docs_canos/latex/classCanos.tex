@@ -1,0 +1,103 @@
+\doxysection{Canos Class Reference}
+\hypertarget{classCanos}{}\label{classCanos}\index{Canos@{Canos}}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classCanos_acca6defd3a89ac2419723b4c70d18e8a}\label{classCanos_acca6defd3a89ac2419723b4c70d18e8a} 
+void {\bfseries inicializar\+Canos} (int posX, int index)
+\item 
+\Hypertarget{classCanos_a18471172b8f4126ef97c9f61899c8741}\label{classCanos_a18471172b8f4126ef97c9f61899c8741} 
+void {\bfseries desenhar} (ALLEGRO\+\_\+\+BITMAP \texorpdfstring{$\ast$}{*}cano\+Cima, ALLEGRO\+\_\+\+BITMAP \texorpdfstring{$\ast$}{*}cano\+Baixo)
+\item 
+\Hypertarget{classCanos_a3ccaeeba82558343e84a631ddb49874b}\label{classCanos_a3ccaeeba82558343e84a631ddb49874b} 
+void {\bfseries atualizar} (\mbox{\hyperlink{classCanos}{Canos}} canos\mbox{[}$\,$\mbox{]})
+\item 
+\Hypertarget{classCanos_acca6defd3a89ac2419723b4c70d18e8a}\label{classCanos_acca6defd3a89ac2419723b4c70d18e8a} 
+void {\bfseries inicializar\+Canos} (int posX, int index)
+\item 
+\Hypertarget{classCanos_a18471172b8f4126ef97c9f61899c8741}\label{classCanos_a18471172b8f4126ef97c9f61899c8741} 
+void {\bfseries desenhar} (ALLEGRO\+\_\+\+BITMAP \texorpdfstring{$\ast$}{*}cano\+Cima, ALLEGRO\+\_\+\+BITMAP \texorpdfstring{$\ast$}{*}cano\+Baixo)
+\item 
+\Hypertarget{classCanos_a3ccaeeba82558343e84a631ddb49874b}\label{classCanos_a3ccaeeba82558343e84a631ddb49874b} 
+void {\bfseries atualizar} (\mbox{\hyperlink{classCanos}{Canos}} canos\mbox{[}$\,$\mbox{]})
+\item 
+void \mbox{\hyperlink{classCanos_acca6defd3a89ac2419723b4c70d18e8a}{inicializar\+Canos}} (int posX, int index)
+\begin{DoxyCompactList}\small\item\em Inicializa os canos na tela. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classCanos_a04b2126fe7b852cbd19a23a89f19ecbb}{desenhar}} (ALLEGRO\+\_\+\+BITMAP \texorpdfstring{$\ast$}{*}, ALLEGRO\+\_\+\+BITMAP \texorpdfstring{$\ast$}{*})
+\begin{DoxyCompactList}\small\item\em Desenha os canos na tela. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classCanos_a9dd1753dd5d4a4db9421eeb9163a5e70}{atualizar}} (\mbox{\hyperlink{classCanos}{Canos}})
+\begin{DoxyCompactList}\small\item\em Simula o movimentos dos canos da direita para a esquerda. Reposiciona os canos na tela. Randomiza a dificuldade do cano. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classCanos_a9dd1753dd5d4a4db9421eeb9163a5e70}\label{classCanos_a9dd1753dd5d4a4db9421eeb9163a5e70} 
+\index{Canos@{Canos}!atualizar@{atualizar}}
+\index{atualizar@{atualizar}!Canos@{Canos}}
+\doxysubsubsection{\texorpdfstring{atualizar()}{atualizar()}}
+{\footnotesize\ttfamily void Canos\+::atualizar (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classCanos}{Canos}}}]{ }\end{DoxyParamCaption})}
+
+
+
+Simula o movimentos dos canos da direita para a esquerda. Reposiciona os canos na tela. Randomiza a dificuldade do cano. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Vetor} & de objetos cano \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void
+\end{DoxyReturn}
+A função itera sobre cada cano no vetor
+\begin{DoxyItemize}
+\item Diminui a coordenada \textquotesingle{}x\textquotesingle{} do cano para simular movimento
+\item Se a coordenada \textquotesingle{}x\textquotesingle{} de um cano for menor que sua largura (indicando que ele saiu da tela), ele é reiniciado.
+\item Sua posição \textquotesingle{}x\textquotesingle{} é definida com base no \textquotesingle{}x\textquotesingle{} do último cano visível e no espaço entre os canos, garantindo que ele apareça após o último
+\item A altura da parte superior do cano é randomizada.
+\item A altura da parte inferior do cano é recalculada. 
+\end{DoxyItemize}\Hypertarget{classCanos_a04b2126fe7b852cbd19a23a89f19ecbb}\label{classCanos_a04b2126fe7b852cbd19a23a89f19ecbb} 
+\index{Canos@{Canos}!desenhar@{desenhar}}
+\index{desenhar@{desenhar}!Canos@{Canos}}
+\doxysubsubsection{\texorpdfstring{desenhar()}{desenhar()}}
+{\footnotesize\ttfamily void Canos\+::desenhar (\begin{DoxyParamCaption}\item[{ALLEGRO\+\_\+\+BITMAP \texorpdfstring{$\ast$}{*}}]{,  }\item[{ALLEGRO\+\_\+\+BITMAP \texorpdfstring{$\ast$}{*}}]{ }\end{DoxyParamCaption})}
+
+
+
+Desenha os canos na tela. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em posX} & Ponteiros para as imagens dos canos. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void
+\end{DoxyReturn}
+Os dois métodos são responsáveis por renderizar os dois componentes do cano no jogo\+: a parte superior e a parte inferior. As posições são calculadas com base na altura da parte superior, na largura do cano e no tamanho do espacoço entre eles (o "{}buraco"{}). \Hypertarget{classCanos_acca6defd3a89ac2419723b4c70d18e8a}\label{classCanos_acca6defd3a89ac2419723b4c70d18e8a} 
+\index{Canos@{Canos}!inicializarCanos@{inicializarCanos}}
+\index{inicializarCanos@{inicializarCanos}!Canos@{Canos}}
+\doxysubsubsection{\texorpdfstring{inicializarCanos()}{inicializarCanos()}}
+{\footnotesize\ttfamily void Canos\+::inicializar\+Canos (\begin{DoxyParamCaption}\item[{int}]{posX,  }\item[{int}]{index }\end{DoxyParamCaption})}
+
+
+
+Inicializa os canos na tela. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em posX} & Respresenta a posição do primeiro cano. index -\/ é usado para calcular a posição do próximo cano \\
+\hline
+{\em index} & Usado para calcular a posição do próximo cano \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void
+\end{DoxyReturn}
+~\newline
+ A posição x de cada cano é baseada na posição do primeiro multiplicado pela index que ele representa no vetor de objetos \doxylink{classCanos}{Canos} vezes o espaço definido de um cano para o outro. A altura é calculada randomicamente entre 50 e 250px. A altura do cano de baixo é calculada a partir do tamanho da tela menos a altura do cano de cima menos a altura do buraco (no qual o passáro passa) menos a altura do "{}chão"{}. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/Canos.\+cpp\item 
+src/main.\+cpp\item 
+include/Canos.\+hpp\end{DoxyCompactItemize}

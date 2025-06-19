@@ -4,6 +4,8 @@
 #include <allegro5/allegro_font.h>
 #include <allegro5/allegro_image.h>
 #include <iostream>
+#include "../include/Canos.hpp";
+#include "../include/Constante.hpp";
 
 const float FPS = 30;               // Define FPS do Jogo
 const int SCREEN_WIDTH = 800;      // Define o comprimento da janela do Jogo
