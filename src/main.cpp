@@ -4,19 +4,22 @@
 #include <allegro5/allegro_font.h>
 #include <allegro5/allegro_image.h>
 #include <iostream>
+#include <array>
 #include "birdClass.hpp"
+#include "canos.hpp"
 
-const float FPS = 30;              // Define FPS do Jogo
-const int SCREEN_WIDTH = 800;      // Define o comprimento da janela do Jogo
-const int SCREEN_HEIGHT = 600;     // Define a largura da janela do jogo
 
 // Essas chamadas de constantes para imagens e fontes vão sumir!!!
 // (Vão virar atributos das classes de imagem e de texto)
 const std::string BACKGROUND_IMG_PATH = "./assets/sprites/background-800-600.png";
 const std::string BASE_IMG_PATH = "./assets/sprites/base-800-50.png";
 
+#define NUM_CANOS 4   
+
 const std::string ARIAL_FONT_PATH = "./assets/fonts/arial.ttf";
 const int FONT_SIZE = 32;
+
+using namespace std;
 
 // Define os estados que o Jogo pode Estar
 enum gameState{
@@ -105,8 +108,12 @@ int main(){
         return -1;
     }
 
+
+
     // Instanciando Entidades
     Bird bird((float)SCREEN_WIDTH/4, (float)SCREEN_HEIGHT/2);
+
+    Canos canos[NUM_CANOS] = {Canos(SCREEN_WIDTH, 0), Canos(SCREEN_WIDTH, 1), Canos(SCREEN_WIDTH, 2), Canos(SCREEN_WIDTH, 3)};
 
     // Especificar de onde vem os eventos
     al_register_event_source(eventQueue, al_get_display_event_source(display));
@@ -171,6 +178,13 @@ int main(){
                         state = inGameOver;
                     }
                     bird.draw();
+                    
+                    canos[0].atualizar(canos, NUM_CANOS);
+
+                    for(int i = 0; i <NUM_CANOS; i++){
+                        canos[i].desenhar();
+                    }
+
                     break;
                 
                 case inGameOver:
