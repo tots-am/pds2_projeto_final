@@ -8,6 +8,48 @@
 const float FPS = 30;               // Define FPS do Jogo
 const int SCREEN_WIDTH = 800;      // Define o comprimento da janela do Jogo
 const int SCREEN_HEIGHT = 600;      // Define a largura da janela do jogo
+const int ALTURA_BASE = 50;
+
+#define NUM_CANOS 4 //numero de canos na tela
+#define VELOCIDADE_CANO 3
+#define ESPACO_ENTRE_OS_CANOS 250 //distância horizontal entre os canos
+
+class Canos {
+    public:
+    int x = 0;
+    int altura_cima = 0;
+    int altura_baixo = 0;
+    int largura = 100;
+    int tamanho_buraco = 250;
+
+    void inicializarCanos(int posX, int index){
+        x = posX + (index * ESPACO_ENTRE_OS_CANOS);
+        altura_cima = rand() % 200 + 50;
+        largura = 100;
+        altura_baixo = SCREEN_HEIGHT - altura_cima - tamanho_buraco - ALTURA_BASE;
+    }
+
+    void desenhar(ALLEGRO_BITMAP* canoCima, ALLEGRO_BITMAP* canoBaixo){
+        al_draw_scaled_bitmap(canoCima, 0, 0, largura, al_get_bitmap_height(canoCima), x, 0, largura, altura_cima, 0);
+        al_draw_scaled_bitmap(canoBaixo, 0, 0, largura, al_get_bitmap_height(canoBaixo), x, altura_cima + tamanho_buraco, largura, altura_baixo, 0);
+
+
+    }
+
+    void atualizar(Canos canos[]){
+        for(int i = 0; i < NUM_CANOS; i++){
+            canos[i].x -= VELOCIDADE_CANO;
+            if(canos[i].x < - canos[i].largura){
+                int ultimoCano = (i == 0) ? NUM_CANOS - 1 : i - 1;
+                canos[i].x = canos[ultimoCano].x + ESPACO_ENTRE_OS_CANOS;
+                canos[i].altura_cima = rand() % 200 + 50;
+                canos[i].altura_baixo = SCREEN_HEIGHT - canos[i].altura_cima - tamanho_buraco - ALTURA_BASE;
+            }
+        }
+    }
+};
+
+Canos canos[NUM_CANOS];
 
 // Define as fontes
 const std::string ARIAL_FONT_PATH = "./assets/fonts/arial.ttf";
@@ -17,6 +59,8 @@ const int FONT_SIZE = 32;
 const std::string BACKGROUND_IMG_PATH = "./assets/sprites/background-800-600.png";
 const std::string BASE_IMG_PATH = "./assets/sprites/base-800-50.png";
 const std::string BIRD_IMG_PATH = "./assets/sprites/yellowbird-midflap.png";
+const std::string PIPEDOWN_IMG_PATH = "./assets/sprites/canodown.png";
+const std::string PIPEUP_IMG_PATH = "./assets/sprites/canoup.png";
 
 // Define as telas que o Jogo pode Estar
 enum gameState{
@@ -79,6 +123,22 @@ int main(){
     if(bird == nullptr){
         std::cout << "Falha ao carregar passaro" << std::endl;
         return -1;
+    }
+
+    ALLEGRO_BITMAP *canoCima = al_load_bitmap(PIPEUP_IMG_PATH.c_str());
+    if(canoCima == nullptr){
+        std::cout << "Falha ao carregar canoCima" << std::endl;
+        return -1;
+    }
+
+    ALLEGRO_BITMAP *canoBaixo = al_load_bitmap(PIPEDOWN_IMG_PATH.c_str());
+    if(canoBaixo == nullptr){
+        std::cout << "Falha ao carregar CanoBaixo" << std::endl;
+        return -1;
+    }
+
+    for(int i = 0; i < NUM_CANOS; i++){
+        canos[i].inicializarCanos(400, i);
     }
 
     // Iniciando Primitivas
@@ -149,6 +209,8 @@ int main(){
             // Desenha a base
             al_draw_bitmap(base, 0, 550, 0);
 
+            al_clear_to_color(al_map_rgb(0,0,0));
+
             // Switch para escolher em qual tela do jogo o Usuario está
             switch (state)
             {
@@ -193,7 +255,16 @@ int main(){
                         velY = 0;
                         posY = 0;
                     }
+                    al_draw_bitmap(background, 0, 0, 0);
                     al_draw_bitmap(bird, posX, posY, 0);
+                    al_draw_bitmap(base, 0, SCREEN_HEIGHT - 50, 0);
+
+                    canos[0].atualizar(canos);
+
+                    for(int i = 0; i < NUM_CANOS; i++){
+                        canos[i].desenhar(canoCima, canoBaixo);
+                    }
+
                     break;
 
                 case inGameOver:
