@@ -4,6 +4,7 @@
 #include <allegro5/allegro_font.h>
 #include <allegro5/allegro_image.h>
 #include <iostream>
+#include "birdClass.hpp"
 
 const float FPS = 30;              // Define FPS do Jogo
 const int SCREEN_WIDTH = 800;      // Define o comprimento da janela do Jogo
@@ -72,12 +73,6 @@ int main(){
         return -1;
     }
 
-    ALLEGRO_BITMAP *bird = al_load_bitmap(BIRD_IMG_PATH.c_str());
-    if(bird == nullptr){
-        std::cout << "Falha ao carregar passaro" << std::endl;
-        return -1;
-    }
-
     if (!al_init_primitives_addon()){
         std::cout << "Falha ao iniciar pacote de primitivas do Allegro" << std::endl;
         return -1;
@@ -119,6 +114,9 @@ int main(){
     bool endGame = false;
     gameState state = inStartMenu;
 
+    // Instanciando Entidades
+    Bird bird((float)SCREEN_WIDTH/4, (float)SCREEN_HEIGHT/2, "./assets/sprites/yellowbird-midflap.png");
+
     while(!endGame){
         ALLEGRO_EVENT event;
         al_wait_for_event(eventQueue, &event);
@@ -135,12 +133,61 @@ int main(){
             switch (state)
             {
                 case inStartMenu:
+                    bird.reset_position((float)SCREEN_WIDTH/4, (float)SCREEN_HEIGHT/2);    
+                    al_draw_filled_rounded_rectangle(150, 200, 650, 400, 10, 10, al_map_rgb(255, 255, 255));
+                    al_draw_rounded_rectangle(150, 200, 650, 400, 10, 10, al_map_rgb(0,0,0), 5);
+                    al_draw_text(
+                        font_arial, 
+                        al_map_rgb(0,0,0), 
+                        SCREEN_WIDTH/2, 
+                        SCREEN_HEIGHT/2 - FONT_SIZE, 
+                        ALLEGRO_ALIGN_CENTER, 
+                        "Bem vindo ao Jogo!"
+                    );
+                    al_draw_text(
+                        font_arial, 
+                        al_map_rgb(0,0,0), 
+                        SCREEN_WIDTH/2, 
+                        SCREEN_HEIGHT/2 + FONT_SIZE/2, 
+                        ALLEGRO_ALIGN_CENTER, 
+                        "Aperte ENTER para começar"
+                    );
+                
                     break;
                 
                 case inGame:
+                    bird.draw();
+                    
+                    if(!bird.borda_hit()){
+                        bird.update();
+                        bird.gravity();
+                    } else {
+                        state = inGameOver;
+                    }
+                    
                     break;
                 
                 case inGameOver:
+                    bird.draw();
+                    al_draw_filled_rounded_rectangle(150, 200, 650, 400, 10, 10, al_map_rgb(255, 0, 0));
+                    al_draw_rounded_rectangle(150, 200, 650, 400, 10, 10, al_map_rgb(0,0,0), 5);
+                    al_draw_text(
+                        font_arial, 
+                        al_map_rgb(0,0,0), 
+                        SCREEN_WIDTH/2, 
+                        SCREEN_HEIGHT/2 - FONT_SIZE, 
+                        ALLEGRO_ALIGN_CENTER, 
+                        "Perdeu Playboy!"
+                    );
+                    al_draw_text(
+                        font_arial, 
+                        al_map_rgb(0,0,0), 
+                        SCREEN_WIDTH/2, 
+                        SCREEN_HEIGHT/2 + FONT_SIZE/2, 
+                        ALLEGRO_ALIGN_CENTER, 
+                        "Aperte ENTER p voltar ao menu"
+                    );
+
                     break;
                 
                 case inScoreBoard:
@@ -154,6 +201,9 @@ int main(){
         else if (event.type == ALLEGRO_EVENT_KEY_DOWN) {
             switch (event.keyboard.keycode) {
                 case ALLEGRO_KEY_SPACE:
+                    if(state == inGame){
+                        bird.jump();
+                    }
                     break;
                 
                 case ALLEGRO_KEY_ENTER:
@@ -186,10 +236,8 @@ int main(){
         }
     }
 
-
     al_destroy_bitmap(background);
     al_destroy_bitmap(base);
-    al_destroy_bitmap(bird);
     al_destroy_font(font_arial);
     al_destroy_timer(timer);
     al_destroy_display(display);

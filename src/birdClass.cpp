@@ -35,9 +35,10 @@ void Bird::forced_draw(float pos_x, float pos_y) {
     al_draw_bitmap(bird, pos_x, pos_y, 0);
 }
 
-void Bird::set_position(float pos_x, float pos_y) {
+void Bird::reset_position(float pos_x, float pos_y) {
     this-> pos_x = pos_x;
     this-> pos_y = pos_y;
+    this-> vel_y = 0;
 }
 
 void Bird::draw() {
@@ -66,6 +67,13 @@ void Bird::update(){
         vel_y = 0;         
     }
 
+}
+bool Bird::borda_hit() const {
+    if(this->pos_y >= 550){
+        return true;
+    } else {
+        return false;
+    }
 }
 void Bird::jump(){
     vel_y = -10;

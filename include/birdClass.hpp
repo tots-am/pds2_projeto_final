@@ -111,7 +111,7 @@ class Bird{
 
     /// @brief Diferente do update(), aqui pode-se atribuir a posição, inclusive horizontal do personagem.
     /// @see update()
-    void set_position(float pox_x, float pos_y);
+    void reset_position(float pox_x, float pos_y);
 
 };
 
