@@ -123,7 +123,6 @@ int main(){
     double last_time = al_get_time();
 
     while(!endGame){
-        if(endGame){break;}
         ALLEGRO_EVENT event;
         al_wait_for_event(eventQueue, &event);
    
@@ -141,7 +140,7 @@ int main(){
             // Desenha a base
             al_draw_bitmap(base, 0, 550, 0);
 
-            // Switch para escolher em qual tela do jogo o Usuario está
+            // Switch para escolher em qual tela do jogo o Usuario está e fazer as atualizações
             switch (state)
             {
                 case inStartMenu:    
