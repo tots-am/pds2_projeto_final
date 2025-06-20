@@ -8,6 +8,8 @@ const std::string bird_sprite = "./assets/sprites/yellowbird-midflap.png";
 
 // Construtores e destrutores
 
+using namespace std;
+
 Bird::Bird(float pos_x_inicial, float pos_y_inicial) : 
         vel_y(0.0f),
         pos_x(pos_x_inicial), pos_y(pos_y_inicial),
