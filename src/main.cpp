@@ -180,7 +180,6 @@ int main(){
                 
                 case inGameOver:
                     bird.draw();
-            
                     fonteFlappy.escrever(
                         "GAME OVER",
                         SCREEN_WIDTH/2, 
