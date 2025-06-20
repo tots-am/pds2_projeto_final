@@ -4,6 +4,7 @@
 
 #include <string>
 
+const std::string DB_PATH = "./db/db.txt";
 
 const std::string BACKGROUND_IMG_PATH = "./assets/sprites/background-800-600.png";
 const std::string BASE_IMG_PATH = "./assets/sprites/base-800-50.png";
