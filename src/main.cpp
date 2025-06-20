@@ -7,10 +7,21 @@
 #include <array>
 #include "birdClass.hpp"
 #include "canos.hpp"
+#include "fontesClass.hpp"
 
+const float FPS = 30;               // Define FPS do Jogo
+const int SCREEN_WIDTH = 800;      // Define o comprimento da janela do Jogo
+const int SCREEN_HEIGHT = 600;     // Define a largura da janela do jogo
 
-// Essas chamadas de constantes para imagens e fontes vão sumir!!!
-// (Vão virar atributos das classes de imagem e de texto)
+// Define as fontes
+const std::string ARIAL_FONT_PATH = "./assets/fonts/arial.ttf";
+const int FONT_SIZE = 32;
+fontesClass fonteArial(ARIAL_FONT_PATH.c_str(), FONT_SIZE); // Instancia a classe de fontes com o caminho da fonte e o tamanho
+
+const std::string FLAPPY_FONT_PATH = "./assets/fonts/flappy-font.fnt";
+const int FLAPPY_FONT_SIZE =32;
+fontesClass fonteFlappy(FLAPPY_FONT_PATH.c_str(), FLAPPY_FONT_SIZE); // Instancia a classe de fontes com o caminho da fonte e o tamanho
+//Define as imagens
 const std::string BACKGROUND_IMG_PATH = "./assets/sprites/background-800-600.png";
 const std::string BASE_IMG_PATH = "./assets/sprites/base-800-50.png";
 
@@ -30,7 +41,7 @@ enum gameState{
 };
 
 int main(){
-    // Instanciando entidades Allegro
+    // Iniciando objetos do Allegro
     ALLEGRO_DISPLAY *display = NULL;
     ALLEGRO_EVENT_QUEUE *eventQueue = NULL;
     ALLEGRO_TIMER *timer = NULL;
@@ -54,13 +65,18 @@ int main(){
         return -1;
     }
 
-    if (!al_init_primitives_addon()){
-        std::cout << "Falha ao iniciar pacote de primitivas do Allegro" << std::endl;
+    // Seção para carregar fontes
+    /*ALLEGRO_FONT *font_arial = al_load_font(ARIAL_FONT_PATH.c_str(), FONT_SIZE, 0);
+    if(font_arial == nullptr){
+        std::cout << "Falha ao iniciar fonte" << std::endl;
+        return -1;
+    }*/
+    if(fonteArial.getfonte() == nullptr){
+        std::cout << "Falha ao iniciar fonte" << std::endl;
         return -1;
     }
-
-    if (!al_install_keyboard()) {
-        std::cout << "Falha ao iniciar teclado" << std::endl;
+    if(fonteFlappy.getfonte() == nullptr){
+        std::cout << "Falha ao iniciar fonte Flappy" << std::endl;
         return -1;
     }
 
@@ -153,21 +169,19 @@ int main(){
                 case inStartMenu:    
                     al_draw_filled_rounded_rectangle(150, 200, 650, 400, 10, 10, al_map_rgb(255, 165, 0));
                     al_draw_rounded_rectangle(150, 200, 650, 400, 10, 10, al_map_rgb(253,253,150), 5);
-                    al_draw_text(
-                        font_arial, 
-                        al_map_rgb(255,255,255), 
+                    fonteFlappy.escrever(
+                        "FLAPPY BIRD",
                         SCREEN_WIDTH/2, 
                         SCREEN_HEIGHT/2 - FONT_SIZE, 
-                        ALLEGRO_ALIGN_CENTER, 
-                        "Bem vindo ao Jogo!"
+                        al_map_rgb(0,0,0),
+                        ALLEGRO_ALIGN_CENTER
                     );
-                    al_draw_text(
-                        font_arial, 
-                        al_map_rgb(255,255,255), 
+                    fonteArial.escrever(
+                        "Aperte ENTER para começar",
                         SCREEN_WIDTH/2, 
                         SCREEN_HEIGHT/2 + FONT_SIZE/2, 
-                        ALLEGRO_ALIGN_CENTER, 
-                        "Aperte ENTER para começar"
+                        al_map_rgb(255,255,255), 
+                        ALLEGRO_ALIGN_CENTER
                     );
                     break;
                 
@@ -190,22 +204,21 @@ int main(){
                 case inGameOver:
                     al_draw_filled_rounded_rectangle(150, 200, 650, 400, 10, 10, al_map_rgb(255, 165, 0));
                     al_draw_rounded_rectangle(150, 200, 650, 400, 10, 10, al_map_rgb(253,253,253), 5);
-                    al_draw_text(
-                        font_arial, 
-                        al_map_rgb(255,255,255), 
+                    fonteFlappy.escrever(
+                        "GAME OVER",
                         SCREEN_WIDTH/2, 
-                        SCREEN_HEIGHT/2 - FONT_SIZE, 
-                        ALLEGRO_ALIGN_CENTER, 
-                        "Perdeu Playboy!"
+                        SCREEN_HEIGHT/2 - FONT_SIZE/2, 
+                        al_map_rgb(0,0,0), 
+                        ALLEGRO_ALIGN_CENTER
                     );
-                    al_draw_text(
-                        font_arial, 
-                        al_map_rgb(255,255,255), 
+                    fonteArial.escrever(
+                        "Aperte ENTER para recomeçar",
                         SCREEN_WIDTH/2, 
                         SCREEN_HEIGHT/2 + FONT_SIZE/2, 
-                        ALLEGRO_ALIGN_CENTER, 
-                        "Aperte ENTER p voltar ao menu"
+                        al_map_rgb(0,0,0), 
+                        ALLEGRO_ALIGN_CENTER
                     );
+                    
                     bird.draw();
                     break;
                 
@@ -250,7 +263,6 @@ int main(){
 
     al_destroy_bitmap(background);
     al_destroy_bitmap(base);
-    al_destroy_font(font_arial);
     al_destroy_timer(timer);
     al_destroy_event_queue(eventQueue);
     al_destroy_display(display);
