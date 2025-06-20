@@ -16,11 +16,12 @@
 
 class Bird{
 
-    ALLEGRO_BITMAP *bird;
-    float pos_x, pos_y;
-    float largura_obj, altura_obj; 
-    float vel_y;
-    std::string BIRD_IMG_PATH;
+    float vel_y;                 
+    float pos_x, pos_y;          
+    std::string BIRD_IMG_PATH;   
+    ALLEGRO_BITMAP *bird;        
+    float largura_obj, altura_obj;
+    bool isJumping;
 
     public:
 
@@ -32,7 +33,7 @@ class Bird{
      * @param bird_img_path Caminho para o asset/bitmap.
      * @throw std::runtime_error caso o carregamento do bitmap do passáro falhar.
      */
-    Bird(float pos_x_inicial, float pos_y_inicial, const std::string& bird_img_path);
+    Bird(float pos_x_inicial, float pos_y_inicial);
 
     /**
      * @brief Construtor padrão
@@ -104,14 +105,14 @@ class Bird{
      * Também é responsável por definir as barreiras "físicas" do teto e chão que o personagem pode alcançar.
      * @warning O tamanho da tela está definido arbritariamente, isso deve mudar.
      */
-    void update();
+    void update_position(double deltaTime);
 
     /// @brief Desenha forçadamente o personagem em uma posição definida x e y.
-    void forced_draw(float pox_x, float pos_y);
+    void forced_draw(float pos_x, float pos_y);
 
     /// @brief Diferente do update(), aqui pode-se atribuir a posição, inclusive horizontal do personagem.
     /// @see update()
-    void reset_position(float pox_x, float pos_y);
+    void reset_position(float pos_x, float pos_y);
 
 };
 
