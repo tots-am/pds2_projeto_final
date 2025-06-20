@@ -6,19 +6,19 @@
 #include <iostream>
 #include "birdClass.hpp"
 
-const float FPS = 30;              // Define FPS do Jogo
+const float FPS = 30;               // Define FPS do Jogo
 const int SCREEN_WIDTH = 800;      // Define o comprimento da janela do Jogo
 const int SCREEN_HEIGHT = 600;     // Define a largura da janela do jogo
 
-// Essas chamadas de constantes para imagens e fontes vão sumir!!!
-// (Vão virar atributos das classes de imagem e de texto)
-const std::string BACKGROUND_IMG_PATH = "./assets/sprites/background-800-600.png";
-const std::string BASE_IMG_PATH = "./assets/sprites/base-800-50.png";
-
+// Define as fontes
 const std::string ARIAL_FONT_PATH = "./assets/fonts/arial.ttf";
 const int FONT_SIZE = 32;
 
-// Define os estados que o Jogo pode Estar
+//Define as imagens
+const std::string BACKGROUND_IMG_PATH = "./assets/sprites/background-800-600.png";
+const std::string BASE_IMG_PATH = "./assets/sprites/base-800-50.png";
+
+// Define as telas que o Jogo pode Estar
 enum gameState{
     inStartMenu,
     inGame,
@@ -27,7 +27,7 @@ enum gameState{
 };
 
 int main(){
-    // Instanciando entidades Allegro
+    // Iniciando objetos do Allegro
     ALLEGRO_DISPLAY *display = NULL;
     ALLEGRO_EVENT_QUEUE *eventQueue = NULL;
     ALLEGRO_TIMER *timer = NULL;
