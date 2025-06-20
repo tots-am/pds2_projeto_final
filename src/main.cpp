@@ -8,27 +8,8 @@
 #include "birdClass.hpp"
 #include "canos.hpp"
 #include "fontesClass.hpp"
-
-const float FPS = 30;               // Define FPS do Jogo
-const int SCREEN_WIDTH = 800;      // Define o comprimento da janela do Jogo
-const int SCREEN_HEIGHT = 600;     // Define a largura da janela do jogo
-
-// Define as fontes
-const std::string ARIAL_FONT_PATH = "./assets/fonts/arial.ttf";
-const int FONT_SIZE = 32;
-fontesClass fonteArial(ARIAL_FONT_PATH.c_str(), FONT_SIZE); // Instancia a classe de fontes com o caminho da fonte e o tamanho
-
-const std::string FLAPPY_FONT_PATH = "./assets/fonts/flappy-font.fnt";
-const int FLAPPY_FONT_SIZE =32;
-fontesClass fonteFlappy(FLAPPY_FONT_PATH.c_str(), FLAPPY_FONT_SIZE); // Instancia a classe de fontes com o caminho da fonte e o tamanho
-//Define as imagens
-const std::string BACKGROUND_IMG_PATH = "./assets/sprites/background-800-600.png";
-const std::string BASE_IMG_PATH = "./assets/sprites/base-800-50.png";
-
-#define NUM_CANOS 4   
-
-const std::string ARIAL_FONT_PATH = "./assets/fonts/arial.ttf";
-const int FONT_SIZE = 32;
+#include "constants.hpp"
+#include "Imagem.hpp"
 
 using namespace std;
 
@@ -45,86 +26,86 @@ int main(){
     ALLEGRO_DISPLAY *display = NULL;
     ALLEGRO_EVENT_QUEUE *eventQueue = NULL;
     ALLEGRO_TIMER *timer = NULL;
-    ALLEGRO_FONT *font_arial = NULL;
     ALLEGRO_BITMAP *background = NULL;
     ALLEGRO_BITMAP *base = NULL;
 
     //Inicializações das Funções da Biblioteca do Allegro
     if (!al_init()) {
-        std::cout << "Falha ao iniciar allegro" << std::endl;
+        cout << "Falha ao iniciar allegro" << endl;
         return -1;
     }
 
     if(!al_init_font_addon()){
-        std::cout << "Falha ao iniciar pacote de fontes Allegro" << std::endl;
+        cout << "Falha ao iniciar pacote de fontes Allegro" << endl;
         return -1;
     }
 
     if(!al_init_ttf_addon()){
-        std::cout << "Falha ao iniciar pacote de fontes ttf Allegro" << std::endl;
+        cout << "Falha ao iniciar pacote de fontes ttf Allegro" << endl;
         return -1;
     }
 
-    // Seção para carregar fontes
-    /*ALLEGRO_FONT *font_arial = al_load_font(ARIAL_FONT_PATH.c_str(), FONT_SIZE, 0);
-    if(font_arial == nullptr){
-        std::cout << "Falha ao iniciar fonte" << std::endl;
+    if(!al_init_primitives_addon()){
+        cout << "Falha ao iniciar pacote de primitivas" << endl;
         return -1;
-    }*/
+    }
+
+    // Instancia a classe de fontes com o caminho da fonte e o tamanho
+    fontesClass fonteArial(ARIAL_FONT_PATH.c_str(), ARIAL_FONT_SIZE);
+    fontesClass fonteFlappy(FLAPPY_FONT_PATH.c_str(), FLAPPY_FONT_SIZE); 
+
     if(fonteArial.getfonte() == nullptr){
-        std::cout << "Falha ao iniciar fonte" << std::endl;
+        cout << "Falha ao iniciar fonte" << endl;
         return -1;
     }
     if(fonteFlappy.getfonte() == nullptr){
-        std::cout << "Falha ao iniciar fonte Flappy" << std::endl;
+        cout << "Falha ao iniciar fonte Flappy" << endl;
         return -1;
     }
 
     if(!al_init_image_addon()){
-        std::cout << "Falha ao iniciar pacote de imagens do Allegro" << std::endl;
+        cout << "Falha ao iniciar pacote de imagens do Allegro" << endl;
+        return -1;
+    }
+
+    if(!al_install_keyboard()){
+        cout << "Falha ao iniciar teclado" << endl;
         return -1;
     }
 
     display = al_create_display(SCREEN_WIDTH, SCREEN_HEIGHT);
     if(!display){
-        std::cout << "Falha ao criar display" << std::endl;
+        cout << "Falha ao criar display" << endl;
         return -1;
     }
 
     eventQueue= al_create_event_queue();
     if (!eventQueue) {
-        std::cout << "Falha ao iniciar fila de eventos" << std::endl;
+        cout << "Falha ao iniciar fila de eventos" << endl;
+        al_destroy_display(display);
         return -1;
     }
 
     timer = al_create_timer(1.0/FPS);
     if(!timer){
-        std::cout << "Falha ao Iniciar Timer" << std::endl;
+        cout << "Falha ao Iniciar Timer" << endl;
         al_destroy_display(display);
-        return -1;
-    }
-
-    // Seção para carregar fontes
-    font_arial = al_load_font(ARIAL_FONT_PATH.c_str(), FONT_SIZE, 0);
-    if(font_arial == nullptr){
-        std::cout << "Falha ao iniciar fonte" << std::endl;
+        al_destroy_event_queue(eventQueue);
         return -1;
     }
     
     // Seção para carregar imagens
     background = al_load_bitmap(BACKGROUND_IMG_PATH.c_str());
     if(background == nullptr){
-        std::cout << "Falha ao carregar background" << std::endl;
+        cout << "Falha ao carregar background" << endl;
         return -1;
     }
 
     base = al_load_bitmap(BASE_IMG_PATH.c_str());
     if(base == nullptr){
-        std::cout << "Falha ao carregar base" << std::endl;
+        cout << "Falha ao carregar base" << endl;
         return -1;
     }
-
-
 
     // Instanciando Entidades
     Bird bird((float)SCREEN_WIDTH/4, (float)SCREEN_HEIGHT/2);
@@ -172,14 +153,14 @@ int main(){
                     fonteFlappy.escrever(
                         "FLAPPY BIRD",
                         SCREEN_WIDTH/2, 
-                        SCREEN_HEIGHT/2 - FONT_SIZE, 
-                        al_map_rgb(0,0,0),
+                        SCREEN_HEIGHT/2 - FLAPPY_FONT_SIZE/2, 
+                        al_map_rgb(255,255,255),
                         ALLEGRO_ALIGN_CENTER
                     );
                     fonteArial.escrever(
                         "Aperte ENTER para começar",
                         SCREEN_WIDTH/2, 
-                        SCREEN_HEIGHT/2 + FONT_SIZE/2, 
+                        SCREEN_HEIGHT/2 + ARIAL_FONT_SIZE/2, 
                         al_map_rgb(255,255,255), 
                         ALLEGRO_ALIGN_CENTER
                     );
@@ -188,13 +169,12 @@ int main(){
                 case inGame:
                     if(!bird.borda_hit()){
                         bird.update_position(delta_time);
+                        canos[0].atualizar(canos, NUM_CANOS);
                     } else {
                         state = inGameOver;
                     }
-                    bird.draw();
-                    
-                    canos[0].atualizar(canos, NUM_CANOS);
 
+                    bird.draw();
                     for(int i = 0; i <NUM_CANOS; i++){
                         canos[i].desenhar();
                     }
@@ -207,15 +187,15 @@ int main(){
                     fonteFlappy.escrever(
                         "GAME OVER",
                         SCREEN_WIDTH/2, 
-                        SCREEN_HEIGHT/2 - FONT_SIZE/2, 
-                        al_map_rgb(0,0,0), 
+                        SCREEN_HEIGHT/2 - FLAPPY_FONT_SIZE/2, 
+                        al_map_rgb(255,255,255), 
                         ALLEGRO_ALIGN_CENTER
                     );
                     fonteArial.escrever(
                         "Aperte ENTER para recomeçar",
                         SCREEN_WIDTH/2, 
-                        SCREEN_HEIGHT/2 + FONT_SIZE/2, 
-                        al_map_rgb(0,0,0), 
+                        SCREEN_HEIGHT/2 + ARIAL_FONT_SIZE/2, 
+                        al_map_rgb(255,255,255), 
                         ALLEGRO_ALIGN_CENTER
                     );
                     

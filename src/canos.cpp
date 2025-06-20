@@ -10,11 +10,12 @@
 #include <allegro5/allegro_image.h>
 #include <iostream>
 #include <stdexcept> 
-#include "./canos.hpp" 
+#include "canos.hpp"
+#include "constants.hpp" 
 
 using namespace std; 
 const std::string pipe1_sprite = "./assets/sprites/pipe-green.png";
-const std::string pipe2_sprite = "./assets/sprites/pipe-green-down.png";  
+const std::string pipe2_sprite = "./assets/sprites/pipe-green-down.png";
 
 // Construtores e destrutores
 

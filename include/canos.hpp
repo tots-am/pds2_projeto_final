@@ -11,15 +11,10 @@
 
 using namespace std; 
 
-const float FPS = 30;
-const int SCREEN_WIDTH = 800;
-const int SCREEN_HEIGHT = 600;
 const int ALTURA_BASE = 50;
-
-
-constexpr int  NUM_CANOS = 3;                     ///< Número de canos na tela
-#define VELOCIDADE_CANO 3               ///< Velocidade de deslocamento dos canos (em pixels)
-#define ESPACO_ENTRE_OS_CANOS 250       ///< Distância horizontal entre os canos
+constexpr int NUM_CANOS = 4;                    ///< Número de canos na tela
+constexpr int VELOCIDADE_CANO = 3;               ///< Velocidade de deslocamento dos canos (em pixels)
+constexpr int ESPACO_ENTRE_OS_CANOS = 250;       ///< Distância horizontal entre os canos
 
 
 struct BitmapDeleter {
