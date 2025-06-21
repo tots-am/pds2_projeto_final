@@ -17,7 +17,7 @@ public:
     int buscarHighScore(const std::string& nome) const;
 
     // Update
-    bool atualizar(const std::string& nome, int novo_high_score);
+    void atualizar(const std::string& nome, int novo_high_score);
 
     // Delete
     bool remover(const std::string& nome);

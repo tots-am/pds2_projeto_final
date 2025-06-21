@@ -3,6 +3,7 @@
 #include <sstream>
 #include <iostream>
 #include <algorithm>
+#include "functions.hpp"
 
 DB::DB(const std::string& path) : path(path) {}
 
@@ -32,6 +33,7 @@ std::vector<std::pair<std::string, int>> DB::lerTodos() const {
     } else {
         std::cerr << "Erro ao abrir o arquivo para leitura." << std::endl;
     }
+    std::sort(registros.begin(), registros.end(), compararHighScore);
 
     return registros;
 }
@@ -55,10 +57,9 @@ int DB::buscarHighScore(const std::string& nome) const {
 }
 
 // Update
-bool DB::atualizar(const std::string& nome, int novo_high_score) {
+void DB::atualizar(const std::string& nome, int novo_high_score) {
     auto registros = lerTodos();
     bool atualizado = false;
-
     for (auto& par : registros) {
         if (par.first == nome) {
             par.second = novo_high_score;
@@ -66,12 +67,9 @@ bool DB::atualizar(const std::string& nome, int novo_high_score) {
             break;
         }
     }
-
     if (atualizado) {
         salvarTodos(registros);
     }
-
-    return atualizado;
 }
 
 // Delete
