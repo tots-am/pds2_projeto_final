@@ -10,6 +10,7 @@
 #include "fontesClass.hpp"
 #include "constants.hpp"
 #include "Imagem.hpp"
+#include "scoreboard.hpp"
 
 using namespace std;
 
@@ -109,7 +110,7 @@ int main(){
 
     // Instanciando Entidades
     Bird bird((float)SCREEN_WIDTH/4, (float)SCREEN_HEIGHT/2);
-
+    Scoreboard scoreboard(fonteArial.getfonte());
     Canos canos[NUM_CANOS] = {Canos(SCREEN_WIDTH, 0), Canos(SCREEN_WIDTH, 1), Canos(SCREEN_WIDTH, 2), Canos(SCREEN_WIDTH, 3)};
 
     // Especificar de onde vem os eventos
@@ -120,11 +121,15 @@ int main(){
     // Variaveis do Jogo
     bool endGame = false;
     gameState state = inStartMenu;
+    string playerName;
+    int score = 1;
 
     // Inicia o timer
     al_start_timer(timer);
 
     double last_time = al_get_time();
+
+    //al_rest(3.0);
 
     while(!endGame){
         ALLEGRO_EVENT event;
@@ -135,6 +140,9 @@ int main(){
             double current_time = al_get_time();
             double delta_time = current_time - last_time;
             last_time = current_time;
+            if(delta_time > 0.03){
+                delta_time = 0.03;
+            }
             
             al_clear_to_color(al_map_rgb(0,0,0));
             
@@ -150,18 +158,26 @@ int main(){
                 case inStartMenu:    
                     al_draw_filled_rounded_rectangle(150, 200, 650, 400, 10, 10, al_map_rgb(255, 165, 0));
                     al_draw_rounded_rectangle(150, 200, 650, 400, 10, 10, al_map_rgb(253,253,150), 5);
-                    fonteFlappy.escrever(
-                        "FLAPPY BIRD",
+                    al_draw_filled_rounded_rectangle(180, 280, 620, 320, 10, 10, al_map_rgb(255,255,255));
+                    fonteArial.escrever(
+                        "Bem-Vindo! Digite seu nome:",
                         SCREEN_WIDTH/2, 
-                        SCREEN_HEIGHT/2 - FLAPPY_FONT_SIZE/2, 
-                        al_map_rgb(255,255,255),
+                        SCREEN_HEIGHT/2 - 4* ARIAL_FONT_SIZE/2, 
+                        al_map_rgb(255,255,255), 
                         ALLEGRO_ALIGN_CENTER
                     );
                     fonteArial.escrever(
-                        "Aperte ENTER para começar",
+                        "Aperte ESPAÇO para começar",
                         SCREEN_WIDTH/2, 
-                        SCREEN_HEIGHT/2 + ARIAL_FONT_SIZE/2, 
+                        SCREEN_HEIGHT/2 + 2* ARIAL_FONT_SIZE/2, 
                         al_map_rgb(255,255,255), 
+                        ALLEGRO_ALIGN_CENTER
+                    );
+                    fonteArial.escrever(
+                        playerName,
+                        SCREEN_WIDTH/2, 
+                        SCREEN_HEIGHT/2 - ARIAL_FONT_SIZE/2, 
+                        al_map_rgb(0,0,0), 
                         ALLEGRO_ALIGN_CENTER
                     );
                     break;
@@ -171,6 +187,7 @@ int main(){
                         bird.update_position(delta_time);
                         canos[0].atualizar(canos, NUM_CANOS);
                     } else {
+                        scoreboard.updatePlayerInfo(playerName, score);
                         state = inGameOver;
                     }
 
@@ -178,21 +195,31 @@ int main(){
                     for(int i = 0; i <NUM_CANOS; i++){
                         canos[i].desenhar();
                     }
-
+                    score++;
                     break;
                 
                 case inGameOver:
+                    for(int i = 0; i <NUM_CANOS; i++){
+                        canos[i].desenhar();
+                    }
                     al_draw_filled_rounded_rectangle(150, 200, 650, 400, 10, 10, al_map_rgb(255, 165, 0));
                     al_draw_rounded_rectangle(150, 200, 650, 400, 10, 10, al_map_rgb(253,253,253), 5);
                     fonteFlappy.escrever(
                         "GAME OVER",
                         SCREEN_WIDTH/2, 
-                        SCREEN_HEIGHT/2 - FLAPPY_FONT_SIZE/2, 
+                        SCREEN_HEIGHT/2 - 4 *FLAPPY_FONT_SIZE/2, 
                         al_map_rgb(255,255,255), 
                         ALLEGRO_ALIGN_CENTER
                     );
                     fonteArial.escrever(
-                        "Aperte ENTER para recomeçar",
+                        "Aperte ESPAÇO para recomeçar",
+                        SCREEN_WIDTH/2, 
+                        SCREEN_HEIGHT/2 - ARIAL_FONT_SIZE/2, 
+                        al_map_rgb(255,255,255), 
+                        ALLEGRO_ALIGN_CENTER
+                    );
+                    fonteArial.escrever(
+                        "Aperte ENTER para ver placar",
                         SCREEN_WIDTH/2, 
                         SCREEN_HEIGHT/2 + ARIAL_FONT_SIZE/2, 
                         al_map_rgb(255,255,255), 
@@ -203,9 +230,10 @@ int main(){
                     break;
                 
                 case inScoreBoard:
+                    scoreboard.drawScoreboard();
+                    scoreboard.exibeInfos();
                     break;
             }
-
             al_flip_display();
         }
 
@@ -216,25 +244,53 @@ int main(){
                     if(state == inGame){
                         bird.jump();
                     }
+                    else if(state == inStartMenu){
+                        state = inGame;
+                    }
+                    if(state == inGameOver){
+                        bird.reset_position((float)SCREEN_WIDTH/4, (float)SCREEN_HEIGHT/2);
+                        state = inGame;
+                    }
                     break;
                 
                 case ALLEGRO_KEY_ENTER:
                     if(state == inGameOver){
                         bird.reset_position((float)SCREEN_WIDTH/4, (float)SCREEN_HEIGHT/2);
-                        state = inStartMenu;
-                    } 
-
+                        state = inScoreBoard;
+                    }
                     else if(state == inStartMenu){
-                        state = inGame;
+                        scoreboard.updatePlayerInfo(playerName, score);
+                        state = inScoreBoard;
                     }
                     break;
 
                 case ALLEGRO_KEY_ESCAPE:
-                    endGame = true;
+                    if(state == inScoreBoard || state == inGame || state == inGameOver ){
+                        bird.reset_position((float)SCREEN_WIDTH/4, (float)SCREEN_HEIGHT/2);
+                        state = inStartMenu;
+                    } else {
+                        endGame = true;
+                    }
                     break;
             }
         }
-
+        else if(event.type == ALLEGRO_EVENT_KEY_CHAR){
+            if(state == inStartMenu){
+                switch(event.keyboard.keycode){
+                    case ALLEGRO_KEY_BACKSPACE:
+                        playerName.pop_back();
+                        break;
+                    case ALLEGRO_KEY_SPACE:
+                        break;
+                    case ALLEGRO_KEY_ESCAPE:
+                        break;
+                    default :
+                        const char* key = al_keycode_to_name(event.keyboard.keycode);
+                        playerName.push_back(*key);
+                        break;
+                }
+            }
+        }
         //Sair quando usuario aperta o X-inho
         else if (event.type == ALLEGRO_EVENT_DISPLAY_CLOSE) {
             endGame = true;
