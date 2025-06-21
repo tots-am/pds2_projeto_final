@@ -31,6 +31,7 @@ void Scoreboard::exibeInfos(){
     int i = 0;
     while(i < num_players){
         if(i == num_players){ break; }
+        else if(i == 5){ break; }
         std::string nome = registros[i].first;
         std::string high_score = std::to_string(registros[i].second);
         std::string joined = nome + " " + high_score;
@@ -38,7 +39,7 @@ void Scoreboard::exibeInfos(){
             fonte,
             al_map_rgb(0,0,0),
             SCREEN_WIDTH/2,
-            200 + offset,
+            232 + offset,
             ALLEGRO_ALIGN_CENTER,
             joined.c_str()
         );
