@@ -187,7 +187,9 @@ int main(){
                         bird.update_position(delta_time);
                         canos[0].atualizar(canos, NUM_CANOS);
                     } else {
-                        scoreboard.updatePlayerInfo(playerName, score);
+                        if(!playerName.empty()){
+                            scoreboard.updatePlayerInfo(playerName, score);
+                        }
                         state = inGameOver;
                     }
 
@@ -259,7 +261,9 @@ int main(){
                         state = inScoreBoard;
                     }
                     else if(state == inStartMenu){
-                        scoreboard.updatePlayerInfo(playerName, score);
+                        if(!playerName.empty()){
+                            scoreboard.updatePlayerInfo(playerName, score);
+                        }
                         state = inScoreBoard;
                     }
                     break;
@@ -285,8 +289,10 @@ int main(){
                     case ALLEGRO_KEY_ESCAPE:
                         break;
                     default :
-                        const char* key = al_keycode_to_name(event.keyboard.keycode);
-                        playerName.push_back(*key);
+                        if(playerName.size() < MAX_NAME_SIZE){
+                            const char* key = al_keycode_to_name(event.keyboard.keycode);
+                            playerName.push_back(*key);
+                        }
                         break;
                 }
             }
