@@ -277,7 +277,7 @@ int main(){
         }
         else if(event.type == ALLEGRO_EVENT_KEY_CHAR){
             if(state == inStartMenu){
-                switch(event.keyboard.unichar){
+                switch(event.keyboard.keycode){
                     case ALLEGRO_KEY_BACKSPACE:
                         if(!playerName.empty()){
                             playerName.pop_back();
