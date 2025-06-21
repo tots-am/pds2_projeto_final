@@ -129,6 +129,8 @@ int main(){
 
     double last_time = al_get_time();
 
+    al_rest(3.0);
+
     while(!endGame){
         ALLEGRO_EVENT event;
         al_wait_for_event(eventQueue, &event);
@@ -138,6 +140,9 @@ int main(){
             double current_time = al_get_time();
             double delta_time = current_time - last_time;
             last_time = current_time;
+            if(delta_time < 0.03){
+                delta_time = 0.03;
+            }
             
             al_clear_to_color(al_map_rgb(0,0,0));
             
@@ -190,6 +195,7 @@ int main(){
                     for(int i = 0; i <NUM_CANOS; i++){
                         canos[i].desenhar();
                     }
+                    score++;
                     break;
                 
                 case inGameOver:
@@ -253,6 +259,7 @@ int main(){
                         state = inScoreBoard;
                     }
                     else if(state == inStartMenu){
+                        scoreboard.updatePlayerInfo(playerName, score);
                         state = inScoreBoard;
                     }
                     break;
