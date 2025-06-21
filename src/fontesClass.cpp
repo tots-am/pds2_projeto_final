@@ -10,6 +10,13 @@ fontesClass::fontesClass(const char* caminho_fonte, int tam_fonte) : tam_fonte(t
         cout << "Falha ao carregar fonte: " << caminho_fonte << endl;
     }
 }
+fontesClass::fontesClass(){
+    fonte_principal = al_load_bitmap_font("flappy-font.fnt");
+    if(fonte_principal == nullptr){ //confere se carregou corretamente
+        cout << "Falha ao carregar fonte flappy-font" << endl;
+    }
+}
+//conferir como seria o construtor de uma fonte bitmap
 
 //destrutor
 fontesClass::~fontesClass(){
