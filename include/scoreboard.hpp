@@ -23,14 +23,13 @@ class Scoreboard{
 
     Scoreboard(ALLEGRO_FONT *fonte);
 
-    bool isDbEmpty();
-
     void drawScoreboard();
 
     void exibeInfos();
 
     void updatePlayerInfo(string player, int score);
 
+    private:
     void updateNumPlayers();
 };
 
