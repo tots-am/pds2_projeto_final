@@ -4,11 +4,11 @@
 #include <iostream>
 #include <algorithm>
 
-DB::DB(const std::string& filename) : filename(filename) {}
+DB::DB(const std::string& path) : path(path) {}
 
 // Create
 void DB::adicionar(const std::string& nome, int high_score) {
-    std::ofstream arquivo(filename, std::ios::app);
+    std::ofstream arquivo(path, std::ios::app);
     if (arquivo.is_open()) {
         arquivo << nome << " " << high_score << std::endl;
         arquivo.close();
@@ -20,7 +20,7 @@ void DB::adicionar(const std::string& nome, int high_score) {
 // Read
 std::vector<std::pair<std::string, int>> DB::lerTodos() const {
     std::vector<std::pair<std::string, int>> registros;
-    std::ifstream arquivo(filename);
+    std::ifstream arquivo(path);
     std::string nome;
     int score;
 
@@ -37,7 +37,7 @@ std::vector<std::pair<std::string, int>> DB::lerTodos() const {
 }
 
 int DB::buscarHighScore(const std::string& nome) const {
-    std::ifstream arquivo(filename);
+    std::ifstream arquivo(path);
     std::string nomeArquivo;
     int score;
 
@@ -95,7 +95,7 @@ bool DB::remover(const std::string& nome) {
 
 // Função auxiliar para sobrescrever o arquivo
 void DB::salvarTodos(const std::vector<std::pair<std::string, int>>& registros) const {
-    std::ofstream arquivo(filename, std::ios::trunc);
+    std::ofstream arquivo(path, std::ios::trunc);
     if (arquivo.is_open()) {
         for (const auto& par : registros) {
             arquivo << par.first << " " << par.second << std::endl;

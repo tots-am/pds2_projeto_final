@@ -7,7 +7,7 @@
 
 class DB {
 public:
-    DB(const std::string& filename = "db.txt");
+    DB(const std::string& path = "./db/db.txt");
 
     // Create
     void adicionar(const std::string& nome, int high_score);
@@ -23,7 +23,7 @@ public:
     bool remover(const std::string& nome);
 
 private:
-    std::string filename;
+    std::string path;
 
     // Função auxiliar para salvar todos os registros novamente no arquivo
     void salvarTodos(const std::vector<std::pair<std::string, int>>& registros) const;
