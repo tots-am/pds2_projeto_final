@@ -251,6 +251,7 @@ int main(){
                     }
                     if(state == inGameOver){
                         bird.reset_position((float)SCREEN_WIDTH/4, (float)SCREEN_HEIGHT/2);
+                        canos[0].reset_position(canos, NUM_CANOS);
                         state = inGame;
                     }
                     break;
@@ -259,6 +260,7 @@ int main(){
                     if(state == inGameOver){
                         bird.reset_position((float)SCREEN_WIDTH/4, (float)SCREEN_HEIGHT/2);
                         state = inScoreBoard;
+                        canos[0].reset_position(canos, NUM_CANOS);
                     }
                     else if(state == inStartMenu){
                         if(!playerName.empty()){
@@ -271,6 +273,7 @@ int main(){
                 case ALLEGRO_KEY_ESCAPE:
                     if(state == inScoreBoard || state == inGame || state == inGameOver ){
                         bird.reset_position((float)SCREEN_WIDTH/4, (float)SCREEN_HEIGHT/2);
+                        canos[0].reset_position(canos, NUM_CANOS);
                         state = inStartMenu;
                     } else {
                         endGame = true;

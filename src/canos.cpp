@@ -55,13 +55,7 @@ Canos::~Canos(){
 }
 
 
-// Funções
-
-void Canos::inicializarCanos(int posX, int index){ 
-    x = posX + (index * ESPACO_ENTRE_OS_CANOS); 
-    altura_cima = rand() % 200 + 50; 
-    altura_baixo = SCREEN_HEIGHT - altura_cima - tamanho_buraco - ALTURA_BASE;
-}
+//Funções
 
 void Canos::desenhar(){ 
     if (!canoCima || !canoBaixo) {
@@ -80,6 +74,13 @@ void Canos::atualizar(Canos* canos, int numCanos){
             canos[i].altura_cima = rand() % 200 + 50; 
             canos[i].altura_baixo = SCREEN_HEIGHT - canos[i].altura_cima - canos[i].tamanho_buraco - ALTURA_BASE; 
         }
+    }
+}
+void Canos::reset_position(Canos* canos, int numCanos) {
+    for(int i = 0; i < numCanos; i++){
+        canos[i].x = SCREEN_WIDTH + (i * ESPACO_ENTRE_OS_CANOS);
+        canos[i].altura_cima = rand() % 200 + 50; 
+        canos[i].altura_baixo = SCREEN_HEIGHT - canos[i].altura_cima - tamanho_buraco - ALTURA_BASE;
     }
 }
 

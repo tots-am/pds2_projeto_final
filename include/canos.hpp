@@ -110,6 +110,9 @@ public:
      * @brief Retorna a posição X do cano.
      * @return A coordenada X do cano.
      */
+
+    void reset_position(Canos* canos, int numCanos);
+
     int get_x() const;
 
     /**
