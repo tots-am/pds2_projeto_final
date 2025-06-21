@@ -51,7 +51,7 @@ Canos::Canos() :
 
 Canos::~Canos(){
     if(canoCima) al_destroy_bitmap(canoCima);
-     if(canoCima) al_destroy_bitmap(canoBaixo);
+    if(canoBaixo) al_destroy_bitmap(canoBaixo);
 }
 
 

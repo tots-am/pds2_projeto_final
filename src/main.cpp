@@ -140,9 +140,6 @@ int main(){
             double current_time = al_get_time();
             double delta_time = current_time - last_time;
             last_time = current_time;
-            if(delta_time > 0.03){
-                delta_time = 0.03;
-            }
             
             al_clear_to_color(al_map_rgb(0,0,0));
             
@@ -186,6 +183,7 @@ int main(){
                     if(!bird.borda_hit()){
                         bird.update_position(delta_time);
                         canos[0].atualizar(canos, NUM_CANOS);
+                        score++;
                     } else {
                         if(!playerName.empty()){
                             scoreboard.updatePlayerInfo(playerName, score);
@@ -197,7 +195,6 @@ int main(){
                     for(int i = 0; i <NUM_CANOS; i++){
                         canos[i].desenhar();
                     }
-                    score++;
                     break;
                 
                 case inGameOver:
@@ -280,9 +277,11 @@ int main(){
         }
         else if(event.type == ALLEGRO_EVENT_KEY_CHAR){
             if(state == inStartMenu){
-                switch(event.keyboard.keycode){
+                switch(event.keyboard.unichar){
                     case ALLEGRO_KEY_BACKSPACE:
-                        playerName.pop_back();
+                        if(!playerName.empty()){
+                            playerName.pop_back();
+                        }
                         break;
                     case ALLEGRO_KEY_SPACE:
                         break;
@@ -290,8 +289,9 @@ int main(){
                         break;
                     default :
                         if(playerName.size() < MAX_NAME_SIZE){
-                            const char* key = al_keycode_to_name(event.keyboard.keycode);
-                            playerName.push_back(*key);
+                            if (event.keyboard.unichar >= 32) {
+                                playerName.push_back((char)event.keyboard.unichar);
+                            }
                         }
                         break;
                 }
@@ -303,11 +303,11 @@ int main(){
         }
     }
 
-    al_destroy_bitmap(background);
-    al_destroy_bitmap(base);
-    al_destroy_timer(timer);
-    al_destroy_event_queue(eventQueue);
-    al_destroy_display(display);
+    if(background) al_destroy_bitmap(background);
+    if(base) al_destroy_bitmap(base);
+    if(timer) al_destroy_timer(timer);
+    if(eventQueue) al_destroy_event_queue(eventQueue);
+    if(display) al_destroy_display(display);
 
     return 0;
 }
