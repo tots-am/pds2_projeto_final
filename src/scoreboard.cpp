@@ -1,6 +1,8 @@
 #include "scoreboard.hpp"
 #include "constants.hpp"
 
+const int NUM_LETRAS = 32;
+
 Scoreboard::Scoreboard(ALLEGRO_FONT *fonte) :
     num_players(0),
     fonte(fonte),
@@ -15,7 +17,15 @@ void Scoreboard::drawScoreboard()
 {
     al_draw_filled_rounded_rectangle(100, 100, 700, 500, 10, 10, al_map_rgb(255, 165, 0));
     al_draw_rounded_rectangle(100, 100, 700, 500, 10, 10, al_map_rgb(253,253,253), 5);
-    al_draw_filled_rounded_rectangle(130, 200, 670, 440, 10, 10, al_map_rgb(253,253,253));
+    al_draw_filled_rounded_rectangle(130, 180, 670, 440, 10, 10, al_map_rgb(253,253,253));
+    al_draw_text(
+        fonte,
+        al_map_rgb(0,0,0),
+        SCREEN_WIDTH/2, 
+        185,
+        ALLEGRO_ALIGN_CENTER,
+        "Jogador ------------ High Score"
+    );
     al_draw_text(
         fonte,
         al_map_rgb(255,255,255),
@@ -34,7 +44,12 @@ void Scoreboard::exibeInfos(){
         else if(i == 5){ break; }
         std::string nome = registros[i].first;
         std::string high_score = std::to_string(registros[i].second);
-        std::string joined = nome + " " + high_score;
+        int dif = NUM_LETRAS - nome.size() - high_score.size();
+        std::string space;
+        for(int j = 0; j < dif; j++){
+            space.push_back('-');
+        }
+        std::string joined = nome + " " + space + " " + high_score;
         al_draw_text(
             fonte,
             al_map_rgb(0,0,0),
