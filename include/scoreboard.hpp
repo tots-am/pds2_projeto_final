@@ -16,7 +16,6 @@ using namespace std;
 class Scoreboard{
     
     int num_players;
-    vector <string> linhas;
     ALLEGRO_FONT *fonte;
     DB database;
 
@@ -30,9 +29,7 @@ class Scoreboard{
 
     void exibeInfos();
 
-    void addPlayerInfo(string player);
-
-    bool PlayerExists(string player);
+    void updatePlayerInfo(string player, int score);
 
     void updateNumPlayers();
 };

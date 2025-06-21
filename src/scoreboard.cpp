@@ -2,28 +2,20 @@
 #include "constants.hpp"
 
 Scoreboard::Scoreboard(ALLEGRO_FONT *fonte) :
-    fonte(fonte),
     num_players(0),
+    fonte(fonte),
     database(DB_PATH)
-{
-    
-}
-
-bool Scoreboard::isDbEmpty()
-{
-    
-}
-bool Scoreboard::PlayerExists(string player){
-    
-}
+{}
 void Scoreboard::updateNumPlayers(){
-    
+    std::vector<std::pair<std::string, int>> registros = database.lerTodos();
+    this->num_players = registros.size(); 
+    //std::cout << this->num_players << std::endl;;
 }
 void Scoreboard::drawScoreboard()
 {
     al_draw_filled_rounded_rectangle(100, 100, 700, 500, 10, 10, al_map_rgb(255, 165, 0));
     al_draw_rounded_rectangle(100, 100, 700, 500, 10, 10, al_map_rgb(253,253,253), 5);
-    al_draw_filled_rounded_rectangle(130, 200, 670, 400, 10, 10, al_map_rgb(253,253,253));
+    al_draw_filled_rounded_rectangle(130, 200, 670, 440, 10, 10, al_map_rgb(253,253,253));
     al_draw_text(
         fonte,
         al_map_rgb(255,255,255),
@@ -34,9 +26,34 @@ void Scoreboard::drawScoreboard()
     );
 }
 void Scoreboard::exibeInfos(){
-    
+    int offset = 0;
+    std::vector <std::pair<std::string, int>> registros = database.lerTodos();
+    int i = 0;
+    while(i < num_players){
+        if(i == num_players){ break; }
+        std::string nome = registros[i].first;
+        std::string high_score = std::to_string(registros[i].second);
+        std::string joined = nome + " " + high_score;
+        al_draw_text(
+            fonte,
+            al_map_rgb(0,0,0),
+            SCREEN_WIDTH/2,
+            200 + offset,
+            ALLEGRO_ALIGN_CENTER,
+            joined.c_str()
+        );
+        offset += 40;
+        i++;
+    }
 }
 
-void Scoreboard::addPlayerInfo(string player){
-    
+void Scoreboard::updatePlayerInfo(string player, int score){
+    int currentScore = database.buscarHighScore(player);
+    if(currentScore == -1){
+        database.adicionar(player, score);
+    }
+    else if(score > currentScore){
+        database.atualizar(player, score);
+    }
+    this->updateNumPlayers();
 }
