@@ -201,6 +201,7 @@ int main(){
                     }
                     score++;
                     tempo_atual = al_get_time() - tempo_inicio;
+                    
                     char tempo_str[64];
                     sprintf(tempo_str, "Tempo: %.2f s", tempo_atual);
                     al_draw_text(fonteArial.getfonte(), al_map_rgb(255, 255, 255), 10, 10, 0, tempo_str);
@@ -255,10 +256,12 @@ int main(){
                     }
                     else if(state == inStartMenu){
                         state = inGame;
+                        tempo_inicio = al_get_time(); 
                     }
                     if(state == inGameOver){
                         bird.reset_position((float)SCREEN_WIDTH/4, (float)SCREEN_HEIGHT/2);
                         canos[0].reset_position(canos, NUM_CANOS);
+                        tempo_inicio = al_get_time();
                         state = inGame;
                     }
                     break;
@@ -268,6 +271,7 @@ int main(){
                         bird.reset_position((float)SCREEN_WIDTH/4, (float)SCREEN_HEIGHT/2);
                         state = inScoreBoard;
                         canos[0].reset_position(canos, NUM_CANOS);
+                        tempo_inicio = al_get_time();
                     }
                     else if(state == inStartMenu){
                         if(!playerName.empty()){
