@@ -10,6 +10,7 @@
 #include "fontesClass.hpp"
 #include "constants.hpp"
 #include "Imagem.hpp"
+#include "scoreboard.hpp"
 
 using namespace std;
 
@@ -109,7 +110,7 @@ int main(){
 
     // Instanciando Entidades
     Bird bird((float)SCREEN_WIDTH/4, (float)SCREEN_HEIGHT/2);
-
+    Scoreboard scoreboard(fonteArial.getfonte());
     Canos canos[NUM_CANOS] = {Canos(SCREEN_WIDTH, 0), Canos(SCREEN_WIDTH, 1), Canos(SCREEN_WIDTH, 2), Canos(SCREEN_WIDTH, 3)};
 
     // Especificar de onde vem os eventos
@@ -121,6 +122,7 @@ int main(){
     bool endGame = false;
     gameState state = inStartMenu;
     string playerName;
+    int score = 1;
 
     // Inicia o timer
     al_start_timer(timer);
@@ -180,6 +182,7 @@ int main(){
                         bird.update_position(delta_time);
                         canos[0].atualizar(canos, NUM_CANOS);
                     } else {
+                        scoreboard.updatePlayerInfo(playerName, score);
                         state = inGameOver;
                     }
 
@@ -187,7 +190,6 @@ int main(){
                     for(int i = 0; i <NUM_CANOS; i++){
                         canos[i].desenhar();
                     }
-
                     break;
                 
                 case inGameOver:
@@ -222,15 +224,8 @@ int main(){
                     break;
                 
                 case inScoreBoard:
-                    al_draw_filled_rounded_rectangle(100, 100, 700, 500, 10, 10, al_map_rgb(255, 165, 0));
-                    al_draw_rounded_rectangle(100, 100, 700, 500, 10, 10, al_map_rgb(253,253,253), 5);
-                    fonteArial.escrever(
-                        "Aperte ESC para voltar ao menu",
-                        SCREEN_WIDTH/2, 
-                        SCREEN_HEIGHT/2 - ARIAL_FONT_SIZE/2, 
-                        al_map_rgb(255,255,255), 
-                        ALLEGRO_ALIGN_CENTER
-                    );
+                    scoreboard.drawScoreboard();
+                    scoreboard.exibeInfos();
                     break;
             }
             al_flip_display();
