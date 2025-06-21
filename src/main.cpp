@@ -126,6 +126,8 @@ int main(){
 
     // Inicia o timer
     al_start_timer(timer);
+    double tempo_inicio = al_get_time();
+    double tempo_atual = 0;
 
     double last_time = al_get_time();
 
@@ -198,12 +200,17 @@ int main(){
                         canos[i].desenhar();
                     }
                     score++;
+                    tempo_atual = al_get_time() - tempo_inicio;
+                    char tempo_str[64];
+                    sprintf(tempo_str, "Tempo: %.2f s", tempo_atual);
+                    al_draw_text(fonteArial.getfonte(), al_map_rgb(255, 255, 255), 10, 10, 0, tempo_str);
                     break;
                 
                 case inGameOver:
                     for(int i = 0; i <NUM_CANOS; i++){
                         canos[i].desenhar();
                     }
+
                     al_draw_filled_rounded_rectangle(150, 200, 650, 400, 10, 10, al_map_rgb(255, 165, 0));
                     al_draw_rounded_rectangle(150, 200, 650, 400, 10, 10, al_map_rgb(253,253,253), 5);
                     fonteFlappy.escrever(
