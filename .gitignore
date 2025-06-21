@@ -1,6 +1,7 @@
 obj
 build
 # db
+db
 *.txt
 
 # Vscode

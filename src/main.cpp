@@ -129,7 +129,7 @@ int main(){
 
     double last_time = al_get_time();
 
-    al_rest(3.0);
+    //al_rest(3.0);
 
     while(!endGame){
         ALLEGRO_EVENT event;
@@ -140,7 +140,7 @@ int main(){
             double current_time = al_get_time();
             double delta_time = current_time - last_time;
             last_time = current_time;
-            if(delta_time < 0.03){
+            if(delta_time > 0.03){
                 delta_time = 0.03;
             }
             
