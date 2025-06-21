@@ -1,7 +1,7 @@
 obj
 build
 # db
-.txt
+*.txt
 
 # Vscode
 .vscode/c_cpp_properties.json
