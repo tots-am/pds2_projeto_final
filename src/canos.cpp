@@ -39,16 +39,6 @@ Canos::Canos(int pos_x_inicial, int index) :
     altura_baixo = SCREEN_HEIGHT - altura_cima - tamanho_buraco - ALTURA_BASE;
 }
 
-Canos::Canos() :
-    x(0),
-    altura_cima(0),
-    altura_baixo(0),
-    largura(100),
-    tamanho_buraco(250),
-    canoCima(nullptr),
-    canoBaixo(nullptr)
-{}
-
 Canos::~Canos(){
     if(canoCima) al_destroy_bitmap(canoCima);
      if(canoCima) al_destroy_bitmap(canoBaixo);

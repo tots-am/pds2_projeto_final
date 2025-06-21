@@ -16,16 +16,6 @@ constexpr int NUM_CANOS = 4;                    ///< Número de canos na tela
 constexpr int VELOCIDADE_CANO = 3;               ///< Velocidade de deslocamento dos canos (em pixels)
 constexpr int ESPACO_ENTRE_OS_CANOS = 250;       ///< Distância horizontal entre os canos
 
-
-struct BitmapDeleter {
-    void operator()(ALLEGRO_BITMAP* b) const {
-        if(b){
-            al_destroy_bitmap(b);
-        }
-    }
-};
-
-
 /**
  * @class Canos
  * @brief Gerencia a criação, desenho e atualização dos canos no jogo.
