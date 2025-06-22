@@ -1,8 +1,8 @@
+#ifndef IMAGEM_H
+#define IMAGEM_H
+
 #include <string>
 #include <allegro5/allegro.h>
-#include <allegro5/allegro_primitives.h>
-#include <allegro5/allegro_ttf.h>
-#include <allegro5/allegro_font.h>
 #include <allegro5/allegro_image.h>
 #include <iostream>
 
@@ -21,3 +21,5 @@ class Imagem{
       void exibir(float pos_x, float pos_y);
       bool isLoaded();
 };
+
+#endif

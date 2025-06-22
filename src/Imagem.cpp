@@ -3,8 +3,8 @@
 using namespace std;
 
 Imagem::Imagem() :
+    imagem(nullptr),
     path(""),
-    imagem(NULL),
     largura(0),altura(0)
 {}
 
