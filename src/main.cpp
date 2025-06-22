@@ -54,6 +54,7 @@ int main(){
     // Instancia a classe de fontes com o caminho da fonte e o tamanho
     fontesClass fonteArial(ARIAL_FONT_PATH.c_str(), ARIAL_FONT_SIZE);
     fontesClass fonteFlappy(FLAPPY_FONT_PATH.c_str(), FLAPPY_FONT_SIZE); 
+    fontesClass fontePixelify(PIXELIFY_FONT_PATH.c_str(), PIXELIFY_FONT_SIZE);
 
     if(fonteArial.getfonte() == nullptr){
         cout << "Falha ao iniciar fonte" << endl;
@@ -159,25 +160,25 @@ int main(){
                     fonteFlappy.escrever(
                         "FLAPPY BIRD",
                         SCREEN_WIDTH/2, 
-                        SCREEN_HEIGHT/2 - 14 *FLAPPY_FONT_SIZE/2, 
-                        al_map_rgb(255,255,255), 
+                        SCREEN_HEIGHT/2 - 8 *FLAPPY_FONT_SIZE/2, 
+                        al_map_rgb(163, 244, 80), 
                         ALLEGRO_ALIGN_CENTER
                     );
-                    fonteArial.escrever(
+                    fontePixelify.escrever(
                         "Digite seu nome:",
                         SCREEN_WIDTH/2, 
                         SCREEN_HEIGHT/2 - 4* ARIAL_FONT_SIZE/2, 
                         al_map_rgb(255,255,255), 
                         ALLEGRO_ALIGN_CENTER
                     );
-                    fonteArial.escrever(
+                    fontePixelify.escrever(
                         "Aperte ESPAÇO para começar",
                         SCREEN_WIDTH/2, 
                         SCREEN_HEIGHT/2 + 2* ARIAL_FONT_SIZE/2, 
                         al_map_rgb(255,255,255), 
                         ALLEGRO_ALIGN_CENTER
                     );
-                    fonteArial.escrever(
+                    fontePixelify.escrever(
                         playerName,
                         SCREEN_WIDTH/2, 
                         SCREEN_HEIGHT/2 - ARIAL_FONT_SIZE/2, 
@@ -213,18 +214,18 @@ int main(){
                     fonteFlappy.escrever(
                         "GAME OVER",
                         SCREEN_WIDTH/2, 
-                        SCREEN_HEIGHT/2 - 4 *FLAPPY_FONT_SIZE/2, 
-                        al_map_rgb(255,255,255), 
+                        SCREEN_HEIGHT/2 - 8 *FLAPPY_FONT_SIZE/2,  
+                        al_map_rgb(163, 244, 80), 
                         ALLEGRO_ALIGN_CENTER
                     );
-                    fonteArial.escrever(
+                    fontePixelify.escrever(
                         "Aperte ESPAÇO para recomeçar",
                         SCREEN_WIDTH/2, 
                         SCREEN_HEIGHT/2 - ARIAL_FONT_SIZE/2, 
                         al_map_rgb(255,255,255), 
                         ALLEGRO_ALIGN_CENTER
                     );
-                    fonteArial.escrever(
+                    fontePixelify.escrever(
                         "Aperte ENTER para ver placar",
                         SCREEN_WIDTH/2, 
                         SCREEN_HEIGHT/2 + ARIAL_FONT_SIZE/2, 
