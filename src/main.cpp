@@ -1,8 +1,5 @@
 #include <allegro5/allegro.h>
 #include <allegro5/allegro_primitives.h>
-#include <allegro5/allegro_ttf.h>
-#include <allegro5/allegro_font.h>
-#include <allegro5/allegro_image.h>
 #include <iostream>
 #include <array>
 #include "birdClass.hpp"
@@ -96,12 +93,11 @@ int main(){
     // Seção para carregar imagens
     Imagem base(BASE_IMG_PATH);
     Imagem background(BACKGROUND_IMG_PATH);
-    Imagem titulo(TITLE_IMG_PATH);
+    //Imagem titulo(TITLE_IMG_PATH);
     Imagem gameover(GAMEOVER_IMG_PATH);
-    Imagem bird_img(BIRD_IMG_PATH);
 
     // Instanciando Entidades
-    Bird bird((float)SCREEN_WIDTH/4, (float)SCREEN_HEIGHT/2, bird_img);
+    Bird bird((float)SCREEN_WIDTH/4, (float)SCREEN_HEIGHT/2);
     Scoreboard scoreboard(fonteArial.getfonte());
     Canos canos[NUM_CANOS] = {Canos(SCREEN_WIDTH, 0), Canos(SCREEN_WIDTH, 1), Canos(SCREEN_WIDTH, 2), Canos(SCREEN_WIDTH, 3)};
 
@@ -145,6 +141,7 @@ int main(){
             switch (state)
             {
                 case inStartMenu:    
+                    //titulo.exibir((float)SCREEN_WIDTH/2, (float)SCREEN_HEIGHT/3);
                     al_draw_filled_rounded_rectangle(150, 200, 650, 400, 10, 10, al_map_rgb(255, 165, 0));
                     al_draw_rounded_rectangle(150, 200, 650, 400, 10, 10, al_map_rgb(253,253,150), 5);
                     al_draw_filled_rounded_rectangle(180, 280, 620, 320, 10, 10, al_map_rgb(255,255,255));
@@ -193,30 +190,30 @@ int main(){
                     for(int i = 0; i <NUM_CANOS; i++){
                         canos[i].desenhar();
                     }
-                    al_draw_filled_rounded_rectangle(150, 200, 650, 400, 10, 10, al_map_rgb(255, 165, 0));
-                    al_draw_rounded_rectangle(150, 200, 650, 400, 10, 10, al_map_rgb(253,253,253), 5);
-                    fonteFlappy.escrever(
-                        "GAME OVER",
+                    al_draw_filled_rounded_rectangle(150, 200, 650, 450, 10, 10, al_map_rgb(255, 165, 0));
+                    al_draw_rounded_rectangle(150, 200, 650, 450, 10, 10, al_map_rgb(253,253,253), 5);
+                    fonteArial.escrever(
+                        "ESPAÇO para recomeçar",
                         SCREEN_WIDTH/2, 
-                        SCREEN_HEIGHT/2 - 4 *FLAPPY_FONT_SIZE/2, 
+                        (SCREEN_HEIGHT/2 + 20),
                         al_map_rgb(255,255,255), 
                         ALLEGRO_ALIGN_CENTER
                     );
                     fonteArial.escrever(
-                        "Aperte ESPAÇO para recomeçar",
+                        "ENTER para ver placar",
                         SCREEN_WIDTH/2, 
-                        SCREEN_HEIGHT/2 - ARIAL_FONT_SIZE/2, 
+                        (SCREEN_HEIGHT/2 + 20) + ARIAL_FONT_SIZE + 10, 
                         al_map_rgb(255,255,255), 
                         ALLEGRO_ALIGN_CENTER
                     );
                     fonteArial.escrever(
-                        "Aperte ENTER para ver placar",
+                        "ESC para voltar ao menu",
                         SCREEN_WIDTH/2, 
-                        SCREEN_HEIGHT/2 + ARIAL_FONT_SIZE/2, 
+                        (SCREEN_HEIGHT/2 + 20) + 2 * (ARIAL_FONT_SIZE + 10), 
                         al_map_rgb(255,255,255), 
                         ALLEGRO_ALIGN_CENTER
                     );
-                    
+                    gameover.exibir((float)(SCREEN_WIDTH-gameover.largura)/2, 210);
                     bird.draw();
                     break;
                 
