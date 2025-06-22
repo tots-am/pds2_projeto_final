@@ -105,11 +105,10 @@ int main(){
     string playerName;
     int score = 1;
 
-    // Inicia o timer
+    // Inicia os timers
     al_start_timer(timer);
     double tempo_inicio = al_get_time();
     double tempo_atual = 0;
-
     double last_time = al_get_time();
 
     //al_rest(3.0);
@@ -184,7 +183,7 @@ int main(){
                         canos[i].desenhar();
                     }
                     score++;
-                    tempo_atual = al_get_time() - tempo_inicio;
+                    tempo_atual = current_time - tempo_inicio;
                     
                     char tempo_str[64];
                     sprintf(tempo_str, "Tempo: %.2f s", tempo_atual);
