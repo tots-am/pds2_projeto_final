@@ -105,9 +105,10 @@ int main(){
     string playerName;
     int score = 1;
 
-    // Inicia o timer
+    // Inicia os timers
     al_start_timer(timer);
-
+    double tempo_inicio = al_get_time();
+    double tempo_atual = 0;
     double last_time = al_get_time();
 
     //al_rest(3.0);
@@ -181,6 +182,12 @@ int main(){
                     for(int i = 0; i <NUM_CANOS; i++){
                         canos[i].desenhar();
                     }
+                    score++;
+                    tempo_atual = current_time - tempo_inicio;
+                    
+                    char tempo_str[64];
+                    sprintf(tempo_str, "Tempo: %.2f s", tempo_atual);
+                    al_draw_text(fonteArial.getfonte(), al_map_rgb(255, 255, 255), 10, 10, 0, tempo_str);
                     break;
                 
                 case inGameOver:
@@ -225,10 +232,13 @@ int main(){
                     }
                     else if(state == inStartMenu){
                         state = inGame;
+                        tempo_inicio = al_get_time(); 
                     }
                     if(state == inGameOver){
                         bird.reset_position((float)SCREEN_WIDTH/4, (float)SCREEN_HEIGHT/2);
                         score = 1;
+                        canos[0].reset_position(canos, NUM_CANOS);
+                        tempo_inicio = al_get_time();
                         state = inGame;
                     }
                     break;
@@ -238,6 +248,8 @@ int main(){
                         bird.reset_position((float)SCREEN_WIDTH/4, (float)SCREEN_HEIGHT/2);
                         score = 1;
                         state = inScoreBoard;
+                        canos[0].reset_position(canos, NUM_CANOS);
+                        tempo_inicio = al_get_time();
                     }
                     else if(state == inStartMenu){
                         if(!playerName.empty()){
@@ -251,6 +263,7 @@ int main(){
                     if(state != inStartMenu){
                         bird.reset_position((float)SCREEN_WIDTH/4, (float)SCREEN_HEIGHT/2);
                         score = 1;
+                        canos[0].reset_position(canos, NUM_CANOS);
                         state = inStartMenu;
                     } else {
                         endGame = true;

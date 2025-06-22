@@ -98,12 +98,21 @@ public:
      */
     void atualizar(Canos* canos, int numCanos);
 
+
+    /**
+      * @brief Reinicia a posição dos canos depois de GameOver
+      * @return Void
+      */
+
+    void reset_position(Canos* canos, int numCanos);
+
     // Métodos Getters
 
     /**
      * @brief Retorna a posição X do cano.
      * @return A coordenada X do cano.
      */
+
     int get_x() const;
 
     /**
