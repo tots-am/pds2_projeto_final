@@ -1,8 +1,5 @@
 #include <allegro5/allegro.h>
 #include <allegro5/allegro_primitives.h>
-#include <allegro5/allegro_ttf.h>
-#include <allegro5/allegro_font.h>
-#include <allegro5/allegro_image.h>
 #include <iostream>
 #include <array>
 #include "birdClass.hpp"
@@ -27,8 +24,6 @@ int main(){
     ALLEGRO_DISPLAY *display = NULL;
     ALLEGRO_EVENT_QUEUE *eventQueue = NULL;
     ALLEGRO_TIMER *timer = NULL;
-    ALLEGRO_BITMAP *background = NULL;
-    ALLEGRO_BITMAP *base = NULL;
 
     //Inicializações das Funções da Biblioteca do Allegro
     if (!al_init()) {
@@ -51,19 +46,6 @@ int main(){
         return -1;
     }
 
-    // Instancia a classe de fontes com o caminho da fonte e o tamanho
-    fontesClass fonteArial(ARIAL_FONT_PATH.c_str(), ARIAL_FONT_SIZE);
-    fontesClass fonteFlappy(FLAPPY_FONT_PATH.c_str(), FLAPPY_FONT_SIZE); 
-
-    if(fonteArial.getfonte() == nullptr){
-        cout << "Falha ao iniciar fonte" << endl;
-        return -1;
-    }
-    if(fonteFlappy.getfonte() == nullptr){
-        cout << "Falha ao iniciar fonte Flappy" << endl;
-        return -1;
-    }
-
     if(!al_init_image_addon()){
         cout << "Falha ao iniciar pacote de imagens do Allegro" << endl;
         return -1;
@@ -74,6 +56,12 @@ int main(){
         return -1;
     }
 
+    // Instancia a classe de fontes com o caminho da fonte e o tamanho
+    fontesClass fonteArial(ARIAL_FONT_PATH.c_str(), ARIAL_FONT_SIZE);
+    fontesClass fonteFlappy(FLAPPY_FONT_PATH.c_str(), FLAPPY_FONT_SIZE); 
+    fontesClass fontePixelify(PIXELIFY_FONT_PATH.c_str(), PIXELIFY_FONT_SIZE);
+
+    //Inicia display, fila de eventos e times
     display = al_create_display(SCREEN_WIDTH, SCREEN_HEIGHT);
     if(!display){
         cout << "Falha ao criar display" << endl;
@@ -96,21 +84,14 @@ int main(){
     }
     
     // Seção para carregar imagens
-    background = al_load_bitmap(BACKGROUND_IMG_PATH.c_str());
-    if(background == nullptr){
-        cout << "Falha ao carregar background" << endl;
-        return -1;
-    }
-
-    base = al_load_bitmap(BASE_IMG_PATH.c_str());
-    if(base == nullptr){
-        cout << "Falha ao carregar base" << endl;
-        return -1;
-    }
+    Imagem base(BASE_IMG_PATH);
+    Imagem background(BACKGROUND_IMG_PATH);
+    //Imagem titulo(TITLE_IMG_PATH);
+    Imagem gameover(GAMEOVER_IMG_PATH);
 
     // Instanciando Entidades
     Bird bird((float)SCREEN_WIDTH/4, (float)SCREEN_HEIGHT/2);
-    Scoreboard scoreboard(fonteArial.getfonte());
+    Scoreboard scoreboard(fontePixelify.getfonte());
     Canos canos[NUM_CANOS] = {Canos(SCREEN_WIDTH, 0), Canos(SCREEN_WIDTH, 1), Canos(SCREEN_WIDTH, 2), Canos(SCREEN_WIDTH, 3)};
 
     // Especificar de onde vem os eventos
@@ -142,45 +123,47 @@ int main(){
             double current_time = al_get_time();
             double delta_time = current_time - last_time;
             last_time = current_time;
-            if(delta_time > 0.03){
-                delta_time = 0.03;
-            }
             
             al_clear_to_color(al_map_rgb(0,0,0));
             
             // Desenha o background
-            al_draw_bitmap(background, 0, 0, 0);
+            background.exibir(0, 0);
 
             // Desenha a base
-            al_draw_bitmap(base, 0, 550, 0);
+            base.exibir(0, 550);
 
             // Switch para escolher em qual tela do jogo o Usuario está e fazer as atualizações
             switch (state)
             {
                 case inStartMenu:    
+                    //titulo.exibir((float)SCREEN_WIDTH/2, (float)SCREEN_HEIGHT/3);
                     al_draw_filled_rounded_rectangle(150, 200, 650, 400, 10, 10, al_map_rgb(255, 165, 0));
                     al_draw_rounded_rectangle(150, 200, 650, 400, 10, 10, al_map_rgb(253,253,150), 5);
-                    al_draw_filled_rounded_rectangle(180, 280, 620, 320, 10, 10, al_map_rgb(255,255,255));
-                    fonteArial.escrever(
-                        "Bem-Vindo! Digite seu nome:",
-                        SCREEN_WIDTH/2, 
-                        SCREEN_HEIGHT/2 - 4* ARIAL_FONT_SIZE/2, 
-                        al_map_rgb(255,255,255), 
-                        ALLEGRO_ALIGN_CENTER
+                    al_draw_filled_rounded_rectangle(180, 246, 620, 282, 10, 10, al_map_rgb(255,255,255));
+                    fonteFlappy.escrever(
+                        "FLAPPY BIRD",
+                        SCREEN_WIDTH/2, 120, 
+                        al_map_rgb(255, 255, 255), ALLEGRO_ALIGN_CENTER
                     );
-                    fonteArial.escrever(
-                        "Aperte ESPAÇO para começar",
-                        SCREEN_WIDTH/2, 
-                        SCREEN_HEIGHT/2 + 2* ARIAL_FONT_SIZE/2, 
-                        al_map_rgb(255,255,255), 
-                        ALLEGRO_ALIGN_CENTER
+                    fontePixelify.escrever(
+                        "Digite seu nome:",
+                        SCREEN_WIDTH/2, 205, 
+                        al_map_rgb(255,255,255), ALLEGRO_ALIGN_CENTER
                     );
-                    fonteArial.escrever(
+                    fontePixelify.escrever(
+                        "ESPAÇO para começar",
+                        SCREEN_WIDTH/2, 290, 
+                        al_map_rgb(255,255,255), ALLEGRO_ALIGN_CENTER
+                    );
+                    fontePixelify.escrever(
+                        "ESC para sair",
+                        SCREEN_WIDTH/2, 290 + PIXELIFY_FONT_SIZE + 10, 
+                        al_map_rgb(255,255,255), ALLEGRO_ALIGN_CENTER
+                    );
+                    fontePixelify.escrever(
                         playerName,
-                        SCREEN_WIDTH/2, 
-                        SCREEN_HEIGHT/2 - ARIAL_FONT_SIZE/2, 
-                        al_map_rgb(0,0,0), 
-                        ALLEGRO_ALIGN_CENTER
+                        SCREEN_WIDTH/2, 246, 
+                        al_map_rgb(0,0,0), ALLEGRO_ALIGN_CENTER
                     );
                     break;
                 
@@ -188,6 +171,7 @@ int main(){
                     if(!bird.borda_hit()){
                         bird.update_position(delta_time);
                         canos[0].atualizar(canos, NUM_CANOS);
+                        score++;
                     } else {
                         if(!playerName.empty()){
                             scoreboard.updatePlayerInfo(playerName, score);
@@ -211,31 +195,24 @@ int main(){
                     for(int i = 0; i <NUM_CANOS; i++){
                         canos[i].desenhar();
                     }
-
-                    al_draw_filled_rounded_rectangle(150, 200, 650, 400, 10, 10, al_map_rgb(255, 165, 0));
-                    al_draw_rounded_rectangle(150, 200, 650, 400, 10, 10, al_map_rgb(253,253,253), 5);
-                    fonteFlappy.escrever(
-                        "GAME OVER",
-                        SCREEN_WIDTH/2, 
-                        SCREEN_HEIGHT/2 - 4 *FLAPPY_FONT_SIZE/2, 
-                        al_map_rgb(255,255,255), 
-                        ALLEGRO_ALIGN_CENTER
+                    al_draw_filled_rounded_rectangle(150, 200, 650, 450, 10, 10, al_map_rgb(255, 165, 0));
+                    al_draw_rounded_rectangle(150, 200, 650, 450, 10, 10, al_map_rgb(253,253,253), 5);
+                    fontePixelify.escrever(
+                        "ESPAÇO para recomeçar",
+                        SCREEN_WIDTH/2, (SCREEN_HEIGHT/2 + 20),
+                        al_map_rgb(255,255,255), ALLEGRO_ALIGN_CENTER
                     );
-                    fonteArial.escrever(
-                        "Aperte ESPAÇO para recomeçar",
-                        SCREEN_WIDTH/2, 
-                        SCREEN_HEIGHT/2 - ARIAL_FONT_SIZE/2, 
-                        al_map_rgb(255,255,255), 
-                        ALLEGRO_ALIGN_CENTER
+                    fontePixelify.escrever(
+                        "ENTER para ver placar",
+                        SCREEN_WIDTH/2, (SCREEN_HEIGHT/2 + 20) + PIXELIFY_FONT_SIZE + 10, 
+                        al_map_rgb(255,255,255), ALLEGRO_ALIGN_CENTER
                     );
-                    fonteArial.escrever(
-                        "Aperte ENTER para ver placar",
-                        SCREEN_WIDTH/2, 
-                        SCREEN_HEIGHT/2 + ARIAL_FONT_SIZE/2, 
-                        al_map_rgb(255,255,255), 
-                        ALLEGRO_ALIGN_CENTER
+                    fontePixelify.escrever(
+                        "ESC para voltar ao menu",
+                        SCREEN_WIDTH/2, (SCREEN_HEIGHT/2 + 20) + 2*(PIXELIFY_FONT_SIZE + 10), 
+                        al_map_rgb(255,255,255), ALLEGRO_ALIGN_CENTER
                     );
-                    
+                    gameover.exibir((float)(SCREEN_WIDTH-gameover.largura)/2, 210);
                     bird.draw();
                     break;
                 
@@ -260,6 +237,7 @@ int main(){
                     }
                     if(state == inGameOver){
                         bird.reset_position((float)SCREEN_WIDTH/4, (float)SCREEN_HEIGHT/2);
+                        score = 1;
                         canos[0].reset_position(canos, NUM_CANOS);
                         tempo_inicio = al_get_time();
                         state = inGame;
@@ -269,6 +247,7 @@ int main(){
                 case ALLEGRO_KEY_ENTER:
                     if(state == inGameOver){
                         bird.reset_position((float)SCREEN_WIDTH/4, (float)SCREEN_HEIGHT/2);
+                        score = 1;
                         state = inScoreBoard;
                         canos[0].reset_position(canos, NUM_CANOS);
                         tempo_inicio = al_get_time();
@@ -282,8 +261,9 @@ int main(){
                     break;
 
                 case ALLEGRO_KEY_ESCAPE:
-                    if(state == inScoreBoard || state == inGame || state == inGameOver ){
+                    if(state != inStartMenu){
                         bird.reset_position((float)SCREEN_WIDTH/4, (float)SCREEN_HEIGHT/2);
+                        score = 1;
                         canos[0].reset_position(canos, NUM_CANOS);
                         state = inStartMenu;
                     } else {
@@ -292,11 +272,14 @@ int main(){
                     break;
             }
         }
+        // Teclado do player
         else if(event.type == ALLEGRO_EVENT_KEY_CHAR){
             if(state == inStartMenu){
                 switch(event.keyboard.keycode){
                     case ALLEGRO_KEY_BACKSPACE:
-                        playerName.pop_back();
+                        if(!playerName.empty()){
+                            playerName.pop_back();
+                        }
                         break;
                     case ALLEGRO_KEY_SPACE:
                         break;
@@ -304,8 +287,9 @@ int main(){
                         break;
                     default :
                         if(playerName.size() < MAX_NAME_SIZE){
-                            const char* key = al_keycode_to_name(event.keyboard.keycode);
-                            playerName.push_back(*key);
+                            if (event.keyboard.unichar >= 32) {
+                                playerName.push_back((char)event.keyboard.unichar);
+                            }
                         }
                         break;
                 }
@@ -317,11 +301,9 @@ int main(){
         }
     }
 
-    al_destroy_bitmap(background);
-    al_destroy_bitmap(base);
-    al_destroy_timer(timer);
-    al_destroy_event_queue(eventQueue);
-    al_destroy_display(display);
+    if(timer) al_destroy_timer(timer);
+    if(eventQueue) al_destroy_event_queue(eventQueue);
+    if(display) al_destroy_display(display);
 
     return 0;
 }

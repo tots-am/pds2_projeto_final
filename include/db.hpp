@@ -3,7 +3,7 @@
 
 #include <string>
 #include <vector>
-#include <utility> // para std::pair
+#include <utility>
 
 class DB {
 public:

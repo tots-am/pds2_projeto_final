@@ -18,7 +18,7 @@ class Bird{
 
     float vel_y;                 
     float pos_x, pos_y;          
-    std::string BIRD_IMG_PATH;   
+    std::string sprite;   
     ALLEGRO_BITMAP *bird;        
     float largura_obj, altura_obj;
     bool isJumping;
