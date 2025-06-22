@@ -13,7 +13,7 @@ using namespace std;
 
 const int ALTURA_BASE = 50;
 constexpr int NUM_CANOS = 4;                    ///< Número de canos na tela
-constexpr int VELOCIDADE_CANO = 3;               ///< Velocidade de deslocamento dos canos (em pixels)
+constexpr int VELOCIDADE_CANO = 60;               ///< Velocidade de deslocamento dos canos (em pixels)
 constexpr int ESPACO_ENTRE_OS_CANOS = 250;       ///< Distância horizontal entre os canos
 
 /**
@@ -86,13 +86,12 @@ public:
 
     /**
      * @brief Atualiza a posição dos canos na tela e os recicla.
-     * @param canos Array de objetos Canos a serem atualizados.
      *
      * Move os canos horizontalmente para a esquerda. Se um cano sair da tela,
      * ele é reposicionado no final da fila com novas alturas aleatórias,
      * criando um efeito de rolagem contínua.
      */
-    void atualizar(Canos* canos, int numCanos);
+    void atualizar(Canos* canos, int numCanos, double deltaTime);
 
 
     /**
