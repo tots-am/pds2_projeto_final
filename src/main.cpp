@@ -198,6 +198,16 @@ int main(){
                         canos[i].desenhar();
                     }
                     score++;
+
+                    if (
+                        (bird.get_pos_x() + 10 > canos[0].get_x() &&
+                        bird.get_pos_x() < canos[0].get_x() + 100) &&
+                        (bird.get_pos_y() < canos[0].get_altura_cima() ||
+                        bird.get_pos_y() + 10 > canos[0].get_altura_baixo())
+                    ) {
+                        state = inGameOver;
+                    }
+
                     break;
                 
                 case inGameOver:
