@@ -32,7 +32,7 @@ void Scoreboard::drawScoreboard()
         SCREEN_WIDTH/2, 
         450,
         ALLEGRO_ALIGN_CENTER,
-        "Aperte ESC para voltar ao menu"
+        "ESC para voltar ao menu"
     );
 }
 void Scoreboard::exibeInfos(){

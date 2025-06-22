@@ -1,10 +1,6 @@
 #include "birdClass.hpp"
+#include "constants.hpp"
 #include <stdexcept>
-
-// Constantes do passaro
-const float gravidade = 800.0f;
-const float jumpspeed = -300.0f;
-const std::string bird_sprite = "./assets/sprites/yellowbird-midflap.png";
 
 // Construtores e destrutores
 
@@ -13,11 +9,11 @@ using namespace std;
 Bird::Bird(float pos_x_inicial, float pos_y_inicial) : 
         vel_y(0.0f),
         pos_x(pos_x_inicial), pos_y(pos_y_inicial),
-        BIRD_IMG_PATH(bird_sprite), 
-        bird(al_load_bitmap(bird_sprite.c_str()))
+        sprite(BIRD_IMG_PATH), 
+        bird(al_load_bitmap(BIRD_IMG_PATH.c_str()))
     {
         if (bird == nullptr) {
-            throw std::runtime_error("Erro ao inicializar o pássaro: " + bird_sprite);
+            throw std::runtime_error("Erro ao inicializar o pássaro: " + BIRD_IMG_PATH);
         }
         
         this->largura_obj = al_get_bitmap_width(bird);
@@ -28,7 +24,7 @@ Bird::Bird(float pos_x_inicial, float pos_y_inicial) :
 Bird::Bird() :
     vel_y(0.0f),
     pos_x(0.0f), pos_y(0.0f),
-    BIRD_IMG_PATH(""),
+    sprite(""),
     bird(nullptr),
     largura_obj(0.0f), altura_obj(0.0f),
     isJumping(false)
@@ -64,10 +60,10 @@ void Bird::draw() {
 
 void Bird::update_position(double deltaTime){
     if (isJumping) {
-        vel_y = jumpspeed;
+        vel_y = JUMPSPEED;
         isJumping = false;
     } else {
-        vel_y += gravidade * deltaTime;
+        vel_y += GRAVIDADE * deltaTime;
     }
 
     pos_y += vel_y * deltaTime;
@@ -79,7 +75,7 @@ void Bird::update_position(double deltaTime){
     }
 
     if (pos_y + altura_obj / 2 > 550) {
-        pos_y = 600 - altura_obj / 2;
+        pos_y = 580 - altura_obj / 2;
         vel_y = 0;
     }
 }
@@ -124,5 +120,5 @@ ALLEGRO_BITMAP *Bird::get_bitmap() const {
 }
 
 std::string Bird::get_path() const {
-    return this-> BIRD_IMG_PATH;
+    return this-> sprite;
 }
