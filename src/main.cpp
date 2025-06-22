@@ -167,14 +167,14 @@ int main(){
                     fontePixelify.escrever(
                         "Digite seu nome:",
                         SCREEN_WIDTH/2, 
-                        SCREEN_HEIGHT/2 - 4* ARIAL_FONT_SIZE/2, 
+                        SCREEN_HEIGHT/2 - 4* PIXELIFY_FONT_SIZE/2, 
                         al_map_rgb(255,255,255), 
                         ALLEGRO_ALIGN_CENTER
                     );
                     fontePixelify.escrever(
                         "Aperte ESPAÇO para começar",
                         SCREEN_WIDTH/2, 
-                        SCREEN_HEIGHT/2 + 2* ARIAL_FONT_SIZE/2, 
+                        SCREEN_HEIGHT/2 + 2* PIXELIFY_FONT_SIZE/2, 
                         al_map_rgb(255,255,255), 
                         ALLEGRO_ALIGN_CENTER
                     );
@@ -221,14 +221,14 @@ int main(){
                     fontePixelify.escrever(
                         "Aperte ESPAÇO para recomeçar",
                         SCREEN_WIDTH/2, 
-                        SCREEN_HEIGHT/2 - ARIAL_FONT_SIZE/2, 
+                        SCREEN_HEIGHT/2 - PIXELIFY_FONT_SIZE/2, 
                         al_map_rgb(255,255,255), 
                         ALLEGRO_ALIGN_CENTER
                     );
                     fontePixelify.escrever(
                         "Aperte ENTER para ver placar",
                         SCREEN_WIDTH/2, 
-                        SCREEN_HEIGHT/2 + ARIAL_FONT_SIZE/2, 
+                        SCREEN_HEIGHT/2 + PIXELIFY_FONT_SIZE/2, 
                         al_map_rgb(255,255,255), 
                         ALLEGRO_ALIGN_CENTER
                     );
