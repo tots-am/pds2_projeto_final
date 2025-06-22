@@ -4,44 +4,36 @@
 // Constantes do passaro
 const float gravidade = 800.0f;
 const float jumpspeed = -300.0f;
-const std::string bird_sprite = "./assets/sprites/yellowbird-midflap.png";
 
 // Construtores e destrutores
 
 using namespace std;
 
-Bird::Bird(float pos_x_inicial, float pos_y_inicial) : 
+Bird::Bird(float pos_x_inicial, float pos_y_inicial, Imagem sprite) : 
         vel_y(0.0f),
         pos_x(pos_x_inicial), pos_y(pos_y_inicial),
-        BIRD_IMG_PATH(bird_sprite), 
-        bird(al_load_bitmap(bird_sprite.c_str()))
+        bird(sprite)
     {
-        if (bird == nullptr) {
-            throw std::runtime_error("Erro ao inicializar o pássaro: " + bird_sprite);
-        }
-        
-        this->largura_obj = al_get_bitmap_width(bird);
-        this->altura_obj = al_get_bitmap_height(bird);
+        this->largura_obj = bird.largura;
+        this->altura_obj = bird.altura;
         this->isJumping = false;
     }   
 
 Bird::Bird() :
     vel_y(0.0f),
     pos_x(0.0f), pos_y(0.0f),
-    BIRD_IMG_PATH(""),
     bird(nullptr),
     largura_obj(0.0f), altura_obj(0.0f),
     isJumping(false)
     {}    
 
-Bird::~Bird(){
-    al_destroy_bitmap(bird);
-}
+Bird::~Bird()
+{}
 
 // Funções
 
 void Bird::forced_draw(float pos_x, float pos_y) {
-    al_draw_bitmap(bird, pos_x, pos_y, 0);
+    bird.exibir(pos_x, pos_y);
 }
 
 void Bird::reset_position(float pos_x, float pos_y) {
@@ -51,15 +43,14 @@ void Bird::reset_position(float pos_x, float pos_y) {
 }
 
 void Bird::draw() {
-    if (!bird) {
+    if (!bird.isLoaded()) {
         return;
     }
 
     float draw_x = this->pos_x - (this->largura_obj / 2.0f);
     float draw_y =  this->pos_y - (this->altura_obj / 2.0f);
 
-    al_draw_bitmap(bird, draw_x, draw_y, 0);
-
+    bird.exibir(draw_x, draw_y);
 }
 
 void Bird::update_position(double deltaTime){
@@ -120,9 +111,9 @@ float Bird::get_vel_y() const {
 }
 
 ALLEGRO_BITMAP *Bird::get_bitmap() const {
-    return this-> bird;
+    return this-> bird.imagem;
 }
 
 std::string Bird::get_path() const {
-    return this-> BIRD_IMG_PATH;
+    return this->bird.path;
 }
