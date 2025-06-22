@@ -48,9 +48,9 @@ void Canos::desenhar(){
     al_draw_scaled_bitmap(canoBaixo, 0, 0, largura, al_get_bitmap_height(canoBaixo), x, altura_cima + tamanho_buraco, largura, altura_baixo, 0); 
 }
 
-void Canos::atualizar(Canos* canos, int numCanos){ 
+void Canos::atualizar(Canos* canos, int numCanos, double deltaTime){ 
     for(int i = 0; i < numCanos; i++){ 
-        canos[i].x -= VELOCIDADE_CANO; 
+        canos[i].x -= VELOCIDADE_CANO * deltaTime; 
         if(canos[i].x < - canos[i].largura){ 
             int ultimoCano = (i == 0) ? numCanos - 1 : i - 1; 
             canos[i].x = canos[ultimoCano].x + ESPACO_ENTRE_OS_CANOS; 

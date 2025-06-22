@@ -90,13 +90,12 @@ public:
 
     /**
      * @brief Atualiza a posição dos canos na tela e os recicla.
-     * @param canos Array de objetos Canos a serem atualizados.
      *
      * Move os canos horizontalmente para a esquerda. Se um cano sair da tela,
      * ele é reposicionado no final da fila com novas alturas aleatórias,
      * criando um efeito de rolagem contínua.
      */
-    void atualizar(Canos* canos, int numCanos);
+    void atualizar(Canos* canos, int numCanos, double deltaTime);
 
 
     /**
