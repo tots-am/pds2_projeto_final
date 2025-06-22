@@ -27,8 +27,6 @@ int main(){
     ALLEGRO_DISPLAY *display = NULL;
     ALLEGRO_EVENT_QUEUE *eventQueue = NULL;
     ALLEGRO_TIMER *timer = NULL;
-    ALLEGRO_BITMAP *background = NULL;
-    ALLEGRO_BITMAP *base = NULL;
 
     //Inicializações das Funções da Biblioteca do Allegro
     if (!al_init()) {
@@ -96,20 +94,14 @@ int main(){
     }
     
     // Seção para carregar imagens
-    background = al_load_bitmap(BACKGROUND_IMG_PATH.c_str());
-    if(background == nullptr){
-        cout << "Falha ao carregar background" << endl;
-        return -1;
-    }
-
-    base = al_load_bitmap(BASE_IMG_PATH.c_str());
-    if(base == nullptr){
-        cout << "Falha ao carregar base" << endl;
-        return -1;
-    }
+    Imagem base(BASE_IMG_PATH);
+    Imagem background(BACKGROUND_IMG_PATH);
+    Imagem titulo(TITLE_IMG_PATH);
+    Imagem gameover(GAMEOVER_IMG_PATH);
+    Imagem bird_img(BIRD_IMG_PATH);
 
     // Instanciando Entidades
-    Bird bird((float)SCREEN_WIDTH/4, (float)SCREEN_HEIGHT/2);
+    Bird bird((float)SCREEN_WIDTH/4, (float)SCREEN_HEIGHT/2, bird_img);
     Scoreboard scoreboard(fonteArial.getfonte());
     Canos canos[NUM_CANOS] = {Canos(SCREEN_WIDTH, 0), Canos(SCREEN_WIDTH, 1), Canos(SCREEN_WIDTH, 2), Canos(SCREEN_WIDTH, 3)};
 
@@ -144,10 +136,10 @@ int main(){
             al_clear_to_color(al_map_rgb(0,0,0));
             
             // Desenha o background
-            al_draw_bitmap(background, 0, 0, 0);
+            background.exibir(0, 0);
 
             // Desenha a base
-            al_draw_bitmap(base, 0, 550, 0);
+            base.exibir(0, 550);
 
             // Switch para escolher em qual tela do jogo o Usuario está e fazer as atualizações
             switch (state)
@@ -303,8 +295,6 @@ int main(){
         }
     }
 
-    if(background) al_destroy_bitmap(background);
-    if(base) al_destroy_bitmap(base);
     if(timer) al_destroy_timer(timer);
     if(eventQueue) al_destroy_event_queue(eventQueue);
     if(display) al_destroy_display(display);
