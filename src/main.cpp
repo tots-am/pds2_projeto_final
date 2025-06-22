@@ -49,6 +49,7 @@ int main(){
     // Instancia a classe de fontes com o caminho da fonte e o tamanho
     fontesClass fonteArial(ARIAL_FONT_PATH.c_str(), ARIAL_FONT_SIZE);
     fontesClass fonteFlappy(FLAPPY_FONT_PATH.c_str(), FLAPPY_FONT_SIZE); 
+    fontesClass fontePixelify(PIXELIFY_FONT_PATH.c_str(), PIXELIFY_FONT_SIZE);
 
     if(fonteArial.getfonte() == nullptr){
         cout << "Falha ao iniciar fonte" << endl;
@@ -145,21 +146,28 @@ int main(){
                     al_draw_filled_rounded_rectangle(150, 200, 650, 400, 10, 10, al_map_rgb(255, 165, 0));
                     al_draw_rounded_rectangle(150, 200, 650, 400, 10, 10, al_map_rgb(253,253,150), 5);
                     al_draw_filled_rounded_rectangle(180, 280, 620, 320, 10, 10, al_map_rgb(255,255,255));
-                    fonteArial.escrever(
-                        "Bem-Vindo! Digite seu nome:",
+                    fonteFlappy.escrever(
+                        "FLAPPY BIRD",
                         SCREEN_WIDTH/2, 
-                        SCREEN_HEIGHT/2 - 4* ARIAL_FONT_SIZE/2, 
+                        SCREEN_HEIGHT/2 - 8 *FLAPPY_FONT_SIZE/2, 
+                        al_map_rgb(163, 244, 80), 
+                        ALLEGRO_ALIGN_CENTER
+                    );
+                    fontePixelify.escrever(
+                        "Digite seu nome:",
+                        SCREEN_WIDTH/2, 
+                        SCREEN_HEIGHT/2 - 4* PIXELIFY_FONT_SIZE/2, 
                         al_map_rgb(255,255,255), 
                         ALLEGRO_ALIGN_CENTER
                     );
-                    fonteArial.escrever(
+                    fontePixelify.escrever(
                         "Aperte ESPAÇO para começar",
                         SCREEN_WIDTH/2, 
-                        SCREEN_HEIGHT/2 + 2* ARIAL_FONT_SIZE/2, 
+                        SCREEN_HEIGHT/2 + 2* PIXELIFY_FONT_SIZE/2, 
                         al_map_rgb(255,255,255), 
                         ALLEGRO_ALIGN_CENTER
                     );
-                    fonteArial.escrever(
+                    fontePixelify.escrever(
                         playerName,
                         SCREEN_WIDTH/2, 
                         SCREEN_HEIGHT/2 - ARIAL_FONT_SIZE/2, 
@@ -192,24 +200,24 @@ int main(){
                     }
                     al_draw_filled_rounded_rectangle(150, 200, 650, 450, 10, 10, al_map_rgb(255, 165, 0));
                     al_draw_rounded_rectangle(150, 200, 650, 450, 10, 10, al_map_rgb(253,253,253), 5);
-                    fonteArial.escrever(
+                    fonteFlappy.escrever(
                         "ESPAÇO para recomeçar",
                         SCREEN_WIDTH/2, 
-                        (SCREEN_HEIGHT/2 + 20),
+                        SCREEN_HEIGHT/2 - 8 *FLAPPY_FONT_SIZE/2,  
+                        al_map_rgb(163, 244, 80), 
+                        ALLEGRO_ALIGN_CENTER
+                    );
+                    fontePixelify.escrever(
+                        "ESPAÇO para recomeçar",
+                        SCREEN_WIDTH/2, 
+                        SCREEN_HEIGHT/2 -  4* PIXELIFY_FONT_SIZE/2,
                         al_map_rgb(255,255,255), 
                         ALLEGRO_ALIGN_CENTER
                     );
-                    fonteArial.escrever(
-                        "ENTER para ver placar",
+                    fontePixelify.escrever(
+                        "Aperte ENTER para ver placar",
                         SCREEN_WIDTH/2, 
-                        (SCREEN_HEIGHT/2 + 20) + ARIAL_FONT_SIZE + 10, 
-                        al_map_rgb(255,255,255), 
-                        ALLEGRO_ALIGN_CENTER
-                    );
-                    fonteArial.escrever(
-                        "ESC para voltar ao menu",
-                        SCREEN_WIDTH/2, 
-                        (SCREEN_HEIGHT/2 + 20) + 2 * (ARIAL_FONT_SIZE + 10), 
+                        SCREEN_HEIGHT/2 + PIXELIFY_FONT_SIZE/2, 
                         al_map_rgb(255,255,255), 
                         ALLEGRO_ALIGN_CENTER
                     );

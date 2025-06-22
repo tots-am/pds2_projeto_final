@@ -16,8 +16,12 @@ const std::string BIRD_IMG_PATH = "./assets/sprites/yellowbird-midflap.png";
 
 const std::string ARIAL_FONT_PATH = "./assets/fonts/arial.ttf";
 constexpr int ARIAL_FONT_SIZE = 32;
-const std::string FLAPPY_FONT_PATH = "./assets/fonts/flappy-font.fnt";
-constexpr int FLAPPY_FONT_SIZE =32;
+
+const std::string FLAPPY_FONT_PATH = "assets/fonts/flappy-font.ttf";
+constexpr int FLAPPY_FONT_SIZE = 60;
+
+const std:: string PIXELIFY_FONT_PATH = "assets/fonts/PixelifySans-Regular.ttf";
+constexpr int PIXELIFY_FONT_SIZE = 32;
 
 constexpr float FPS = 30;              // Define FPS do Jogo
 constexpr int SCREEN_WIDTH = 800;      // Define o comprimento da janela do Jogo
