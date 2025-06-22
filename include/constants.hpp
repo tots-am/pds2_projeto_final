@@ -14,7 +14,7 @@ const std::string BASE_IMG_PATH = "./assets/sprites/base-800-50.png";
 const std::string ARIAL_FONT_PATH = "./assets/fonts/arial.ttf";
 constexpr int ARIAL_FONT_SIZE = 32;
 
-const std::string FLAPPY_FONT_PATH = "./assets/fonts/flappy-font.fnt";
+const std::string FLAPPY_FONT_PATH = "assets/fonts/flappy-font.ttf";
 constexpr int FLAPPY_FONT_SIZE =32;
 
 constexpr float FPS = 30;              // Define FPS do Jogo
