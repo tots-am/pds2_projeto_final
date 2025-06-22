@@ -156,6 +156,13 @@ int main(){
                     al_draw_filled_rounded_rectangle(150, 200, 650, 400, 10, 10, al_map_rgb(255, 165, 0));
                     al_draw_rounded_rectangle(150, 200, 650, 400, 10, 10, al_map_rgb(253,253,150), 5);
                     al_draw_filled_rounded_rectangle(180, 280, 620, 320, 10, 10, al_map_rgb(255,255,255));
+                    fonteFlappy.escrever(
+                        "FLAPPY BIRD",
+                        SCREEN_WIDTH/2, 
+                        SCREEN_HEIGHT/2 - 8* FLAPPY_FONT_SIZE/2, 
+                        al_map_rgb(255,255,255), 
+                        ALLEGRO_ALIGN_CENTER
+                    );
                     fonteArial.escrever(
                         "Bem-Vindo! Digite seu nome:",
                         SCREEN_WIDTH/2, 

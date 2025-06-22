@@ -60,4 +60,4 @@ class fontesClass{
         ALLEGRO_FONT* getfonte() const; 
 };
 
-#endif FONTES_TAD_HPP
+#endif
