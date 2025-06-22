@@ -2,12 +2,10 @@
 CXX = g++
 
 # Flags de Compilação
-CXXFLAGS = -std=c++11 -Wall -Wextra -g
+CXXFLAGS = -std=c++11 -Wall -Wextra -g -Iinclude
 
 # Bibliotecas a serem linkadas
 ALLEGRO_LIBS = $(shell pkg-config --libs allegro-5 allegro_primitives-5 allegro_image-5 allegro_audio-5 allegro_dialog-5 allegro_main-5 allegro_ttf-5)
-
-# Outras bibliotecas
 LIBS = $(ALLEGRO_LIBS)
 
 # Nome do Executável Final
@@ -22,16 +20,13 @@ BUILD_DIR = build
 # Caminho completo do executável
 TARGET_PATH = $(BUILD_DIR)/$(TARGET)
 
-# Adiciona o diretório de includes ao CXXFLAGS
-CXXFLAGS += -I$(INC_DIR)
-
-# Encontra todos os arquivos .cpp
+# Lista de arquivos fonte
 SRCS = $(wildcard $(SRC_DIR)/*.cpp)
 
-# Gera os arquivos .o em OBJ_DIR
+# Arquivos objeto correspondentes
 OBJS = $(patsubst $(SRC_DIR)/%.cpp,$(OBJ_DIR)/%.o,$(SRCS))
 
-# Regra padrão
+# Regra principal
 all: $(BUILD_DIR) $(OBJ_DIR) $(TARGET_PATH)
 
 # Criação de diretórios
@@ -41,16 +36,21 @@ $(BUILD_DIR):
 $(OBJ_DIR):
 	@mkdir -p $@
 
-# Regra para linkar o executável no diretório build
+# Linka o executável
 $(TARGET_PATH): $(OBJS)
 	@echo "Linking $@..."
 	$(CXX) $^ -o $@ $(LIBS)
 	@echo "Build successful: $@"
 
-# Compilar .cpp para .o
+# Compila arquivos .cpp em .o
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp
 	@echo "Compiling $<..."
 	$(CXX) $(CXXFLAGS) -c $< -o $@
+
+# Regras de dependência manual
+$(OBJ_DIR)/main.o: $(SRC_DIR)/main.cpp $(INC_DIR)/birdClass.hpp $(INC_DIR)/canos.hpp
+$(OBJ_DIR)/canos.o: $(SRC_DIR)/canos.cpp $(INC_DIR)/canos.hpp
+$(OBJ_DIR)/birdClass.o: $(SRC_DIR)/birdClass.cpp $(INC_DIR)/birdClass.hpp
 
 # Limpeza
 clean:
