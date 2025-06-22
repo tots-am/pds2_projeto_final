@@ -221,7 +221,7 @@ int main(){
                     fontePixelify.escrever(
                         "Aperte ESPAÇO para recomeçar",
                         SCREEN_WIDTH/2, 
-                        SCREEN_HEIGHT/2 - PIXELIFY_FONT_SIZE/2, 
+                        SCREEN_HEIGHT/2 -  4* PIXELIFY_FONT_SIZE/2,
                         al_map_rgb(255,255,255), 
                         ALLEGRO_ALIGN_CENTER
                     );
