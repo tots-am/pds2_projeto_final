@@ -6,7 +6,6 @@
 #include <allegro5/allegro.h>
 #include <allegro5/allegro_image.h>
 #include <string>
-#include "Imagem.hpp"
 
 /**
  * @class Bird 
@@ -17,9 +16,10 @@
 
 class Bird{
 
-    float vel_y;
-    float pos_x, pos_y;   
-    Imagem bird;
+    float vel_y;                 
+    float pos_x, pos_y;          
+    std::string BIRD_IMG_PATH;   
+    ALLEGRO_BITMAP *bird;        
     float largura_obj, altura_obj;
     bool isJumping;
 
@@ -33,7 +33,7 @@ class Bird{
      * @param bird_img_path Caminho para o asset/bitmap.
      * @throw std::runtime_error caso o carregamento do bitmap do passáro falhar.
      */
-    Bird(float pos_x_inicial, float pos_y_inicial, Imagem sprite);
+    Bird(float pos_x_inicial, float pos_y_inicial);
 
     /**
      * @brief Construtor padrão
