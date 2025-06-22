@@ -1,8 +1,5 @@
 #include <allegro5/allegro.h>
 #include <allegro5/allegro_primitives.h>
-#include <allegro5/allegro_ttf.h>
-#include <allegro5/allegro_font.h>
-#include <allegro5/allegro_image.h>
 #include <iostream>
 #include <array>
 #include "birdClass.hpp"
@@ -27,8 +24,6 @@ int main(){
     ALLEGRO_DISPLAY *display = NULL;
     ALLEGRO_EVENT_QUEUE *eventQueue = NULL;
     ALLEGRO_TIMER *timer = NULL;
-    ALLEGRO_BITMAP *background = NULL;
-    ALLEGRO_BITMAP *base = NULL;
 
     //Inicializações das Funções da Biblioteca do Allegro
     if (!al_init()) {
@@ -97,17 +92,10 @@ int main(){
     }
     
     // Seção para carregar imagens
-    background = al_load_bitmap(BACKGROUND_IMG_PATH.c_str());
-    if(background == nullptr){
-        cout << "Falha ao carregar background" << endl;
-        return -1;
-    }
-
-    base = al_load_bitmap(BASE_IMG_PATH.c_str());
-    if(base == nullptr){
-        cout << "Falha ao carregar base" << endl;
-        return -1;
-    }
+    Imagem base(BASE_IMG_PATH);
+    Imagem background(BACKGROUND_IMG_PATH);
+    //Imagem titulo(TITLE_IMG_PATH);
+    Imagem gameover(GAMEOVER_IMG_PATH);
 
     // Instanciando Entidades
     Bird bird((float)SCREEN_WIDTH/4, (float)SCREEN_HEIGHT/2);
@@ -145,15 +133,16 @@ int main(){
             al_clear_to_color(al_map_rgb(0,0,0));
             
             // Desenha o background
-            al_draw_bitmap(background, 0, 0, 0);
+            background.exibir(0, 0);
 
             // Desenha a base
-            al_draw_bitmap(base, 0, 550, 0);
+            base.exibir(0, 550);
 
             // Switch para escolher em qual tela do jogo o Usuario está e fazer as atualizações
             switch (state)
             {
                 case inStartMenu:    
+                    //titulo.exibir((float)SCREEN_WIDTH/2, (float)SCREEN_HEIGHT/3);
                     al_draw_filled_rounded_rectangle(150, 200, 650, 400, 10, 10, al_map_rgb(255, 165, 0));
                     al_draw_rounded_rectangle(150, 200, 650, 400, 10, 10, al_map_rgb(253,253,150), 5);
                     al_draw_filled_rounded_rectangle(180, 280, 620, 320, 10, 10, al_map_rgb(255,255,255));
@@ -209,17 +198,17 @@ int main(){
                     for(int i = 0; i <NUM_CANOS; i++){
                         canos[i].desenhar();
                     }
-                    al_draw_filled_rounded_rectangle(150, 200, 650, 400, 10, 10, al_map_rgb(255, 165, 0));
-                    al_draw_rounded_rectangle(150, 200, 650, 400, 10, 10, al_map_rgb(253,253,253), 5);
+                    al_draw_filled_rounded_rectangle(150, 200, 650, 450, 10, 10, al_map_rgb(255, 165, 0));
+                    al_draw_rounded_rectangle(150, 200, 650, 450, 10, 10, al_map_rgb(253,253,253), 5);
                     fonteFlappy.escrever(
-                        "GAME OVER",
+                        "ESPAÇO para recomeçar",
                         SCREEN_WIDTH/2, 
                         SCREEN_HEIGHT/2 - 8 *FLAPPY_FONT_SIZE/2,  
                         al_map_rgb(163, 244, 80), 
                         ALLEGRO_ALIGN_CENTER
                     );
                     fontePixelify.escrever(
-                        "Aperte ESPAÇO para recomeçar",
+                        "ESPAÇO para recomeçar",
                         SCREEN_WIDTH/2, 
                         SCREEN_HEIGHT/2 -  4* PIXELIFY_FONT_SIZE/2,
                         al_map_rgb(255,255,255), 
@@ -232,7 +221,7 @@ int main(){
                         al_map_rgb(255,255,255), 
                         ALLEGRO_ALIGN_CENTER
                     );
-                    
+                    gameover.exibir((float)(SCREEN_WIDTH-gameover.largura)/2, 210);
                     bird.draw();
                     break;
                 
@@ -311,8 +300,6 @@ int main(){
         }
     }
 
-    if(background) al_destroy_bitmap(background);
-    if(base) al_destroy_bitmap(base);
     if(timer) al_destroy_timer(timer);
     if(eventQueue) al_destroy_event_queue(eventQueue);
     if(display) al_destroy_display(display);

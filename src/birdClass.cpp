@@ -79,7 +79,7 @@ void Bird::update_position(double deltaTime){
     }
 
     if (pos_y + altura_obj / 2 > 550) {
-        pos_y = 600 - altura_obj / 2;
+        pos_y = 580 - altura_obj / 2;
         vel_y = 0;
     }
 }

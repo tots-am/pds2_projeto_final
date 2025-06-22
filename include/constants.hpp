@@ -8,8 +8,11 @@ constexpr int MAX_NAME_SIZE = 16;
 
 const std::string DB_PATH = "./db/db.txt";
 
+const std::string TITLE_IMG_PATH = "./assets/sprites/title.png";
+const std::string GAMEOVER_IMG_PATH = "./assets/sprites/gameover.png";
 const std::string BACKGROUND_IMG_PATH = "./assets/sprites/background-800-600.png";
 const std::string BASE_IMG_PATH = "./assets/sprites/base-800-50.png";
+const std::string BIRD_IMG_PATH = "./assets/sprites/yellowbird-midflap.png";
 
 const std::string ARIAL_FONT_PATH = "./assets/fonts/arial.ttf";
 constexpr int ARIAL_FONT_SIZE = 32;
