@@ -3,19 +3,12 @@
  * @brief Implementação da classe Canos.
  */
 
-#include <allegro5/allegro.h>
-#include <allegro5/allegro_primitives.h>
-#include <allegro5/allegro_ttf.h>
-#include <allegro5/allegro_font.h>
-#include <allegro5/allegro_image.h>
 #include <iostream>
 #include <stdexcept> 
 #include "canos.hpp"
 #include "constants.hpp" 
 
 using namespace std; 
-const std::string pipe1_sprite = "./assets/sprites/pipe-green.png";
-const std::string pipe2_sprite = "./assets/sprites/pipe-green-down.png";
 
 // Construtores e destrutores
 
@@ -24,16 +17,16 @@ Canos::Canos(int pos_x_inicial, int index) :
     altura_cima(rand() % 200 + 50), 
     largura(100), 
     tamanho_buraco(250),
-    canoCima(al_load_bitmap(pipe1_sprite.c_str())),
-    canoBaixo(al_load_bitmap(pipe2_sprite.c_str()))
+    canoCima(al_load_bitmap(PIPE1_IMG_PATH.c_str())),
+    canoBaixo(al_load_bitmap(PIPE2_IMG_PATH.c_str()))
     
 {
 
     if (!canoCima) {
-        throw runtime_error("Erro ao carregar a imagem do cano de cima: " + pipe1_sprite);
+        throw runtime_error("Erro ao carregar a imagem do cano de cima: " + PIPE1_IMG_PATH);
     }
     if (!canoBaixo) {
-        throw runtime_error("Erro ao carregar a imagem do cano de baixo: " + pipe2_sprite);
+        throw runtime_error("Erro ao carregar a imagem do cano de baixo: " + PIPE2_IMG_PATH);
     }
     
     altura_baixo = SCREEN_HEIGHT - altura_cima - tamanho_buraco - ALTURA_BASE;
