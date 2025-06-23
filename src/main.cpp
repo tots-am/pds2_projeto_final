@@ -211,6 +211,16 @@ int main(){
                         SCREEN_WIDTH/2, (SCREEN_HEIGHT/2 + 20),
                         WHITE, ALLEGRO_ALIGN_CENTER
                     );
+                    fontePixelify.escrever(
+                        "pontos",
+                        SCREEN_WIDTH/2, 205,
+                        WHITE, ALLEGRO_ALIGN_CENTER
+                    );
+                    fonteFlappy.escrever(
+                        to_string(score),
+                        SCREEN_WIDTH/2, 250,
+                        WHITE, ALLEGRO_ALIGN_CENTER
+                    );
                     fonteFlappy.escrever(
                         "GAME OVER",
                         SCREEN_WIDTH/2, 120, 
