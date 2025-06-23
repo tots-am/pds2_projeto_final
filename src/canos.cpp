@@ -6,9 +6,12 @@
 #include <iostream>
 #include <stdexcept> 
 #include "canos.hpp"
-#include "constants.hpp" 
+#include "constants.hpp"
 
-using namespace std; 
+;using namespace std;
+
+float Canos::VELOCIDADE_CANO = 100;
+
 
 // Construtores e destrutores
 
@@ -48,7 +51,10 @@ void Canos::desenhar(){
     al_draw_scaled_bitmap(canoBaixo, 0, 0, largura, al_get_bitmap_height(canoBaixo), x, altura_cima + tamanho_buraco, largura, altura_baixo, 0); 
 }
 
-void Canos::atualizar(Canos* canos, int numCanos, double deltaTime){ 
+void Canos::atualizar(Canos* canos, int numCanos, double deltaTime, float tempo){ 
+    VELOCIDADE_CANO = 100 + tempo / FATOR_DIFICULDADE;
+    if(VELOCIDADE_CANO > 350) VELOCIDADE_CANO = 350;
+
     for(int i = 0; i < numCanos; i++){ 
         canos[i].x -= VELOCIDADE_CANO * deltaTime; 
         if(canos[i].x < - canos[i].largura){ 
