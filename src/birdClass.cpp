@@ -102,13 +102,13 @@ void Bird::update_position(double deltaTime){
     }
 
     if (pos_y + altura_obj / 2 > 550) {
-        pos_y = 580 - altura_obj / 2;
+        pos_y = 570 - altura_obj / 2;
         vel_y = 0;
     }
 }
-bool Bird::borda_hit(Canos* lista_objetos) const {
+bool Bird::borda_hit(Canos* lista_objetos, float width_base) const {
 
-    if(this->pos_y >= 550){
+    if(this->pos_y >= 600 - width_base){
         return true;
     } 
 
