@@ -26,7 +26,7 @@ void Scoreboard::drawScoreboard()
         SCREEN_WIDTH/2, 
         185,
         ALLEGRO_ALIGN_CENTER,
-        "Jogador ------------ High Score"
+        "Jogador              High Score"
     );
     al_draw_text(
         fonteCabecalho,
@@ -49,7 +49,7 @@ void Scoreboard::exibeInfos(){
         int dif = NUM_LETRAS - nome.size() - high_score.size();
         std::string space;
         for(int j = 0; j < dif; j++){
-            space.push_back('-');
+            space.push_back(' ');
         }
         std::string joined = nome + " " + space + " " + high_score;
         al_draw_text(
