@@ -6,12 +6,12 @@
 
 class Button{
     public:
-    int x1, y1, x2, y2;
+    int x1, y1, x2, y2, altura, largura;
 
-    Button(int x1, int y1, int x2, int y2);
+    Button(int altura, int largura);
     ~Button();
     bool isMouseHovering(int x, int y);
-    void draw();
+    void draw(int x_offset, int y_offset);
 };
 
 #endif
