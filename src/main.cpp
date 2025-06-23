@@ -171,6 +171,11 @@ int main(){
                         SCREEN_WIDTH/2, 290 + PIXELIFY_FONT_SIZE + 10, 
                         WHITE, ALLEGRO_ALIGN_CENTER
                     );
+                    fontePixelify.escrever(
+                        "Made by grupo 4",
+                        SCREEN_WIDTH/2, 560 + PIXELIFY_FONT_SIZE + 10, 
+                        WHITE, ALLEGRO_ALIGN_CENTER
+                    );
                     break;
                 
                 case inGame:
