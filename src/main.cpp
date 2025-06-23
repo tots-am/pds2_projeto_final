@@ -273,6 +273,12 @@ int main(){
                         state = inGame;
                     }
                     break;
+                case ALLEGRO_KEY_ENTER:
+                    if(state == inProfileScreen && CaixaDeTexto.isActive()){
+                        CaixaDeTexto.switchActive();
+                        CaixaDeTexto.set_cor(PASTEL_WHITE);
+                    }
+                    break;
                 case ALLEGRO_KEY_ESCAPE:
                     if(state != inStartMenu){
                         state = inStartMenu;
