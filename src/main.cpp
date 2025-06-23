@@ -173,7 +173,7 @@ int main(){
                     );
                     fontePixelify.escrever(
                         "Made by grupo 4",
-                        SCREEN_WIDTH/2, 560 + PIXELIFY_FONT_SIZE + 10, 
+                        SCREEN_WIDTH/2, 560, 
                         WHITE, ALLEGRO_ALIGN_CENTER
                     );
                     break;
