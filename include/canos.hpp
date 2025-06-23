@@ -11,15 +11,6 @@
 
 using namespace std; 
 
-struct BitmapDeleter {
-    void operator()(ALLEGRO_BITMAP* b) const {
-        if(b){
-            al_destroy_bitmap(b);
-        }
-    }
-};
-
-
 /**
  * @class Canos
  * @brief Gerencia a criação, desenho e atualização dos canos no jogo.
@@ -38,6 +29,7 @@ private:
     int largura;                    ///< Largura de cada cano
     int tamanho_buraco;             ///< Tamanho do espaço entre os canos - buraco, no qual o pássaro irá passar.
     float largura_sprite;
+    static float VELOCIDADE_CANO;
 
    ALLEGRO_BITMAP* canoCima;
    ALLEGRO_BITMAP* canoBaixo;
@@ -96,7 +88,7 @@ public:
      * ele é reposicionado no final da fila com novas alturas aleatórias,
      * criando um efeito de rolagem contínua.
      */
-    void atualizar(Canos* canos, int numCanos, double deltaTime);
+    void atualizar(Canos* canos, int numCanos, double deltaTime, float tempo);
 
 
     /**

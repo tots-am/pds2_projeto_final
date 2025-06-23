@@ -39,10 +39,10 @@ constexpr int SCREEN_WIDTH = 800;            // Define o comprimento da janela d
 constexpr int SCREEN_HEIGHT = 600;           // Define a largura da janela do jogo (pixels)
 const int ALTURA_BASE = 50;                  // Altura da base (pixels)
 constexpr int NUM_CANOS = 4;                 // Numero de canos renderizados simultaneamente
-constexpr int VELOCIDADE_CANO = 100;         // Velocidade do Cano (pixels/frame)
 constexpr int ESPACO_ENTRE_OS_CANOS = 250;   // Espaço entre os Canos (pixels)
-constexpr int TAMANHO_BURACO_CANOS = 150;    // Tamanho do buraco entre o cano superior e inferior (pixels)
+constexpr int TAMANHO_BURACO_CANOS = 200;    // Tamanho do buraco entre o cano superior e inferior (pixels)
 const float GRAVIDADE = 800.0f;              // Define a aceleração da gravidade
 const float JUMPSPEED = -350.0f;             // Define a velocidade instantanea ao pular
+static constexpr float FATOR_DIFICULDADE = 0.84f //Aumenta a velocidade dos canos
 
 #endif

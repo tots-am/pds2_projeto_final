@@ -181,7 +181,7 @@ int main(){
                 case inGame:
                     if(!bird.borda_hit(canos)){
                         bird.update_position(delta_time);
-                        canos[0].atualizar(canos, NUM_CANOS, delta_time);
+                        canos[0].atualizar(canos, NUM_CANOS, delta_time, tempo_atual);
                         score++;
                     } else {
                         if(!playerName.empty()){
