@@ -9,7 +9,9 @@ Scoreboard::Scoreboard(ALLEGRO_FONT *fonte, ALLEGRO_FONT *fonteCabecalho) :
     fonte(fonte),
     fonteCabecalho(fonteCabecalho),
     database(DB_PATH)
-{}
+{
+    this->updateNumPlayers();
+}
 void Scoreboard::updateNumPlayers(){
     std::vector<std::pair<std::string, int>> registros = database.lerTodos();
     this->num_players = registros.size(); 
