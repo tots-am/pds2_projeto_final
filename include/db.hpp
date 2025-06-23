@@ -33,8 +33,8 @@ class DB {
 
         /**
          * @brief Usada para ler todas as informações do arquivo
-         * @return Um vetor com players
-         * @note Usa std::pair para facilitar a lógica interna
+         * @return Um vetor ordenado com os players
+         * @note Retorna o vetor ordenado, usando redefinição do operador > @see functions.hpp
          */
         std::vector<std::pair<std::string, int>> lerTodos() const;
         /**
