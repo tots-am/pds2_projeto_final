@@ -78,7 +78,7 @@ class Bird{
      * @return Retorna TRUE se em contato com a borda, FALSE caso contrário.
      * @note Ainda a ser implementado.
      */
-    bool borda_hit(Canos* lista_objetos) const;
+    bool borda_hit(Canos* lista_objetos, float width_base) const;
 
     /// @return Retorna o caminho para o asset/bitmap. 
     std::string get_path() const;
