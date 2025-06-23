@@ -34,5 +34,5 @@ void Button::draw(int x_offset, int y_offset, std::string message)
     this->x2 = x_offset + largura;
     this->y2 = y_offset + altura;
     al_draw_rounded_rectangle(this->x1, this->y1, this->x2, this->y2, 10, 10, cor, 5);
-    al_draw_text(fonte, cor, x1 + largura/2, y1, 0, message.c_str());
+    al_draw_text(fonte, cor, x1 + largura/2, y1, ALLEGRO_ALIGN_CENTER, message.c_str());
 }
