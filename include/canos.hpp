@@ -37,6 +37,7 @@ private:
     int altura_baixo;               ///< "Tamanho" (altura) do cano de baixo
     int largura;                    ///< Largura de cada cano
     int tamanho_buraco;             ///< Tamanho do espaço entre os canos - buraco, no qual o pássaro irá passar.
+    float largura_sprite;
 
    ALLEGRO_BITMAP* canoCima;
    ALLEGRO_BITMAP* canoBaixo;
