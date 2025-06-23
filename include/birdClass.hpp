@@ -6,6 +6,7 @@
 #include <allegro5/allegro.h>
 #include <allegro5/allegro_image.h>
 #include <string>
+#include "canos.hpp"
 
 /**
  * @class Bird 
@@ -61,12 +62,12 @@ class Bird{
     float get_vel_y() const;
 
     /**
-     * @brief Verifica se o objeto está colidindo com as bordas verticais.
+     * @brief Verifica se o objeto está colidindo com as bordas.
      * 
      * @return Retorna TRUE se em contato com a borda, FALSE caso contrário.
      * @note Ainda a ser implementado.
      */
-    bool borda_hit() const;
+    bool borda_hit(Canos* lista_objetos) const;
 
     /// @return Retorna o caminho para o asset/bitmap. 
     std::string get_path() const;
