@@ -167,7 +167,7 @@ int main(){
                     break;
                 
                 case inGame:
-                    if(!bird.borda_hit()){
+                    if(!bird.borda_hit(canos)){
                         bird.update_position(delta_time);
                         canos[0].atualizar(canos, NUM_CANOS, delta_time);
                         score++;

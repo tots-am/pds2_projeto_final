@@ -84,3 +84,7 @@ int Canos::get_altura_baixo() const {
 int Canos::get_largura() const {
     return this->largura;
 }
+
+int Canos::get_y_baixo() const {
+    return this->altura_cima + this->tamanho_buraco;
+}
