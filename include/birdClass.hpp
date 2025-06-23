@@ -6,7 +6,11 @@
 #include <allegro5/allegro.h>
 #include <allegro5/allegro_image.h>
 #include <string>
-
+/**
+ * @struct BirdColor
+ * @brief Determina e indexa as cores do passaro
+ * @note 1: Amarelo 2: Vermelho 3: Azul
+ */
 enum BirdColor{
     Yellow,
     Red,
@@ -125,7 +129,7 @@ class Bird{
     int getCor();
 
     /// @brief Determina a cor do passaro
-    /// @param cor Cor do passaro 
+    /// @param cor Cor do passaro @see BirdColor
     void setCor(int cor);
 };
 
