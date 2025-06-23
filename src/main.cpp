@@ -152,10 +152,6 @@ int main(){
                     //titulo.exibir((float)SCREEN_WIDTH/2, (float)SCREEN_HEIGHT/3);
                     al_draw_filled_rounded_rectangle(150, 200, 650, 470, 10, 10, ORANGE);
                     al_draw_rounded_rectangle(150, 200, 650, 470, 10, 10, PASTEL_WHITE, 5);
-                    al_draw_filled_rounded_rectangle(180, 246, 620, 282, 10, 10, PASTEL_WHITE);
-                    if(playerName.empty()){
-                        CaixaDeTexto.draw(180, 246, 1, "digite seu nome aqui", LIGHT_GREY);
-                    } else CaixaDeTexto.draw(180, 246, 1, playerName, BLACK);
                     B_irProfile.draw(200, 400, 0, "perfil", B_irProfile.get_cor());
                     B_irScoreboard.draw(480, 400, 0, "placar", B_irScoreboard.get_cor());
                     fonteFlappy.escrever(
@@ -223,6 +219,11 @@ int main(){
                     break;
                 
                 case inProfileScreen:
+                    al_draw_filled_rounded_rectangle(150, 200, 650, 470, 10, 10, ORANGE);
+                    al_draw_rounded_rectangle(150, 200, 650, 470, 10, 10, PASTEL_WHITE, 5);
+                    if(playerName.empty()){
+                        CaixaDeTexto.draw(180, 246, 1, "digite seu nome aqui", LIGHT_GREY);
+                    } else CaixaDeTexto.draw(180, 246, 1, playerName, BLACK);
                     B_irStartMenu.draw(340, 450, 0, "inicio", B_irStartMenu.get_cor());
                     break;
             }
