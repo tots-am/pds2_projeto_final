@@ -8,6 +8,7 @@
 #include "constants.hpp"
 #include "Imagem.hpp"
 #include "scoreboard.hpp"
+#include "button.hpp"
 
 using namespace std;
 
@@ -57,6 +58,11 @@ int main(){
         return -1;
     }
 
+    if(!al_install_mouse()){
+        cout << "Falha ao iniciar mouse" << endl;
+        return -1;
+    }
+
     // Instancia a classe de fontes com o caminho da fonte e o tamanho
     fontesClass fonteArial(ARIAL_FONT_PATH.c_str(), ARIAL_FONT_SIZE);
     fontesClass fonteFlappy(FLAPPY_FONT_PATH.c_str(), FLAPPY_FONT_SIZE); 
@@ -83,6 +89,11 @@ int main(){
         al_destroy_event_queue(eventQueue);
         return -1;
     }
+
+    // Botões do jogo
+    Button B_irScoreboard(350, 400, 450, 425);
+    Button B_irProfile(350, 430, 455, 450);
+    Button B_irStartMenu(350, 370, 450, 395);
     
     // Seção para carregar imagens
     Imagem base(BASE_IMG_PATH);
@@ -99,6 +110,7 @@ int main(){
     al_register_event_source(eventQueue, al_get_display_event_source(display));
     al_register_event_source(eventQueue, al_get_timer_event_source(timer));
     al_register_event_source(eventQueue, al_get_keyboard_event_source());
+    al_register_event_source(eventQueue, al_get_mouse_event_source());
 
     // Variaveis do Jogo
     bool endGame = false;
@@ -219,6 +231,9 @@ int main(){
                 case inScoreBoard:
                     scoreboard.drawScoreboard();
                     scoreboard.exibeInfos();
+                    break;
+                
+                case inProfileScreen:
                     break;
             }
             al_flip_display();
