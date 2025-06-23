@@ -152,13 +152,13 @@ int main(){
             {
                 case inStartMenu:    
                     //titulo.exibir((float)SCREEN_WIDTH/2, (float)SCREEN_HEIGHT/3);
-                    al_draw_filled_rounded_rectangle(150, 200, 650, 460, 10, 10, ORANGE);
-                    al_draw_rounded_rectangle(150, 200, 650, 460, 10, 10, PASTEL_WHITE, 5);
+                    al_draw_filled_rounded_rectangle(150, 280, 650, 460, 10, 10, ORANGE);
+                    al_draw_rounded_rectangle(150, 280, 650, 460, 10, 10, PASTEL_WHITE, 5);
                     B_irProfile.draw(200, 400, 0, "perfil", B_irProfile.get_cor());
                     B_irScoreboard.draw(480, 400, 0, "placar", B_irScoreboard.get_cor());
                     fonteFlappy.escrever(
                         "FLAPPY BIRD",
-                        SCREEN_WIDTH/2, 120, 
+                        SCREEN_WIDTH/2, 200, 
                         WHITE, ALLEGRO_ALIGN_CENTER
                     );
                     fontePixelify.escrever(
@@ -201,6 +201,7 @@ int main(){
                     for(int i = 0; i <NUM_CANOS; i++){
                         canos[i].desenhar();
                     }
+                    bird.draw();
                     al_draw_filled_rounded_rectangle(150, 200, 650, 460, 10, 10, ORANGE);
                     al_draw_rounded_rectangle(150, 200, 650, 460, 10, 10, PASTEL_WHITE, 5);
                     B_irScoreboard.draw(480, 400, 0, "placar", B_irScoreboard.get_cor());
@@ -215,7 +216,6 @@ int main(){
                         SCREEN_WIDTH/2, 120, 
                         WHITE, ALLEGRO_ALIGN_CENTER
                     );
-                    bird.draw();
                     break;
                 
                 case inScoreBoard:
