@@ -12,6 +12,11 @@ ALLEGRO_COLOR Button::get_cor()
     return cor;
 }
 
+void Button::set_cor(ALLEGRO_COLOR cor)
+{
+    cor = cor;
+}
+
 bool Button::isMouseHovering(int x, int y)
 {
     bool isHovering = false;

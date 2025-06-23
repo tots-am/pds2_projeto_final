@@ -16,6 +16,7 @@ class Button{
     Button(int altura, int largura, ALLEGRO_FONT *fonte, ALLEGRO_COLOR cor);
     ~Button();
     ALLEGRO_COLOR get_cor();
+    void set_cor(ALLEGRO_COLOR cor);
     bool isMouseHovering(int x, int y);
     bool isActive();
     void switchActive();
