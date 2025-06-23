@@ -24,6 +24,7 @@ const ALLEGRO_COLOR BLACK = al_map_rgb(0,0,0);
 const ALLEGRO_COLOR WHITE = al_map_rgb(255,255,255);
 const ALLEGRO_COLOR ORANGE = al_map_rgb(255, 165, 0);
 const ALLEGRO_COLOR PASTEL_WHITE = al_map_rgb(253,253,150);
+const ALLEGRO_COLOR LIGHT_GREY = al_map_rgb(192, 192, 192);
 
 // Fontes
 const std::string ARIAL_FONT_PATH = "./assets/fonts/arial.ttf";

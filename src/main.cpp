@@ -94,6 +94,7 @@ int main(){
     Button B_irStartMenu(50, 120, fontePixelify.getfonte(), WHITE);
     Button B_irScoreboard(50, 120, fontePixelify.getfonte(), WHITE);
     Button B_irProfile(50, 120, fontePixelify.getfonte(), WHITE);
+    Button CaixaDeTexto(36, 440, fontePixelify.getfonte(), PASTEL_WHITE);
     
     // Seção para carregar imagens
     Imagem base(BASE_IMG_PATH);
@@ -152,16 +153,14 @@ int main(){
                     al_draw_filled_rounded_rectangle(150, 200, 650, 470, 10, 10, ORANGE);
                     al_draw_rounded_rectangle(150, 200, 650, 470, 10, 10, PASTEL_WHITE, 5);
                     al_draw_filled_rounded_rectangle(180, 246, 620, 282, 10, 10, PASTEL_WHITE);
-                    B_irProfile.draw(200, 400, "perfil");
-                    B_irScoreboard.draw(480, 400, "placar");
+                    if(playerName.empty()){
+                        CaixaDeTexto.draw(180, 246, 1, "digite seu nome aqui", LIGHT_GREY);
+                    } else CaixaDeTexto.draw(180, 246, 1, playerName, BLACK);
+                    B_irProfile.draw(200, 400, 0, "perfil", B_irProfile.get_cor());
+                    B_irScoreboard.draw(480, 400, 0, "placar", B_irScoreboard.get_cor());
                     fonteFlappy.escrever(
                         "FLAPPY BIRD",
                         SCREEN_WIDTH/2, 120, 
-                        WHITE, ALLEGRO_ALIGN_CENTER
-                    );
-                    fontePixelify.escrever(
-                        "Digite seu nome:",
-                        SCREEN_WIDTH/2, 205, 
                         WHITE, ALLEGRO_ALIGN_CENTER
                     );
                     fontePixelify.escrever(
@@ -173,11 +172,6 @@ int main(){
                         "ESC para sair",
                         SCREEN_WIDTH/2, 290 + PIXELIFY_FONT_SIZE + 10, 
                         WHITE, ALLEGRO_ALIGN_CENTER
-                    );
-                    fontePixelify.escrever(
-                        playerName,
-                        SCREEN_WIDTH/2, 246, 
-                        al_map_rgb(0,0,0), ALLEGRO_ALIGN_CENTER
                     );
                     break;
                 
@@ -211,8 +205,8 @@ int main(){
                     }
                     al_draw_filled_rounded_rectangle(150, 200, 650, 460, 10, 10, ORANGE);
                     al_draw_rounded_rectangle(150, 200, 650, 460, 10, 10, PASTEL_WHITE, 5);
-                    B_irScoreboard.draw(480, 400, "placar");
-                    B_irStartMenu.draw(200, 400, "inicio");
+                    B_irScoreboard.draw(480, 400, 0, "placar", B_irScoreboard.get_cor());
+                    B_irStartMenu.draw(200, 400, 0, "inicio", B_irStartMenu.get_cor());
                     fontePixelify.escrever(
                         "ESPAÇO para recomeçar",
                         SCREEN_WIDTH/2, (SCREEN_HEIGHT/2 + 20),
@@ -225,11 +219,11 @@ int main(){
                 case inScoreBoard:
                     scoreboard.drawScoreboard();
                     scoreboard.exibeInfos();
-                    B_irStartMenu.draw(340, 450, "inicio");
+                    B_irStartMenu.draw(340, 450, 0, "inicio", B_irStartMenu.get_cor());
                     break;
                 
                 case inProfileScreen:
-                    B_irStartMenu.draw(340, 450, "inicio");
+                    B_irStartMenu.draw(340, 450, 0, "inicio", B_irStartMenu.get_cor());
                     break;
             }
             al_flip_display();
@@ -265,7 +259,7 @@ int main(){
         }
         // Teclado do player
         else if(event.type == ALLEGRO_EVENT_KEY_CHAR){
-            if(state == inStartMenu){
+            if(state == inStartMenu && CaixaDeTexto.isActive()){
                 switch(event.keyboard.keycode){
                     case ALLEGRO_KEY_BACKSPACE:
                         if(!playerName.empty()){
@@ -299,6 +293,7 @@ int main(){
                         state = inScoreBoard;
                     }
                     else if(B_irProfile.isMouseHovering(mouse_x, mouse_y)) state = inProfileScreen;
+                    else if(CaixaDeTexto.isMouseHovering(mouse_x, mouse_y)) CaixaDeTexto.switchActive();
                     break;
 
                 case inGameOver:
