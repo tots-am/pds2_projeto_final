@@ -37,3 +37,11 @@ bool Imagem::isLoaded(){
         return true;
     }
 }
+
+float Imagem::getLargura() const {
+    return al_get_bitmap_width(this->imagem);
+}
+
+float Imagem::getAltura() const {
+    return al_get_bitmap_height(this->imagem);
+}
