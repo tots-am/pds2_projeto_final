@@ -47,7 +47,7 @@ void Bird::forced_draw(float pos_x, float pos_y) {
             al_draw_bitmap_region(bird, 34, 24, 34, 24, pos_x, pos_y, 0);
             break;
         case Blue:
-            if(this->vel_y < -150.0f) al_draw_bitmap_region(bird, 34, 48, 34, 24, pos_x, pos_y, 0);
+            al_draw_bitmap_region(bird, 34, 48, 34, 24, pos_x, pos_y, 0);
             break;
     }
 }
@@ -150,22 +150,11 @@ std::string Bird::get_path() const {
     return this-> sprite;
 }
 
-int Bird::getCor()
+BirdColor Bird::getCor()
 {
     return this->cor;
 }
 
-void Bird::setCor(int cor){
-    if(cor < 0 || cor > 3)cor = 1;
-    switch (cor){
-        case 1:
-            this->cor = Yellow;
-            break;
-        case 2:
-            this->cor = Red;
-            break;
-        case 3:
-            this->cor = Blue;
-            break;
-    }
+void Bird::setCor(BirdColor cor){
+    this->cor = cor;
 }

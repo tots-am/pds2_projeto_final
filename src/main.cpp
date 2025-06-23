@@ -95,6 +95,8 @@ int main(){
     Button B_irScoreboard(50, 120, fontePixelify.getfonte(), WHITE);
     Button B_irProfile(50, 120, fontePixelify.getfonte(), WHITE);
     Button CaixaDeTexto(40, 440, fontePixelify.getfonte(), PASTEL_WHITE);
+    Button B_ChangeSkinLeft(40, 40, fonteArial.getfonte(), PASTEL_WHITE);
+    Button B_ChangeSkinRight(40, 40, fonteArial.getfonte(), PASTEL_WHITE);
     
     // Seção para carregar imagens
     Imagem base(BASE_IMG_PATH);
@@ -239,6 +241,8 @@ int main(){
                         CaixaDeTexto.draw(180, 246, 1, "clique para editar", LIGHT_GREY);
                     } else CaixaDeTexto.draw(180, 246, 1, playerName, BLACK);
                     B_irStartMenu.draw(340, 440, 0, "inicio", B_irStartMenu.get_cor());
+                    B_ChangeSkinLeft.draw(160, 340, 1, "<", WHITE);
+                    B_ChangeSkinRight.draw(205, 340, 1, ">", WHITE);
                     bird.forced_draw(180, 300);
                     break;
             }
@@ -332,6 +336,14 @@ int main(){
                         CaixaDeTexto.switchActive();
                         if(CaixaDeTexto.isActive()) CaixaDeTexto.set_cor(WHITE);
                         else CaixaDeTexto.set_cor(PASTEL_WHITE);
+                    }
+                    else if(B_ChangeSkinLeft.isMouseHovering(mouse_x, mouse_y)) {
+                        if(bird.getCor() == Red) bird.setCor(Yellow);
+                        else if(bird.getCor() == Blue) bird.setCor(Red);
+                    }
+                    else if(B_ChangeSkinRight.isMouseHovering(mouse_x, mouse_y)) {
+                        if(bird.getCor() == Red) bird.setCor(Blue);
+                        else if(bird.getCor() == Yellow) bird.setCor(Red);
                     }
                     break;
 

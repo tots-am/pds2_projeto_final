@@ -126,11 +126,11 @@ class Bird{
     void reset_position(float pos_x, float pos_y);
 
     /// @brief Retorna a cor do passaro 
-    int getCor();
+    BirdColor getCor();
 
     /// @brief Determina a cor do passaro
     /// @param cor Cor do passaro @see BirdColor
-    void setCor(int cor);
+    void setCor(BirdColor cor);
 };
 
 
