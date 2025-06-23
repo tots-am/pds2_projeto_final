@@ -7,6 +7,16 @@
 #include <allegro5/allegro_image.h>
 #include <string>
 #include "canos.hpp"
+/**
+ * @struct BirdColor
+ * @brief Determina e indexa as cores do passaro
+ * @note 1: Amarelo 2: Vermelho 3: Azul
+ */
+enum BirdColor{
+    Yellow,
+    Red,
+    Blue
+};
 
 /**
  * @class Bird 
@@ -19,10 +29,11 @@ class Bird{
 
     float vel_y;                 
     float pos_x, pos_y;          
-    std::string sprite;   
-    ALLEGRO_BITMAP *bird;        
+    std::string sprite;
+    ALLEGRO_BITMAP *bird;
     float largura_obj, altura_obj;
     bool isJumping;
+    BirdColor cor;
 
     public:
 
@@ -115,6 +126,12 @@ class Bird{
     /// @see update()
     void reset_position(float pos_x, float pos_y);
 
+    /// @brief Retorna a cor do passaro 
+    BirdColor getCor();
+
+    /// @brief Determina a cor do passaro
+    /// @param cor Cor do passaro @see BirdColor
+    void setCor(BirdColor cor);
 };
 
 

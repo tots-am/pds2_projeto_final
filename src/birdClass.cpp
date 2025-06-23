@@ -9,15 +9,16 @@ using namespace std;
 Bird::Bird(float pos_x_inicial, float pos_y_inicial) : 
         vel_y(0.0f),
         pos_x(pos_x_inicial), pos_y(pos_y_inicial),
-        sprite(BIRD_IMG_PATH), 
-        bird(al_load_bitmap(BIRD_IMG_PATH.c_str()))
+        sprite(BIRD_SPRITESHEET_PATH), 
+        bird(al_load_bitmap(BIRD_SPRITESHEET_PATH.c_str())),
+        cor(Yellow)
     {
         if (bird == nullptr) {
-            throw std::runtime_error("Erro ao inicializar o pássaro: " + BIRD_IMG_PATH);
+            throw std::runtime_error("Erro ao inicializar o pássaro: " + BIRD_SPRITESHEET_PATH);
         }
         
-        this->largura_obj = al_get_bitmap_width(bird);
-        this->altura_obj = al_get_bitmap_height(bird);
+        this->largura_obj = 34;
+        this->altura_obj = 24;
         this->isJumping = false;
     }   
 
@@ -27,7 +28,8 @@ Bird::Bird() :
     sprite(""),
     bird(nullptr),
     largura_obj(0.0f), altura_obj(0.0f),
-    isJumping(false)
+    isJumping(false),
+    cor(Yellow)
     {}    
 
 Bird::~Bird(){
@@ -37,7 +39,17 @@ Bird::~Bird(){
 // Funções
 
 void Bird::forced_draw(float pos_x, float pos_y) {
-    al_draw_bitmap(bird, pos_x, pos_y, 0);
+    switch (cor){
+        case Yellow:
+            al_draw_bitmap_region(bird, 34, 0, 34, 24, pos_x, pos_y, 0);
+            break;
+        case Red:
+            al_draw_bitmap_region(bird, 34, 24, 34, 24, pos_x, pos_y, 0);
+            break;
+        case Blue:
+            al_draw_bitmap_region(bird, 34, 48, 34, 24, pos_x, pos_y, 0);
+            break;
+    }
 }
 
 void Bird::reset_position(float pos_x, float pos_y) {
@@ -54,8 +66,23 @@ void Bird::draw() {
     float draw_x = this->pos_x - (this->largura_obj / 2.0f);
     float draw_y =  this->pos_y - (this->altura_obj / 2.0f);
 
-    al_draw_bitmap(bird, draw_x, draw_y, 0);
-
+    switch (cor){
+        case Yellow:
+            if(this->vel_y < -150.0f) al_draw_bitmap_region(bird, 0, 0, 34, 24, draw_x, draw_y, 0);
+            else if(this->vel_y < 0) al_draw_bitmap_region(bird, 34, 0, 34, 24, draw_x, draw_y, 0);
+            else al_draw_bitmap_region(bird, 68, 0, 34, 24, draw_x, draw_y, 0);
+            break;
+        case Red:
+            if(this->vel_y < -150.0f) al_draw_bitmap_region(bird, 0, 24, 34, 24, draw_x, draw_y, 0);
+            else if(this->vel_y < 0) al_draw_bitmap_region(bird, 34, 24, 34, 24, draw_x, draw_y, 0);
+            else al_draw_bitmap_region(bird, 68, 24, 34, 24, draw_x, draw_y, 0);
+            break;
+        case Blue:
+            if(this->vel_y < -150.0f) al_draw_bitmap_region(bird, 0, 48, 34, 24, draw_x, draw_y, 0);
+            else if(this->vel_y < 0) al_draw_bitmap_region(bird, 34, 48, 34, 24, draw_x, draw_y, 0);
+            else al_draw_bitmap_region(bird, 68, 48, 34, 24, draw_x, draw_y, 0);
+            break;
+    }    
 }
 
 void Bird::update_position(double deltaTime){
@@ -101,7 +128,6 @@ bool Bird::borda_hit(Canos* lista_objetos) const {
         float cano_baixo_y = lista_objetos[i].get_y_baixo();
         float cano_baixo_altura = lista_objetos[i].get_altura_baixo();
 
-
         bool colide_x = (bird_x < cano_pos_x + cano_largura) && (bird_x + bird_largura > cano_pos_x);
         bool colide_y_cano_baixo = (bird_y < cano_baixo_y + cano_baixo_altura) && (bird_y + bird_altura > cano_baixo_y);
         bool colide_y_cano_cima = (bird_y < cano_cima_y + cano_cima_altura) && (bird_y + bird_altura > cano_cima_y);
@@ -114,12 +140,7 @@ bool Bird::borda_hit(Canos* lista_objetos) const {
         }
 
     }
-
     return false;
-
-
-
-
 }
 void Bird::jump(){
     this->isJumping = true;
@@ -156,4 +177,13 @@ ALLEGRO_BITMAP *Bird::get_bitmap() const {
 
 std::string Bird::get_path() const {
     return this-> sprite;
+}
+
+BirdColor Bird::getCor()
+{
+    return this->cor;
+}
+
+void Bird::setCor(BirdColor cor){
+    this->cor = cor;
 }
