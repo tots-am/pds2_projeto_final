@@ -24,5 +24,5 @@ void Button::draw(int x_offset, int y_offset)
     this->y1 = y_offset;
     this->x2 = x_offset + largura;
     this->y2 = y_offset + altura;
-    al_draw_rounded_rectangle(this->x1, this->y1, this->x2, this->y2, 10, 10, al_map_rgb(255, 255, 255), 3);
+    al_draw_rounded_rectangle(this->x1, this->y1, this->x2, this->y2, 10, 10, al_map_rgb(255, 255, 255), 5);
 }

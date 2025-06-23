@@ -17,11 +17,12 @@ class Scoreboard{
     
     int num_players;
     ALLEGRO_FONT *fonte;
+    ALLEGRO_FONT *fonteCabecalho;
     DB database;
 
     public:
 
-    Scoreboard(ALLEGRO_FONT *fonte);
+    Scoreboard(ALLEGRO_FONT *fonte, ALLEGRO_FONT *fonteCabecalho);
 
     void drawScoreboard();
 

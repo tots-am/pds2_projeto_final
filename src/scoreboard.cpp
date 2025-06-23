@@ -1,11 +1,13 @@
 #include "scoreboard.hpp"
 #include "constants.hpp"
+#include "fontesClass.hpp"
 
 const int NUM_LETRAS = 32;
 
-Scoreboard::Scoreboard(ALLEGRO_FONT *fonte) :
+Scoreboard::Scoreboard(ALLEGRO_FONT *fonte, ALLEGRO_FONT *fonteCabecalho) :
     num_players(0),
     fonte(fonte),
+    fonteCabecalho(fonteCabecalho),
     database(DB_PATH)
 {}
 void Scoreboard::updateNumPlayers(){
@@ -15,24 +17,24 @@ void Scoreboard::updateNumPlayers(){
 }
 void Scoreboard::drawScoreboard()
 {
-    al_draw_filled_rounded_rectangle(100, 100, 700, 500, 10, 10, al_map_rgb(255, 165, 0));
-    al_draw_rounded_rectangle(100, 100, 700, 500, 10, 10, al_map_rgb(253,253,253), 5);
-    al_draw_filled_rounded_rectangle(130, 180, 670, 440, 10, 10, al_map_rgb(253,253,253));
+    al_draw_filled_rounded_rectangle(100, 170, 700, 510, 10, 10, ORANGE);
+    al_draw_rounded_rectangle(100, 170, 700, 510, 10, 10, PASTEL_WHITE, 5);
+    al_draw_filled_rounded_rectangle(130, 180, 670, 440, 10, 10, PASTEL_WHITE);
     al_draw_text(
         fonte,
-        al_map_rgb(0,0,0),
+        BLACK,
         SCREEN_WIDTH/2, 
         185,
         ALLEGRO_ALIGN_CENTER,
         "Jogador ------------ High Score"
     );
     al_draw_text(
-        fonte,
-        al_map_rgb(255,255,255),
+        fonteCabecalho,
+        WHITE,
         SCREEN_WIDTH/2, 
-        450,
+        110,
         ALLEGRO_ALIGN_CENTER,
-        "ESC para voltar ao menu"
+        "PLACAR"
     );
 }
 void Scoreboard::exibeInfos(){
@@ -52,7 +54,7 @@ void Scoreboard::exibeInfos(){
         std::string joined = nome + " " + space + " " + high_score;
         al_draw_text(
             fonte,
-            al_map_rgb(0,0,0),
+            BLACK,
             SCREEN_WIDTH/2,
             232 + offset,
             ALLEGRO_ALIGN_CENTER,
