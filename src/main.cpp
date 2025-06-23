@@ -91,9 +91,9 @@ int main(){
     }
 
     // Botões do jogo
-    Button B_irStartMenu(50, 120);
-    Button B_irScoreboard(50, 120);
-    Button B_irProfile(50, 120);
+    Button B_irStartMenu(50, 120, fontePixelify.getfonte(), WHITE);
+    Button B_irScoreboard(50, 120, fontePixelify.getfonte(), WHITE);
+    Button B_irProfile(50, 120, fontePixelify.getfonte(), WHITE);
     
     // Seção para carregar imagens
     Imagem base(BASE_IMG_PATH);
@@ -152,18 +152,8 @@ int main(){
                     al_draw_filled_rounded_rectangle(150, 200, 650, 470, 10, 10, ORANGE);
                     al_draw_rounded_rectangle(150, 200, 650, 470, 10, 10, PASTEL_WHITE, 5);
                     al_draw_filled_rounded_rectangle(180, 246, 620, 282, 10, 10, PASTEL_WHITE);
-                    B_irProfile.draw(200, 400);
-                    fontePixelify.escrever(
-                        "perfil",
-                        B_irProfile.x1 + B_irProfile.largura/2, B_irProfile.y1,
-                        WHITE, ALLEGRO_ALIGN_CENTER
-                    );
-                    B_irScoreboard.draw(480, 400);
-                    fontePixelify.escrever(
-                        "placar",
-                        B_irScoreboard.x1 + B_irScoreboard.largura/2, B_irScoreboard.y1, 
-                        WHITE, ALLEGRO_ALIGN_CENTER
-                    );
+                    B_irProfile.draw(200, 400, "perfil");
+                    B_irScoreboard.draw(480, 400, "placar");
                     fonteFlappy.escrever(
                         "FLAPPY BIRD",
                         SCREEN_WIDTH/2, 120, 
@@ -219,20 +209,10 @@ int main(){
                     for(int i = 0; i <NUM_CANOS; i++){
                         canos[i].desenhar();
                     }
-                    al_draw_filled_rounded_rectangle(150, 200, 650, 450, 10, 10, ORANGE);
-                    al_draw_rounded_rectangle(150, 200, 650, 450, 10, 10, PASTEL_WHITE, 5);
-                    B_irScoreboard.draw(480, 400);
-                    fontePixelify.escrever(
-                        "placar",
-                        B_irScoreboard.x1 + B_irScoreboard.largura/2, B_irScoreboard.y1, 
-                        WHITE, ALLEGRO_ALIGN_CENTER
-                    );
-                    B_irStartMenu.draw(200, 400);
-                    fontePixelify.escrever(
-                        "inicio",
-                        B_irStartMenu.x1 + B_irStartMenu.largura/2, B_irStartMenu.y1, 
-                        WHITE, ALLEGRO_ALIGN_CENTER
-                    );
+                    al_draw_filled_rounded_rectangle(150, 200, 650, 460, 10, 10, ORANGE);
+                    al_draw_rounded_rectangle(150, 200, 650, 460, 10, 10, PASTEL_WHITE, 5);
+                    B_irScoreboard.draw(480, 400, "placar");
+                    B_irStartMenu.draw(200, 400, "inicio");
                     fontePixelify.escrever(
                         "ESPAÇO para recomeçar",
                         SCREEN_WIDTH/2, (SCREEN_HEIGHT/2 + 20),
@@ -245,21 +225,11 @@ int main(){
                 case inScoreBoard:
                     scoreboard.drawScoreboard();
                     scoreboard.exibeInfos();
-                    B_irStartMenu.draw(340, 450);
-                    fontePixelify.escrever(
-                        "inicio",
-                        B_irStartMenu.x1 + B_irStartMenu.largura/2, B_irStartMenu.y1, 
-                        WHITE, ALLEGRO_ALIGN_CENTER
-                    );
+                    B_irStartMenu.draw(340, 450, "inicio");
                     break;
                 
                 case inProfileScreen:
-                    B_irStartMenu.draw(340, 450);
-                    fontePixelify.escrever(
-                        "inicio",
-                        B_irStartMenu.x1 + B_irStartMenu.largura/2, B_irStartMenu.y1, 
-                        WHITE, ALLEGRO_ALIGN_CENTER
-                    );
+                    B_irStartMenu.draw(340, 450, "inicio");
                     break;
             }
             al_flip_display();
