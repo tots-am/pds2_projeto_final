@@ -39,6 +39,7 @@ void Button::switchActive()
 }
 void Button::draw(int x_offset, int y_offset, int filled)
 {
+    if(filled < 0 || filled > 1) filled = 0;
     this->x1 = x_offset;
     this->y1 = y_offset;
     this->x2 = x_offset + largura;
@@ -48,6 +49,7 @@ void Button::draw(int x_offset, int y_offset, int filled)
 }
 
 void Button::draw(int x_offset, int y_offset, int filled, std::string message, ALLEGRO_COLOR cor_msg) {
+    if(filled < 0 || filled > 1) filled = 0;
     this->x1 = x_offset;
     this->y1 = y_offset;
     this->x2 = x_offset + largura;
