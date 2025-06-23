@@ -9,8 +9,8 @@ using namespace std;
 Bird::Bird(float pos_x_inicial, float pos_y_inicial) : 
         vel_y(0.0f),
         pos_x(pos_x_inicial), pos_y(pos_y_inicial),
-        sprite(BIRD_IMG_PATH), 
-        bird(al_load_bitmap(BIRD_IMG_PATH.c_str()))
+        sprite(BIRD_SPRITE_PATH), 
+        bird(al_load_bitmap(BIRD_SPRITE_PATH.c_str()))
     {
         if (bird == nullptr) {
             throw std::runtime_error("Erro ao inicializar o pássaro: " + BIRD_IMG_PATH);
@@ -54,8 +54,9 @@ void Bird::draw() {
     float draw_x = this->pos_x - (this->largura_obj / 2.0f);
     float draw_y =  this->pos_y - (this->altura_obj / 2.0f);
 
-    al_draw_bitmap(bird, draw_x, draw_y, 0);
-
+    if(this->vel_y < -150.0f) al_draw_bitmap_region(bird, 0, 0, 34, 24, draw_x, draw_y, 0);
+    else if(this->vel_y < 0) al_draw_bitmap_region(bird, 34, 0, 34, 24, draw_x, draw_y, 0);
+    else al_draw_bitmap_region(bird, 68, 0, 34, 24, draw_x, draw_y, 0);
 }
 
 void Bird::update_position(double deltaTime){

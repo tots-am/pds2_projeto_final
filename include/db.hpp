@@ -6,7 +6,6 @@
 #include <string>
 #include <vector>
 #include <utility>
-#include <constants.hpp>
 
 /**
  * @class DB
@@ -22,7 +21,7 @@ class DB {
          * 
          * @param path Caminho para o arquivo Database @see constants.hpp
          */
-        DB(const std::string& path = DB_PATH);
+        DB(const std::string& path = "./db/db.txt");
 
         /**
          * @brief Usada para adicionar uma nova linha no arquivo de texto, ou seja, um novo player

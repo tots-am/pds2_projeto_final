@@ -1,6 +1,6 @@
 #include "scoreboard.hpp"
-#include "constants.hpp"
 #include "fontesClass.hpp"
+#include "constants.hpp"
 
 const int NUM_LETRAS = 32;
 
@@ -8,7 +8,7 @@ Scoreboard::Scoreboard(ALLEGRO_FONT *fonte, ALLEGRO_FONT *fonteCabecalho) :
     num_players(0),
     fonte(fonte),
     fonteCabecalho(fonteCabecalho),
-    database(DB_PATH)
+    database("./db/db.txt")
 {
     this->updateNumPlayers();
 }

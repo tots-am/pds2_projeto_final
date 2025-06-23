@@ -7,9 +7,6 @@
 // Tamanho maximo que o nome do jogador pode ter
 constexpr int MAX_NAME_SIZE = 16;
 
-// Caminho para o arquivo database
-const std::string DB_PATH = "./db/db.txt";
-
 // Caminho para Assets
 const std::string PIPE1_IMG_PATH = "./assets/sprites/pipe-green.png";
 const std::string PIPE2_IMG_PATH = "./assets/sprites/pipe-green-down.png";
@@ -18,6 +15,7 @@ const std::string GAMEOVER_IMG_PATH = "./assets/sprites/gameover.png";
 const std::string BACKGROUND_IMG_PATH = "./assets/sprites/background-800-600.png";
 const std::string BASE_IMG_PATH = "./assets/sprites/base-800-50.png";
 const std::string BIRD_IMG_PATH = "./assets/sprites/yellowbird-midflap.png";
+const std::string BIRD_SPRITE_PATH = "./assets/sprites/yellowbird_sprites.png";
 
 // Cores
 const ALLEGRO_COLOR BLACK = al_map_rgb(0,0,0);
