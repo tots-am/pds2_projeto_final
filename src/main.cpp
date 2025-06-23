@@ -337,7 +337,13 @@ int main(){
                     break;
 
                 case inGameOver:
-                    if(B_irStartMenu.isMouseHovering(mouse_x, mouse_y)) state = inStartMenu;
+                    if(B_irStartMenu.isMouseHovering(mouse_x, mouse_y)) {
+                        bird.reset_position((float)SCREEN_WIDTH/4, (float)SCREEN_HEIGHT/2);
+                        score = 1;
+                        canos[0].reset_position(canos, NUM_CANOS);
+                        tempo_inicio = al_get_time();
+                        state = inStartMenu;
+                    }
                     else if(B_irScoreboard.isMouseHovering(mouse_x, mouse_y)){
                         bird.reset_position((float)SCREEN_WIDTH/4, (float)SCREEN_HEIGHT/2);
                         score = 1;
