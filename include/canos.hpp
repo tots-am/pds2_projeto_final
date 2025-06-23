@@ -131,6 +131,10 @@ public:
      * @return A largura de um cano.
      */
     int get_largura() const;
+    /**
+     * @brief Retorna a posição y do cano baixo
+     */
+    int get_y_baixo() const; // Posição Y do topo do cano de baixo
 };
 
 #endif
