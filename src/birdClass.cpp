@@ -17,8 +17,8 @@ Bird::Bird(float pos_x_inicial, float pos_y_inicial) :
             throw std::runtime_error("Erro ao inicializar o pássaro: " + BIRD_SPRITESHEET_PATH);
         }
         
-        this->largura_obj = al_get_bitmap_width(bird);
-        this->altura_obj = al_get_bitmap_height(bird);
+        this->largura_obj = 34;
+        this->altura_obj = 24;
         this->isJumping = false;
     }   
 

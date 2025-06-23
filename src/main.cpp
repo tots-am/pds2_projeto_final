@@ -232,6 +232,11 @@ int main(){
                         SCREEN_WIDTH/2, 205,
                         WHITE, ALLEGRO_ALIGN_CENTER
                     );
+                    fontePixelify.escrever(
+                        "skin",
+                        SCREEN_WIDTH/2, 300,
+                        WHITE, ALLEGRO_ALIGN_CENTER
+                    );
                     fonteFlappy.escrever(
                         "PERFIL",
                         SCREEN_WIDTH/2, 120, 
@@ -241,9 +246,9 @@ int main(){
                         CaixaDeTexto.draw(180, 246, 1, "clique para editar", LIGHT_GREY);
                     } else CaixaDeTexto.draw(180, 246, 1, playerName, BLACK);
                     B_irStartMenu.draw(340, 440, 0, "inicio", B_irStartMenu.get_cor());
-                    B_ChangeSkinLeft.draw(160, 340, 1, "<", WHITE);
-                    B_ChangeSkinRight.draw(205, 340, 1, ">", WHITE);
-                    bird.forced_draw(180, 300);
+                    B_ChangeSkinLeft.draw(355, 380, 1, "<", LIGHT_GREY);
+                    B_ChangeSkinRight.draw(405, 380, 1, ">", LIGHT_GREY);
+                    bird.forced_draw(SCREEN_WIDTH/2 - 17, 340);
                     break;
             }
             al_flip_display();
