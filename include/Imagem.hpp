@@ -20,6 +20,9 @@ class Imagem{
       ~Imagem();
       void exibir(float pos_x, float pos_y);
       bool isLoaded();
+
+      float getAltura() const;
+      float getLargura() const;
 };
 
 #endif

@@ -106,12 +106,41 @@ void Bird::update_position(double deltaTime){
         vel_y = 0;
     }
 }
-bool Bird::borda_hit() const {
+bool Bird::borda_hit(Canos* lista_objetos) const {
+
     if(this->pos_y >= 550){
         return true;
-    } else {
-        return false;
+    } 
+
+    for(int i = 0; i < NUM_CANOS; i++){
+
+        float bird_x = this->pos_x - (this->largura_obj / 2.0);
+        float bird_y = this->pos_y - (this->altura_obj / 2.0);
+        float bird_largura = this->largura_obj;
+        float bird_altura = this->altura_obj;
+
+        float cano_pos_x = lista_objetos[i].get_x();
+        float cano_largura = lista_objetos[i].get_largura();
+
+        float cano_cima_y = 0; 
+        float cano_cima_altura = lista_objetos[i].get_altura_cima();
+
+        float cano_baixo_y = lista_objetos[i].get_y_baixo();
+        float cano_baixo_altura = lista_objetos[i].get_altura_baixo();
+
+        bool colide_x = (bird_x < cano_pos_x + cano_largura) && (bird_x + bird_largura > cano_pos_x);
+        bool colide_y_cano_baixo = (bird_y < cano_baixo_y + cano_baixo_altura) && (bird_y + bird_altura > cano_baixo_y);
+        bool colide_y_cano_cima = (bird_y < cano_cima_y + cano_cima_altura) && (bird_y + bird_altura > cano_cima_y);
+
+        if(colide_x && colide_y_cano_cima){
+            return true;
+        }
+        if(colide_x && colide_y_cano_baixo){
+            return true;
+        }
+
     }
+    return false;
 }
 void Bird::jump(){
     this->isJumping = true;
