@@ -14,8 +14,7 @@ const std::string TITLE_IMG_PATH = "./assets/sprites/title.png";
 const std::string GAMEOVER_IMG_PATH = "./assets/sprites/gameover.png";
 const std::string BACKGROUND_IMG_PATH = "./assets/sprites/background-800-600.png";
 const std::string BASE_IMG_PATH = "./assets/sprites/base-800-50.png";
-const std::string BIRD_IMG_PATH = "./assets/sprites/yellowbird-midflap.png";
-const std::string BIRD_SPRITE_PATH = "./assets/sprites/yellowbird_sprites.png";
+const std::string BIRD_SPRITESHEET_PATH = "./assets/sprites/bird_spritesheet.png";
 
 // Cores
 const ALLEGRO_COLOR BLACK = al_map_rgb(0,0,0);

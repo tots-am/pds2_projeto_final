@@ -7,6 +7,12 @@
 #include <allegro5/allegro_image.h>
 #include <string>
 
+enum BirdColor{
+    Yellow,
+    Red,
+    Blue
+};
+
 /**
  * @class Bird 
  * @brief Representa o personagem principal do jogo, controlado pelo jogador.
@@ -18,10 +24,11 @@ class Bird{
 
     float vel_y;                 
     float pos_x, pos_y;          
-    std::string sprite;   
-    ALLEGRO_BITMAP *bird;        
+    std::string sprite;
+    ALLEGRO_BITMAP *bird;
     float largura_obj, altura_obj;
     bool isJumping;
+    BirdColor cor;
 
     public:
 
@@ -114,6 +121,9 @@ class Bird{
     /// @see update()
     void reset_position(float pos_x, float pos_y);
 
+    int getCor();
+
+    void setCor(int cor);
 };
 
 
