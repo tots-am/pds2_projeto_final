@@ -16,7 +16,8 @@ enum gameState{
     inStartMenu,
     inGame,
     inGameOver,
-    inScoreBoard
+    inScoreBoard,
+    inProfileScreen
 };
 
 int main(){
