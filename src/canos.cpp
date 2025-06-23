@@ -14,8 +14,7 @@ using namespace std;
 
 Canos::Canos(int pos_x_inicial, int index) : 
     x(pos_x_inicial + (index * ESPACO_ENTRE_OS_CANOS)), 
-    altura_cima(rand() % 200 + 50), 
-    largura(100), 
+    altura_cima(rand() % 200 + 50),
     tamanho_buraco(250),
     canoCima(al_load_bitmap(PIPE1_IMG_PATH.c_str())),
     canoBaixo(al_load_bitmap(PIPE2_IMG_PATH.c_str()))
@@ -30,6 +29,7 @@ Canos::Canos(int pos_x_inicial, int index) :
     }
     
     altura_baixo = SCREEN_HEIGHT - altura_cima - tamanho_buraco - ALTURA_BASE;
+    this->largura = al_get_bitmap_width(canoCima);
 }
 
 Canos::~Canos(){
