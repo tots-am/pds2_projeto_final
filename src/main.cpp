@@ -293,7 +293,11 @@ int main(){
                         state = inScoreBoard;
                     }
                     else if(B_irProfile.isMouseHovering(mouse_x, mouse_y)) state = inProfileScreen;
-                    else if(CaixaDeTexto.isMouseHovering(mouse_x, mouse_y)) CaixaDeTexto.switchActive();
+                    else if(CaixaDeTexto.isMouseHovering(mouse_x, mouse_y)) {
+                        CaixaDeTexto.switchActive();
+                        if(CaixaDeTexto.isActive()) CaixaDeTexto.set_cor(WHITE);
+                        else CaixaDeTexto.set_cor(PASTEL_WHITE);
+                    }
                     break;
 
                 case inGameOver:
