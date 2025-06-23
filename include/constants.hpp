@@ -41,7 +41,8 @@ const int ALTURA_BASE = 50;                  // Altura da base (pixels)
 constexpr int NUM_CANOS = 4;                 // Numero de canos renderizados simultaneamente
 constexpr int VELOCIDADE_CANO = 100;         // Velocidade do Cano (pixels/frame)
 constexpr int ESPACO_ENTRE_OS_CANOS = 250;   // Espaço entre os Canos (pixels)
+constexpr int TAMANHO_BURACO_CANOS = 150;    // Tamanho do buraco entre o cano superior e inferior (pixels)
 const float GRAVIDADE = 800.0f;              // Define a aceleração da gravidade
-const float JUMPSPEED = -300.0f;             // Define a velocidade instantanea ao pular
+const float JUMPSPEED = -350.0f;             // Define a velocidade instantanea ao pular
 
 #endif
