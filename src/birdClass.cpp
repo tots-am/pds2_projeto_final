@@ -37,7 +37,7 @@ Bird::~Bird(){
 // Funções
 
 void Bird::forced_draw(float pos_x, float pos_y) {
-    al_draw_bitmap(bird, pos_x, pos_y, 0);
+    al_draw_bitmap_region(bird, 0, 0, 34, 24, pos_x, pos_y, 0);
 }
 
 void Bird::reset_position(float pos_x, float pos_y) {

@@ -94,13 +94,13 @@ int main(){
     Button B_irStartMenu(50, 120, fontePixelify.getfonte(), WHITE);
     Button B_irScoreboard(50, 120, fontePixelify.getfonte(), WHITE);
     Button B_irProfile(50, 120, fontePixelify.getfonte(), WHITE);
-    Button CaixaDeTexto(36, 440, fontePixelify.getfonte(), PASTEL_WHITE);
+    Button CaixaDeTexto(40, 440, fontePixelify.getfonte(), PASTEL_WHITE);
     
     // Seção para carregar imagens
     Imagem base(BASE_IMG_PATH);
     Imagem background(BACKGROUND_IMG_PATH);
     //Imagem titulo(TITLE_IMG_PATH);
-    Imagem gameover(GAMEOVER_IMG_PATH);
+    //Imagem gameover(GAMEOVER_IMG_PATH);
 
     // Instanciando Entidades
     Bird bird((float)SCREEN_WIDTH/4, (float)SCREEN_HEIGHT/2);
@@ -150,8 +150,8 @@ int main(){
             {
                 case inStartMenu:    
                     //titulo.exibir((float)SCREEN_WIDTH/2, (float)SCREEN_HEIGHT/3);
-                    al_draw_filled_rounded_rectangle(150, 200, 650, 470, 10, 10, ORANGE);
-                    al_draw_rounded_rectangle(150, 200, 650, 470, 10, 10, PASTEL_WHITE, 5);
+                    al_draw_filled_rounded_rectangle(150, 200, 650, 460, 10, 10, ORANGE);
+                    al_draw_rounded_rectangle(150, 200, 650, 460, 10, 10, PASTEL_WHITE, 5);
                     B_irProfile.draw(200, 400, 0, "perfil", B_irProfile.get_cor());
                     B_irScoreboard.draw(480, 400, 0, "placar", B_irScoreboard.get_cor());
                     fonteFlappy.escrever(
@@ -208,7 +208,11 @@ int main(){
                         SCREEN_WIDTH/2, (SCREEN_HEIGHT/2 + 20),
                         WHITE, ALLEGRO_ALIGN_CENTER
                     );
-                    gameover.exibir((float)(SCREEN_WIDTH-gameover.largura)/2, 210);
+                    fonteFlappy.escrever(
+                        "GAME OVER",
+                        SCREEN_WIDTH/2, 120, 
+                        WHITE, ALLEGRO_ALIGN_CENTER
+                    );
                     bird.draw();
                     break;
                 
@@ -219,12 +223,23 @@ int main(){
                     break;
                 
                 case inProfileScreen:
-                    al_draw_filled_rounded_rectangle(150, 200, 650, 470, 10, 10, ORANGE);
-                    al_draw_rounded_rectangle(150, 200, 650, 470, 10, 10, PASTEL_WHITE, 5);
-                    if(playerName.empty()){
-                        CaixaDeTexto.draw(180, 246, 1, "digite seu nome aqui", LIGHT_GREY);
+                    al_draw_filled_rounded_rectangle(150, 200, 650, 500, 10, 10, ORANGE);
+                    al_draw_rounded_rectangle(150, 200, 650, 500, 10, 10, PASTEL_WHITE, 5);
+                    fontePixelify.escrever(
+                        "Jogando como",
+                        SCREEN_WIDTH/2, 205,
+                        WHITE, ALLEGRO_ALIGN_CENTER
+                    );
+                    fonteFlappy.escrever(
+                        "PERFIL",
+                        SCREEN_WIDTH/2, 120, 
+                        WHITE, ALLEGRO_ALIGN_CENTER
+                    );
+                    if(playerName.empty() && !CaixaDeTexto.isActive()){
+                        CaixaDeTexto.draw(180, 246, 1, "clique para editar", LIGHT_GREY);
                     } else CaixaDeTexto.draw(180, 246, 1, playerName, BLACK);
-                    B_irStartMenu.draw(340, 450, 0, "inicio", B_irStartMenu.get_cor());
+                    B_irStartMenu.draw(340, 440, 0, "inicio", B_irStartMenu.get_cor());
+                    bird.forced_draw(180, 300);
                     break;
             }
             al_flip_display();
@@ -260,7 +275,7 @@ int main(){
         }
         // Teclado do player
         else if(event.type == ALLEGRO_EVENT_KEY_CHAR){
-            if(state == inStartMenu && CaixaDeTexto.isActive()){
+            if(state == inProfileScreen && CaixaDeTexto.isActive()){
                 switch(event.keyboard.keycode){
                     case ALLEGRO_KEY_BACKSPACE:
                         if(!playerName.empty()){
@@ -294,11 +309,6 @@ int main(){
                         state = inScoreBoard;
                     }
                     else if(B_irProfile.isMouseHovering(mouse_x, mouse_y)) state = inProfileScreen;
-                    else if(CaixaDeTexto.isMouseHovering(mouse_x, mouse_y)) {
-                        CaixaDeTexto.switchActive();
-                        if(CaixaDeTexto.isActive()) CaixaDeTexto.set_cor(WHITE);
-                        else CaixaDeTexto.set_cor(PASTEL_WHITE);
-                    }
                     break;
 
                 case inGameOver:
@@ -318,6 +328,11 @@ int main(){
 
                 case inProfileScreen:
                     if(B_irStartMenu.isMouseHovering(mouse_x, mouse_y)) state = inStartMenu;
+                    else if(CaixaDeTexto.isMouseHovering(mouse_x, mouse_y)) {
+                        CaixaDeTexto.switchActive();
+                        if(CaixaDeTexto.isActive()) CaixaDeTexto.set_cor(WHITE);
+                        else CaixaDeTexto.set_cor(PASTEL_WHITE);
+                    }
                     break;
 
                 case inGame:
