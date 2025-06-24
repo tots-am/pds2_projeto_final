@@ -42,7 +42,6 @@ class Bird{
      * 
      * @param pos_x_inicial Coordenada horizontal inicial
      * @param pos_y_inicial Coordenada vertical inicial
-     * @param bird_img_path Caminho para o asset/bitmap.
      * @throw std::runtime_error caso o carregamento do bitmap do passáro falhar.
      */
     Bird(float pos_x_inicial, float pos_y_inicial);
