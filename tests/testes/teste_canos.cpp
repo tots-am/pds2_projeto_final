@@ -1,4 +1,3 @@
-//#define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
 #include "doctest.h"
 
 #include "canos.hpp"
@@ -7,7 +6,7 @@
 #include <allegro5/allegro_image.h>
 
 TEST_CASE("Testa construção de Canos e getters") {
-    al_init();                  // Inicializa Allegro
+    al_init();                  // Inicializa   Allegro
     al_init_image_addon();     // Inicializa addon de imagens
 
     Canos c1(SCREEN_WIDTH, 0);
@@ -31,7 +30,7 @@ TEST_CASE("Testa reset_position dos canos") {
         Canos(SCREEN_WIDTH, 2)
     };
 
-    Canos::reset_position(canos, numCanos);
+    canos[0].reset_position(canos, numCanos);
 
     for (int i = 0; i < numCanos; i++) {
         CHECK(canos[i].get_x() == SCREEN_WIDTH + (i * ESPACO_ENTRE_OS_CANOS));
@@ -55,7 +54,7 @@ TEST_CASE("Testa atualização da posição dos canos") {
     double deltaTime = 0.1;
 
     int x_anterior = canos[0].get_x();
-    Canos::atualizar(canos, numCanos, deltaTime, tempoInicial);
+    canos[0].atualizar(canos, numCanos, deltaTime, tempoInicial);
     int x_atual = canos[0].get_x();
 
     CHECK(x_atual < x_anterior); // Deve ter andado para a esquerda
