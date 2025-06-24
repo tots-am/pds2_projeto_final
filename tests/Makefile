@@ -46,7 +46,7 @@ $(OBJ_DIR) $(BUILD_DIR):
 
 # Limpar tudo
 clean:
-	rm -f $(OBJ_DIR)/*.o $(OBJ_DIR)/*.d $(TARGET)
+	rm -f $(OBJ_DIR)/*.o $(OBJ_DIR)/*.d $(TARGET) test_db.txt
 
 # Rodar os testes
 run: $(TARGET)

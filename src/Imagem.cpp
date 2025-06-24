@@ -1,5 +1,5 @@
 #include "Imagem.hpp"
-
+#include <exception>
 using namespace std;
 
 Imagem::Imagem() :
@@ -13,7 +13,7 @@ Imagem::Imagem(const string img_path) :
 {
     ALLEGRO_BITMAP * img = al_load_bitmap(img_path.c_str());
     if(img == nullptr){
-        cout << "Erro ao carregar imagem" << img_path << endl;
+        throw std::runtime_error("Erro ao carregar imagem");
     }
     this->imagem = img;
     this->largura = al_get_bitmap_width(imagem);

@@ -1,32 +1,56 @@
-//#define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
 #include "doctest.h"
 #include "button.hpp"
 
-//simulando dependencias graficas
-ALLEGRO_COLOR cor = al_map_rgb(255,255,255); //cor branca
-ALLEGRO_FONT *fonte = nullptr;
+#include <allegro5/allegro.h>
+#include <allegro5/allegro_font.h>
+#include <allegro5/allegro_ttf.h>
 
-TEST_CASE("Testando classe geral"){
-    Button button(100, 200, fonte, cor);
+// Inicialização de Allegro e carregamento da fonte
+void setup_allegro_button_test() {
+    static bool initialized = false;
+    if (!initialized) {
+        REQUIRE(al_init());
+        REQUIRE(al_init_font_addon());
+        REQUIRE(al_init_ttf_addon());
+        REQUIRE(al_init_primitives_addon());
+        initialized = true;
+    }
+}
 
-    SUBCASE("Testando hover do mouse"){// testando função isHovering que retorna bool 
-        button.draw(50,50,0);
-        CHECK(button.isMouseHovering(100,100) == true); // o mouse está em cima do botao 
-        CHECK(button.isMouseHovering(10,10) == false); // o mouse nao está em cima do botao
+TEST_CASE("Testando classe geral") {
+    setup_allegro_button_test();
+    ALLEGRO_DISPLAY *display = al_create_display(800, 600);
+    REQUIRE_MESSAGE(display != nullptr, "Falha ao criar display Allegro");
+
+    ALLEGRO_COLOR cor = al_map_rgb(255, 255, 255); // cor branca
+    ALLEGRO_FONT* fonte = al_create_builtin_font();
+    REQUIRE_MESSAGE(fonte != nullptr, "Falha ao criar fonte interna");
+
+    Button button(50, 100, fonte, cor);
+
+    SUBCASE("Testando hover do mouse") {
+        button.draw(0, 0, 0);  // Necessário para definir x1, y1, x2, y2
+        CHECK(button.isMouseHovering(10, 10) == true);     // Dentro do botão
+        CHECK(button.isMouseHovering(300, 300) == false);  // Fora do botão
     }
-    SUBCASE("Testando ativação do botao"){ //testando função isActive e swtichActive
-        CHECK(button.isActive() ==  false); //botao começa inativo
-        button.switchActive(); //ativa botao
-        CHECK(button.isActive == true); //botao deve estar ativo
-        button.switchActive(); //desativa botao ligado
-        CHECK(button.isActive() == false); //botao deve estar desativado
+
+    SUBCASE("Testando ativação do botão") {
+        CHECK(button.isActive() == false);  // Inicialmente inativo
+        button.switchActive();
+        CHECK(button.isActive() == true);
+        button.switchActive();
+        CHECK(button.isActive() == false);
     }
-    SUBCASE("Testando funções relativas à cor"){ //get_cor e ser_cor
-        ALLEGRO_COLOR cor2 = al_map_rgb(255,0,0); //cor vermelha
-        button.set_cor(cor2); //uma nova cor
-        ALLEGRO_COLOR cor_agora = button.get_cor; //indica a cor atual do botao
-        CHECK(cor_agora.r == doctest::Approx(cor2.r));
-        CHECK(cor_agora.g == doctest::Approx(cor2.g));
-        CHECK(cor_agora.b == doctest::Approx(cor2.b));
+
+    SUBCASE("Testando funções relativas à cor") {
+        ALLEGRO_COLOR cor2 = al_map_rgb(255, 0, 0); // vermelho
+        button.set_cor(cor2);
+        ALLEGRO_COLOR cor_atual = button.get_cor();
+        CHECK(cor_atual.r == doctest::Approx(cor2.r));
+        CHECK(cor_atual.g == doctest::Approx(cor2.g));
+        CHECK(cor_atual.b == doctest::Approx(cor2.b));
     }
+
+    al_destroy_font(fonte);
+    al_destroy_display(display);
 }

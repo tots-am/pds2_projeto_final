@@ -1,7 +1,7 @@
-//#define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
 #include "doctest.h"
 #include "db.hpp"
 #include <cstdio>
+#include <fstream>
 
 const std::string arquivo_teste = "test_db.txt"; //declaração do arquivo a ser manuseado
 
@@ -25,10 +25,10 @@ TEST_CASE("Test DB,CRUD") { //relativo à criação, leitura, update e delete do
         CHECK(registros.size() == 5);
         CHECK(registros[0].first == "Vini");   // confere ordenaçãeo dos dados
         CHECK(registros[0].second == 150);
-        CHECK(registros[1].first == "Isabela");
-        CHECK(registros[1].second == 120);
-        CHECK(registros[2].first == "Tomas");
-        CHECK(registros[2].second == 100); //so fiz os primeiros tres pela simplicidade 
+        CHECK(registros[1].first == "Yuri");
+        CHECK(registros[1].second == 140);
+        CHECK(registros[2].first == "Isabela");
+        CHECK(registros[2].second == 120); //so fiz os primeiros tres pela simplicidade 
     }
     SUBCASE("Buscar high score") {
         db.adicionar("Chaimo", 90);
@@ -39,4 +39,5 @@ TEST_CASE("Test DB,CRUD") { //relativo à criação, leitura, update e delete do
         int notFound = db.buscarHighScore("Desconhecido"); //chamando jogador nao presente no db
         CHECK(notFound == -1); //o programa deve retornar isso
     }
+    limparArquivo();
 }
