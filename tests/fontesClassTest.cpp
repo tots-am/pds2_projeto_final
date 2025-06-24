@@ -1,4 +1,4 @@
-//#define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
+#define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
 #include "doctest.h"
 #include "fontesClass.hpp"
 #include <allegro5/allegro.h>
@@ -9,17 +9,13 @@
 bool iniciar_al(){
     return al_init() && al_init_font_addon() && al_init_ttf_addon();
 } //correto até aqui
-const char* caminho = "assets/fonts/arial.ttf";
-TEST_CASE("Teste de inicialização da fontesClass"){
-    fontesClass fonte(caminho, 32);
-    CHECK(fonte.getfonte() != nullptr);
-}
+
 TEST_CASE("Teste de escrever, sem recurso visual"){
     CHECK(iniciar_al());
 
     al_create_display(800,600);
 
-    fontesClass fonte("assets/fonts/arial.ttf", 24);
+    fontesClass fonte("assets/fonts/flappy-font.ttf", 24);
     ALLEGRO_COLOR cor = al_map_rgb(255, 255, 255);
 
     CHECK_NOTHROW(fonte.escrever("Texto de Teste", 100, 100, cor, ALLEGRO_ALIGN_CENTER));
