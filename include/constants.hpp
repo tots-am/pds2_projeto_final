@@ -7,15 +7,17 @@
 // Tamanho maximo que o nome do jogador pode ter
 constexpr int MAX_NAME_SIZE = 16;
 
-// Caminho para Assets
-const std::string PIPE1_IMG_PATH = "./assets/sprites/pipe-green.png";
-const std::string PIPE2_IMG_PATH = "./assets/sprites/pipe-green-down.png";
-const std::string TITLE_IMG_PATH = "./assets/sprites/title.png";
-const std::string GAMEOVER_IMG_PATH = "./assets/sprites/gameover.png";
-const std::string BACKGROUND_IMG_PATH = "./assets/sprites/background-800-600.png";
-const std::string BASE_IMG_PATH = "./assets/sprites/base-800-50.png";
-const std::string BIRD_SPRITESHEET_PATH = "./assets/sprites/bird_spritesheet.png";
-
+// Caminhos
+  // Assets
+    const std::string PIPE1_IMG_PATH = "./assets/sprites/pipe-green.png";
+    const std::string PIPE2_IMG_PATH = "./assets/sprites/pipe-green-down.png";
+    const std::string TITLE_IMG_PATH = "./assets/sprites/title.png";
+    const std::string GAMEOVER_IMG_PATH = "./assets/sprites/gameover.png";
+    const std::string BACKGROUND_IMG_PATH = "./assets/sprites/background-800-600.png";
+    const std::string BASE_IMG_PATH = "./assets/sprites/base-800-50.png";
+    const std::string BIRD_SPRITESHEET_PATH = "./assets/sprites/bird_spritesheet.png";
+  // Db
+    const std::string DB_PATH = "./db/db.txt";
 // Cores
 const ALLEGRO_COLOR BLACK = al_map_rgb(0,0,0);
 const ALLEGRO_COLOR WHITE = al_map_rgb(255,255,255);

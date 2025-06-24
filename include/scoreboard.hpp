@@ -39,7 +39,7 @@ class Scoreboard{
      * @note Inicia numero de players de acordo com a database existente
      * @note Inicia DB com um path pré-definido @see constants.hpp
      */
-    Scoreboard(ALLEGRO_FONT *fonte, ALLEGRO_FONT *fonteCabecalho);
+    Scoreboard(ALLEGRO_FONT *fonte, ALLEGRO_FONT *fonteCabecalho, string db_path);
 
     /**
      * @brief Desenha o Placar na tela, mas sem renderizar as informações dos jogadores

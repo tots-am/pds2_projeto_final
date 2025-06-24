@@ -4,11 +4,11 @@
 
 const int NUM_LETRAS = 32;
 
-Scoreboard::Scoreboard(ALLEGRO_FONT *fonte, ALLEGRO_FONT *fonteCabecalho) :
+Scoreboard::Scoreboard(ALLEGRO_FONT *fonte, ALLEGRO_FONT *fonteCabecalho, std::string db_path) :
     num_players(0),
     fonte(fonte),
     fonteCabecalho(fonteCabecalho),
-    database("./db/db.txt")
+    database(db_path)
 {
     this->updateNumPlayers();
 }

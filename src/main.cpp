@@ -106,7 +106,7 @@ int main(){
 
     // Instanciando Entidades
     Bird bird((float)SCREEN_WIDTH/4, (float)SCREEN_HEIGHT/2);
-    Scoreboard scoreboard(fontePixelify.getfonte(), fonteFlappy.getfonte());
+    Scoreboard scoreboard(fontePixelify.getfonte(), fonteFlappy.getfonte(), DB_PATH);
     Canos canos[NUM_CANOS] = {Canos(SCREEN_WIDTH, 0), Canos(SCREEN_WIDTH, 1), Canos(SCREEN_WIDTH, 2), Canos(SCREEN_WIDTH, 3)};
 
     // Especificar de onde vem os eventos
