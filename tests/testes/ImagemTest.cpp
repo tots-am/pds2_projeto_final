@@ -42,7 +42,9 @@ TEST_CASE("Imagem com caminho válido") {
 
     FILE* file = fopen(caminho_valido.c_str(), "r");
     if (!file) {
-        WARN("Imagem de teste não encontrada: " << caminho_valido);
+        std::string msg = "Imagem de teste não encontrada: " + caminho_valido;
+        INFO(msg);
+        WARN(false);
         return; 
     }
     fclose(file);

@@ -15,11 +15,11 @@ TEST_CASE("Testando classe geral"){
         CHECK(button.isMouseHovering(10,10) == false); // o mouse nao está em cima do botao
     }
     SUBCASE("Testando ativação do botao"){ //testando função isActive e swtichActive
-        CHECK(button.isActive ==  false); //botao começa inativo
+        CHECK(button.isActive() ==  false); //botao começa inativo
         button.switchActive(); //ativa botao
         CHECK(button.isActive == true); //botao deve estar ativo
         button.switchActive(); //desativa botao ligado
-        CHECK(button.isActive == false); //botao deve estar desativado
+        CHECK(button.isActive() == false); //botao deve estar desativado
     }
     SUBCASE("Testando funções relativas à cor"){ //get_cor e ser_cor
         ALLEGRO_COLOR cor2 = al_map_rgb(255,0,0); //cor vermelha

@@ -1,4 +1,4 @@
-#define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
+//#define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
 #include "doctest.h"
 #include "db.hpp"
 #include <cstdio>
@@ -39,3 +39,4 @@ TEST_CASE("Test DB,CRUD") { //relativo à criação, leitura, update e delete do
         int notFound = db.buscarHighScore("Desconhecido"); //chamando jogador nao presente no db
         CHECK(notFound == -1); //o programa deve retornar isso
     }
+}

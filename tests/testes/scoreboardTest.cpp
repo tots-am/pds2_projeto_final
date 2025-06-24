@@ -17,3 +17,4 @@ TEST_CASE("Teste Scoreboard - Informação do jogador") {
     Scoreboard sb(fonte, fonte);
 
     //ta dando mjuito problema 
+}
