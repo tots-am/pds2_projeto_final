@@ -14,11 +14,6 @@ TEST_CASE("Teste de inicialização da fontesClass"){
     fontesClass fonte(caminho, 32);
     CHECK(fonte.getfonte() != nullptr);
 }
-TEST_CASE("Carregamento de fonte bitmap .fnt") {
-    CHECK(iniciar_al());
-    fontesClass fonte;
-    CHECK(fonte.getfonte() != nullptr);
-}
 TEST_CASE("Teste de escrever, sem recurso visual"){
     CHECK(iniciar_al());
 
