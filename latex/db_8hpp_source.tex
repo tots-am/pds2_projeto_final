@@ -1,0 +1,35 @@
+\doxysection{db.\+hpp}
+\hypertarget{db_8hpp_source}{}\label{db_8hpp_source}\index{include/db.hpp@{include/db.hpp}}
+\mbox{\hyperlink{db_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#ifndef\ DB\_HPP}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#define\ DB\_HPP}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <utility>}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00017\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classDB}{DB}}\ \{}
+\DoxyCodeLine{00018\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classDB}{DB}}(\textcolor{keyword}{const}\ std::string\&\ path\ =\ \textcolor{stringliteral}{"{}./db/db.txt"{}});}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classDB_a583aa4310177b9677da21d9d4e9f130d}{adicionar}}(\textcolor{keyword}{const}\ std::string\&\ nome,\ \textcolor{keywordtype}{int}\ high\_score);}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ std::vector<std::pair<std::string,\ int>>\ \mbox{\hyperlink{classDB_a3047ecc1a9b96f05733508dacf388602}{lerTodos}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classDB_ab89d4f78d73a41a349b9083ee3e5ef96}{buscarHighScore}}(\textcolor{keyword}{const}\ std::string\&\ nome)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classDB_a2eb29d1962db7c2c7c64c19cc8f38905}{atualizar}}(\textcolor{keyword}{const}\ std::string\&\ nome,\ \textcolor{keywordtype}{int}\ novo\_high\_score);}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classDB_a5818484db7a99c18219834611ae8c63a}{remover}}(\textcolor{keyword}{const}\ std::string\&\ nome);}
+\DoxyCodeLine{00059\ }
+\DoxyCodeLine{00060\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ std::string\ path;}
+\DoxyCodeLine{00062\ }
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ salvarTodos(\textcolor{keyword}{const}\ std::vector<std::pair<std::string,\ int>>\&\ registros)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00068\ \};}
+\DoxyCodeLine{00069\ }
+\DoxyCodeLine{00070\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

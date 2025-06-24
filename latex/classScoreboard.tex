@@ -1,0 +1,84 @@
+\doxysection{Scoreboard Class Reference}
+\hypertarget{classScoreboard}{}\label{classScoreboard}\index{Scoreboard@{Scoreboard}}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classScoreboard_ab63dd0fa1f0bae1c206a7c226e96c153}{Scoreboard}} (ALLEGRO\+\_\+\+FONT \texorpdfstring{$\ast$}{*}fonte, ALLEGRO\+\_\+\+FONT \texorpdfstring{$\ast$}{*}fonte\+Cabecalho)
+\begin{DoxyCompactList}\small\item\em Construtor principal que cria o \doxylink{classScoreBoard}{Score\+Board} com uma fonte do texto e do cabeçalho pré definidas. \end{DoxyCompactList}\item 
+\Hypertarget{classScoreboard_ae1927177d49a06c89beb2446789a889f}\label{classScoreboard_ae1927177d49a06c89beb2446789a889f} 
+void {\bfseries draw\+Scoreboard} ()
+\begin{DoxyCompactList}\small\item\em Desenha o Placar na tela, mas sem renderizar as informações dos jogadores. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classScoreboard_abda112fc9b0e3d02d5ee97684a265457}{exibe\+Infos}} ()
+\begin{DoxyCompactList}\small\item\em Escreve na tela as informações dos jogadores, em ordem do maior score para o menor. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classScoreboard_a31599183308e998209cf7675705cae38}{update\+Player\+Info}} (string player, int score)
+\begin{DoxyCompactList}\small\item\em Atualiza informações de um jogador específico, caso ele tenha batido seu High Score. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classScoreboard_ab63dd0fa1f0bae1c206a7c226e96c153}\label{classScoreboard_ab63dd0fa1f0bae1c206a7c226e96c153} 
+\index{Scoreboard@{Scoreboard}!Scoreboard@{Scoreboard}}
+\index{Scoreboard@{Scoreboard}!Scoreboard@{Scoreboard}}
+\doxysubsubsection{\texorpdfstring{Scoreboard()}{Scoreboard()}}
+{\footnotesize\ttfamily Scoreboard\+::\+Scoreboard (\begin{DoxyParamCaption}\item[{ALLEGRO\+\_\+\+FONT \texorpdfstring{$\ast$}{*}}]{fonte,  }\item[{ALLEGRO\+\_\+\+FONT \texorpdfstring{$\ast$}{*}}]{fonte\+Cabecalho }\end{DoxyParamCaption})}
+
+
+
+Construtor principal que cria o \doxylink{classScoreBoard}{Score\+Board} com uma fonte do texto e do cabeçalho pré definidas. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em fonte} & A fonte que será usada para exibir informações do placar \\
+\hline
+{\em fonte\+Cabecalho} & A fonte que será usada no cabeçalho da tela (escrito "{}placar"{}) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Note}
+Inicia numero de players de acordo com a database existente 
+
+Inicia \doxylink{classDB}{DB} com um path pré-\/definido 
+\end{DoxyNote}
+\begin{DoxySeeAlso}{See also}
+\doxylink{constants_8hpp}{constants.\+hpp} 
+\end{DoxySeeAlso}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classScoreboard_abda112fc9b0e3d02d5ee97684a265457}\label{classScoreboard_abda112fc9b0e3d02d5ee97684a265457} 
+\index{Scoreboard@{Scoreboard}!exibeInfos@{exibeInfos}}
+\index{exibeInfos@{exibeInfos}!Scoreboard@{Scoreboard}}
+\doxysubsubsection{\texorpdfstring{exibeInfos()}{exibeInfos()}}
+{\footnotesize\ttfamily void Scoreboard\+::exibe\+Infos (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Escreve na tela as informações dos jogadores, em ordem do maior score para o menor. 
+
+\begin{DoxyNote}{Note}
+Exibe apenas o top 5, devido as limitações de espaço 
+\end{DoxyNote}
+\Hypertarget{classScoreboard_a31599183308e998209cf7675705cae38}\label{classScoreboard_a31599183308e998209cf7675705cae38} 
+\index{Scoreboard@{Scoreboard}!updatePlayerInfo@{updatePlayerInfo}}
+\index{updatePlayerInfo@{updatePlayerInfo}!Scoreboard@{Scoreboard}}
+\doxysubsubsection{\texorpdfstring{updatePlayerInfo()}{updatePlayerInfo()}}
+{\footnotesize\ttfamily void Scoreboard\+::update\+Player\+Info (\begin{DoxyParamCaption}\item[{string}]{player,  }\item[{int}]{score }\end{DoxyParamCaption})}
+
+
+
+Atualiza informações de um jogador específico, caso ele tenha batido seu High Score. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em player} & String que guarda o nome do jogador \\
+\hline
+{\em score} & A pontuação que o jogador teve após o final da rodada \\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Note}
+Deve ser chamado sempre que o Jogador morrer 
+\end{DoxyNote}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/\mbox{\hyperlink{scoreboard_8hpp}{scoreboard.\+hpp}}\item 
+src/scoreboard.\+cpp\end{DoxyCompactItemize}

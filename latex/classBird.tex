@@ -1,0 +1,266 @@
+\doxysection{Bird Class Reference}
+\hypertarget{classBird}{}\label{classBird}\index{Bird@{Bird}}
+
+
+Representa o personagem principal do jogo, controlado pelo jogador.  
+
+
+
+
+{\ttfamily \#include $<$bird\+Class.\+hpp$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classBird_a74e3a419b36af124d666d1cb10cd60e8}{Bird}} (float pos\+\_\+x\+\_\+inicial, float pos\+\_\+y\+\_\+inicial)
+\begin{DoxyCompactList}\small\item\em Construtor principal que cria o passáro em uma posição inicial definida. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classBird_a7c1b36856fe3a89d6098ec2b8a10ae8d}{Bird}} ()
+\begin{DoxyCompactList}\small\item\em Construtor padrão. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classBird_a7d10693b91a2736611c37f1ef205b911}{\texorpdfstring{$\sim$}{\string~}\+Bird}} ()
+\begin{DoxyCompactList}\small\item\em Destrutor. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{classBird_a0e64609736b4d69bc435bffc4a98f094}{get\+\_\+pos\+\_\+y}} () const
+\item 
+float \mbox{\hyperlink{classBird_a9fc7514f3f92e806b1ef59a5b114e363}{get\+\_\+pos\+\_\+x}} () const
+\item 
+float \mbox{\hyperlink{classBird_aa2c14abb26069e264958d1c29f105fe0}{get\+\_\+vel\+\_\+y}} () const
+\item 
+bool \mbox{\hyperlink{classBird_a3be0d98df2b40f26014154c25a4489c2}{borda\+\_\+hit}} (\mbox{\hyperlink{classCanos}{Canos}} \texorpdfstring{$\ast$}{*}lista\+\_\+objetos, float width\+\_\+base) const
+\begin{DoxyCompactList}\small\item\em Verifica se o objeto está colidindo com as bordas. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classBird_a6d30c40062b40bfe8b4ef47d1aa75ebb}{get\+\_\+path}} () const
+\item 
+ALLEGRO\+\_\+\+BITMAP \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classBird_ab4f9952776f74afe9524835eac1a3b58}{get\+\_\+bitmap}} () const
+\begin{DoxyCompactList}\small\item\em Acesso ao recurso de bitmap do Allegro. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classBird_aaf8f7cdda8f072ee9d2643da8dc71ad6}{jump}} ()
+\begin{DoxyCompactList}\small\item\em Aplica um impulso instantâneo no personagem. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classBird_aac26f9eb787cc6f8e8ba2ad36af66cde}{gravity}} ()
+\begin{DoxyCompactList}\small\item\em Aplica à velocidade atual uma alteração que simula a gravidade. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classBird_af87489751c6a04d48409ff4c7f5981be}{draw}} ()
+\begin{DoxyCompactList}\small\item\em Desenha o personagem relacionando o sprite e o centro(posições x e y) \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classBird_a739a4efb4f2a6876d246e6de3a4d3438}{update\+\_\+position}} (double delta\+Time)
+\begin{DoxyCompactList}\small\item\em Faz o update da posiçao vertical do objeto, a partir da velocidade y calculada até o momento. \end{DoxyCompactList}\item 
+\Hypertarget{classBird_a8e70e4d1cfac20c7725e132dbb738429}\label{classBird_a8e70e4d1cfac20c7725e132dbb738429} 
+void {\bfseries forced\+\_\+draw} (float pos\+\_\+x, float pos\+\_\+y)
+\begin{DoxyCompactList}\small\item\em Desenha forçadamente o personagem em uma posição definida x e y. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classBird_a5dcf0716a99594bb0cc699a19aed3b6b}{reset\+\_\+position}} (float pos\+\_\+x, float pos\+\_\+y)
+\begin{DoxyCompactList}\small\item\em Diferente do update(), aqui pode-\/se atribuir a posição, inclusive horizontal do personagem. \end{DoxyCompactList}\item 
+\Hypertarget{classBird_a716ddcc902818e8f17cedad97140c9ad}\label{classBird_a716ddcc902818e8f17cedad97140c9ad} 
+\mbox{\hyperlink{structBirdColor}{Bird\+Color}} {\bfseries get\+Cor} ()
+\begin{DoxyCompactList}\small\item\em Retorna a cor do passaro. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classBird_a7964cf52ccff8cc584da1bd57a5cf4c5}{set\+Cor}} (\mbox{\hyperlink{structBirdColor}{Bird\+Color}} cor)
+\begin{DoxyCompactList}\small\item\em Determina a cor do passaro. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Representa o personagem principal do jogo, controlado pelo jogador. 
+
+A classe é responsável por gerenciar sua própria simulação de física, a gravidade e o pulo, assim como se desenhar na tela e manter seu estado. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classBird_a74e3a419b36af124d666d1cb10cd60e8}\label{classBird_a74e3a419b36af124d666d1cb10cd60e8} 
+\index{Bird@{Bird}!Bird@{Bird}}
+\index{Bird@{Bird}!Bird@{Bird}}
+\doxysubsubsection{\texorpdfstring{Bird()}{Bird()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Bird\+::\+Bird (\begin{DoxyParamCaption}\item[{float}]{pos\+\_\+x\+\_\+inicial,  }\item[{float}]{pos\+\_\+y\+\_\+inicial }\end{DoxyParamCaption})}
+
+
+
+Construtor principal que cria o passáro em uma posição inicial definida. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pos\+\_\+x\+\_\+inicial} & Coordenada horizontal inicial \\
+\hline
+{\em pos\+\_\+y\+\_\+inicial} & Coordenada vertical inicial \\
+\hline
+{\em bird\+\_\+img\+\_\+path} & Caminho para o asset/bitmap. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std\+::runtime\+\_\+error} & caso o carregamento do bitmap do passáro falhar. \\
+\hline
+\end{DoxyExceptions}
+\Hypertarget{classBird_a7c1b36856fe3a89d6098ec2b8a10ae8d}\label{classBird_a7c1b36856fe3a89d6098ec2b8a10ae8d} 
+\index{Bird@{Bird}!Bird@{Bird}}
+\index{Bird@{Bird}!Bird@{Bird}}
+\doxysubsubsection{\texorpdfstring{Bird()}{Bird()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Bird\+::\+Bird (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Construtor padrão. 
+
+Construtor padrão que inicia todos os atributos como nulos (nullptr ou 0.\+0f) \Hypertarget{classBird_a7d10693b91a2736611c37f1ef205b911}\label{classBird_a7d10693b91a2736611c37f1ef205b911} 
+\index{Bird@{Bird}!````~Bird@{\texorpdfstring{$\sim$}{\string~}Bird}}
+\index{````~Bird@{\texorpdfstring{$\sim$}{\string~}Bird}!Bird@{Bird}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}Bird()}{\string~Bird()}}
+{\footnotesize\ttfamily Bird\+::\texorpdfstring{$\sim$}{\string~}\+Bird (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Destrutor. 
+
+Responsável por desalocar a memória do carregamento do BITMAP. \begin{DoxyNote}{Note}
+Possivelmente será retirado o carregamento do BITMAP após a implementação da classe de imagens. 
+\end{DoxyNote}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classBird_a3be0d98df2b40f26014154c25a4489c2}\label{classBird_a3be0d98df2b40f26014154c25a4489c2} 
+\index{Bird@{Bird}!borda\_hit@{borda\_hit}}
+\index{borda\_hit@{borda\_hit}!Bird@{Bird}}
+\doxysubsubsection{\texorpdfstring{borda\_hit()}{borda\_hit()}}
+{\footnotesize\ttfamily bool Bird\+::borda\+\_\+hit (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classCanos}{Canos}} \texorpdfstring{$\ast$}{*}}]{lista\+\_\+objetos,  }\item[{float}]{width\+\_\+base }\end{DoxyParamCaption}) const}
+
+
+
+Verifica se o objeto está colidindo com as bordas. 
+
+\begin{DoxyReturn}{Returns}
+Retorna TRUE se em contato com a borda, FALSE caso contrário. 
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+Ainda a ser implementado. 
+\end{DoxyNote}
+\Hypertarget{classBird_af87489751c6a04d48409ff4c7f5981be}\label{classBird_af87489751c6a04d48409ff4c7f5981be} 
+\index{Bird@{Bird}!draw@{draw}}
+\index{draw@{draw}!Bird@{Bird}}
+\doxysubsubsection{\texorpdfstring{draw()}{draw()}}
+{\footnotesize\ttfamily void Bird\+::draw (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Desenha o personagem relacionando o sprite e o centro(posições x e y) 
+
+\begin{DoxyNote}{Note}
+Não depende do tamanho do sprite, a função é capaz de desenhar a partir de qualquer carregamento. 
+\end{DoxyNote}
+\Hypertarget{classBird_ab4f9952776f74afe9524835eac1a3b58}\label{classBird_ab4f9952776f74afe9524835eac1a3b58} 
+\index{Bird@{Bird}!get\_bitmap@{get\_bitmap}}
+\index{get\_bitmap@{get\_bitmap}!Bird@{Bird}}
+\doxysubsubsection{\texorpdfstring{get\_bitmap()}{get\_bitmap()}}
+{\footnotesize\ttfamily ALLEGRO\+\_\+\+BITMAP \texorpdfstring{$\ast$}{*} Bird\+::get\+\_\+bitmap (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Acesso ao recurso de bitmap do Allegro. 
+
+\begin{DoxyReturn}{Returns}
+Retorna o ponteiro para o bitmap carregado. 
+\end{DoxyReturn}
+\Hypertarget{classBird_a6d30c40062b40bfe8b4ef47d1aa75ebb}\label{classBird_a6d30c40062b40bfe8b4ef47d1aa75ebb} 
+\index{Bird@{Bird}!get\_path@{get\_path}}
+\index{get\_path@{get\_path}!Bird@{Bird}}
+\doxysubsubsection{\texorpdfstring{get\_path()}{get\_path()}}
+{\footnotesize\ttfamily std\+::string Bird\+::get\+\_\+path (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\begin{DoxyReturn}{Returns}
+Retorna o caminho para o asset/bitmap. 
+\end{DoxyReturn}
+\Hypertarget{classBird_a9fc7514f3f92e806b1ef59a5b114e363}\label{classBird_a9fc7514f3f92e806b1ef59a5b114e363} 
+\index{Bird@{Bird}!get\_pos\_x@{get\_pos\_x}}
+\index{get\_pos\_x@{get\_pos\_x}!Bird@{Bird}}
+\doxysubsubsection{\texorpdfstring{get\_pos\_x()}{get\_pos\_x()}}
+{\footnotesize\ttfamily float Bird\+::get\+\_\+pos\+\_\+x (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\begin{DoxyReturn}{Returns}
+Retorna a posição x centro do personagem. 
+\end{DoxyReturn}
+\Hypertarget{classBird_a0e64609736b4d69bc435bffc4a98f094}\label{classBird_a0e64609736b4d69bc435bffc4a98f094} 
+\index{Bird@{Bird}!get\_pos\_y@{get\_pos\_y}}
+\index{get\_pos\_y@{get\_pos\_y}!Bird@{Bird}}
+\doxysubsubsection{\texorpdfstring{get\_pos\_y()}{get\_pos\_y()}}
+{\footnotesize\ttfamily float Bird\+::get\+\_\+pos\+\_\+y (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\begin{DoxyReturn}{Returns}
+Retorna a posição y centro do personagem. 
+\end{DoxyReturn}
+\Hypertarget{classBird_aa2c14abb26069e264958d1c29f105fe0}\label{classBird_aa2c14abb26069e264958d1c29f105fe0} 
+\index{Bird@{Bird}!get\_vel\_y@{get\_vel\_y}}
+\index{get\_vel\_y@{get\_vel\_y}!Bird@{Bird}}
+\doxysubsubsection{\texorpdfstring{get\_vel\_y()}{get\_vel\_y()}}
+{\footnotesize\ttfamily float Bird\+::get\+\_\+vel\+\_\+y (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\begin{DoxyReturn}{Returns}
+Retorna a velocidade em pixels por frames. 
+\end{DoxyReturn}
+\Hypertarget{classBird_aac26f9eb787cc6f8e8ba2ad36af66cde}\label{classBird_aac26f9eb787cc6f8e8ba2ad36af66cde} 
+\index{Bird@{Bird}!gravity@{gravity}}
+\index{gravity@{gravity}!Bird@{Bird}}
+\doxysubsubsection{\texorpdfstring{gravity()}{gravity()}}
+{\footnotesize\ttfamily void Bird\+::gravity (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Aplica à velocidade atual uma alteração que simula a gravidade. 
+
+Essa função há o intuito de simular a gravidade, mas não só isso, também adicionar ao game feel utilizando um método de gravidade assimétrica. Essa representa diferentes gravidades ao subir, e ao descer. Também foi adicionado uma especie de atrito que retira um pouco de velocidade a cada frame.
+
+\begin{DoxySeeAlso}{See also}
+update() 
+
+\doxylink{classBird_aaf8f7cdda8f072ee9d2643da8dc71ad6}{jump()} 
+\end{DoxySeeAlso}
+\Hypertarget{classBird_aaf8f7cdda8f072ee9d2643da8dc71ad6}\label{classBird_aaf8f7cdda8f072ee9d2643da8dc71ad6} 
+\index{Bird@{Bird}!jump@{jump}}
+\index{jump@{jump}!Bird@{Bird}}
+\doxysubsubsection{\texorpdfstring{jump()}{jump()}}
+{\footnotesize\ttfamily void Bird\+::jump (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Aplica um impulso instantâneo no personagem. 
+
+\begin{DoxyNote}{Note}
+A velocidade em y é definida ao invés de adicionada a velocidade atual, o que mantém a consistencia e previsibildiade dos pulos. 
+\end{DoxyNote}
+\Hypertarget{classBird_a5dcf0716a99594bb0cc699a19aed3b6b}\label{classBird_a5dcf0716a99594bb0cc699a19aed3b6b} 
+\index{Bird@{Bird}!reset\_position@{reset\_position}}
+\index{reset\_position@{reset\_position}!Bird@{Bird}}
+\doxysubsubsection{\texorpdfstring{reset\_position()}{reset\_position()}}
+{\footnotesize\ttfamily void Bird\+::reset\+\_\+position (\begin{DoxyParamCaption}\item[{float}]{pos\+\_\+x,  }\item[{float}]{pos\+\_\+y }\end{DoxyParamCaption})}
+
+
+
+Diferente do update(), aqui pode-\/se atribuir a posição, inclusive horizontal do personagem. 
+
+\begin{DoxySeeAlso}{See also}
+update() 
+\end{DoxySeeAlso}
+\Hypertarget{classBird_a7964cf52ccff8cc584da1bd57a5cf4c5}\label{classBird_a7964cf52ccff8cc584da1bd57a5cf4c5} 
+\index{Bird@{Bird}!setCor@{setCor}}
+\index{setCor@{setCor}!Bird@{Bird}}
+\doxysubsubsection{\texorpdfstring{setCor()}{setCor()}}
+{\footnotesize\ttfamily void Bird\+::set\+Cor (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structBirdColor}{Bird\+Color}}}]{cor }\end{DoxyParamCaption})}
+
+
+
+Determina a cor do passaro. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em cor} & Cor do passaro \\
+\hline
+\end{DoxyParams}
+\begin{DoxySeeAlso}{See also}
+\doxylink{structBirdColor}{Bird\+Color} 
+\end{DoxySeeAlso}
+\Hypertarget{classBird_a739a4efb4f2a6876d246e6de3a4d3438}\label{classBird_a739a4efb4f2a6876d246e6de3a4d3438} 
+\index{Bird@{Bird}!update\_position@{update\_position}}
+\index{update\_position@{update\_position}!Bird@{Bird}}
+\doxysubsubsection{\texorpdfstring{update\_position()}{update\_position()}}
+{\footnotesize\ttfamily void Bird\+::update\+\_\+position (\begin{DoxyParamCaption}\item[{double}]{delta\+Time }\end{DoxyParamCaption})}
+
+
+
+Faz o update da posiçao vertical do objeto, a partir da velocidade y calculada até o momento. 
+
+Também é responsável por definir as barreiras "{}físicas"{} do teto e chão que o personagem pode alcançar. \begin{DoxyWarning}{Warning}
+O tamanho da tela está definido arbritariamente, isso deve mudar. 
+\end{DoxyWarning}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/\mbox{\hyperlink{birdClass_8hpp}{bird\+Class.\+hpp}}\item 
+src/bird\+Class.\+cpp\end{DoxyCompactItemize}

@@ -1,0 +1,13 @@
+\doxysection{include/\+Imagem.hpp File Reference}
+\hypertarget{Imagem_8hpp}{}\label{Imagem_8hpp}\index{include/Imagem.hpp@{include/Imagem.hpp}}
+{\ttfamily \#include $<$string$>$}\newline
+{\ttfamily \#include $<$allegro5/allegro.\+h$>$}\newline
+{\ttfamily \#include $<$allegro5/allegro\+\_\+image.\+h$>$}\newline
+{\ttfamily \#include $<$iostream$>$}\newline
+Include dependency graph for Imagem.\+hpp\+:
+% FIG 0
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classImagem}{Imagem}}
+\begin{DoxyCompactList}\small\item\em Classe responsável por carregar, exibir e gerenciar imagens. \end{DoxyCompactList}\end{DoxyCompactItemize}

@@ -1,0 +1,71 @@
+\doxysection{bird\+Class.\+hpp}
+\hypertarget{birdClass_8hpp_source}{}\label{birdClass_8hpp_source}\index{include/birdClass.hpp@{include/birdClass.hpp}}
+\mbox{\hyperlink{birdClass_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ BIRD\_CLASS\_HPP}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ BIRD\_CLASS\_HPP}}
+\DoxyCodeLine{00004\ }
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <allegro5/allegro.h>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <allegro5/allegro\_image.h>}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ "{}canos.hpp"{}}}
+\DoxyCodeLine{00015\ \textcolor{keyword}{enum}\ \mbox{\hyperlink{structBirdColor}{BirdColor}}\{}
+\DoxyCodeLine{00016\ \ \ \ \ Yellow,}
+\DoxyCodeLine{00017\ \ \ \ \ Red,}
+\DoxyCodeLine{00018\ \ \ \ \ Blue}
+\DoxyCodeLine{00019\ \};}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00028\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classBird}{Bird}}\{}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keywordtype}{float}\ vel\_y;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keywordtype}{float}\ pos\_x,\ pos\_y;\ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00032\ \ \ \ \ std::string\ sprite;}
+\DoxyCodeLine{00033\ \ \ \ \ ALLEGRO\_BITMAP\ *bird;}
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keywordtype}{float}\ largura\_obj,\ altura\_obj;}
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keywordtype}{bool}\ isJumping;}
+\DoxyCodeLine{00036\ \ \ \ \ \mbox{\hyperlink{structBirdColor}{BirdColor}}\ cor;}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00048\ \ \ \ \ \mbox{\hyperlink{classBird_a7c1b36856fe3a89d6098ec2b8a10ae8d}{Bird}}(\textcolor{keywordtype}{float}\ pos\_x\_inicial,\ \textcolor{keywordtype}{float}\ pos\_y\_inicial);}
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00055\ \ \ \ \ \mbox{\hyperlink{classBird_a7c1b36856fe3a89d6098ec2b8a10ae8d}{Bird}}();}
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00063\ \ \ \ \ \mbox{\hyperlink{classBird_a7d10693b91a2736611c37f1ef205b911}{\string~Bird}}();}
+\DoxyCodeLine{00064\ }
+\DoxyCodeLine{00065\ \ \ \ \ }
+\DoxyCodeLine{00067\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{classBird_a0e64609736b4d69bc435bffc4a98f094}{get\_pos\_y}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00068\ }
+\DoxyCodeLine{00070\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{classBird_a9fc7514f3f92e806b1ef59a5b114e363}{get\_pos\_x}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00071\ }
+\DoxyCodeLine{00073\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{classBird_aa2c14abb26069e264958d1c29f105fe0}{get\_vel\_y}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00074\ }
+\DoxyCodeLine{00081\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classBird_a3be0d98df2b40f26014154c25a4489c2}{borda\_hit}}(\mbox{\hyperlink{classCanos}{Canos}}*\ lista\_objetos,\ \textcolor{keywordtype}{float}\ width\_base)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00082\ }
+\DoxyCodeLine{00084\ \ \ \ \ std::string\ \mbox{\hyperlink{classBird_a6d30c40062b40bfe8b4ef47d1aa75ebb}{get\_path}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00085\ }
+\DoxyCodeLine{00088\ \ \ \ \ ALLEGRO\_BITMAP\ *\mbox{\hyperlink{classBird_ab4f9952776f74afe9524835eac1a3b58}{get\_bitmap}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00089\ }
+\DoxyCodeLine{00096\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classBird_aaf8f7cdda8f072ee9d2643da8dc71ad6}{jump}}();}
+\DoxyCodeLine{00097\ }
+\DoxyCodeLine{00108\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classBird_aac26f9eb787cc6f8e8ba2ad36af66cde}{gravity}}();}
+\DoxyCodeLine{00109\ }
+\DoxyCodeLine{00112\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classBird_af87489751c6a04d48409ff4c7f5981be}{draw}}();}
+\DoxyCodeLine{00113\ }
+\DoxyCodeLine{00120\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classBird_a739a4efb4f2a6876d246e6de3a4d3438}{update\_position}}(\textcolor{keywordtype}{double}\ deltaTime);}
+\DoxyCodeLine{00121\ }
+\DoxyCodeLine{00123\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classBird_a8e70e4d1cfac20c7725e132dbb738429}{forced\_draw}}(\textcolor{keywordtype}{float}\ pos\_x,\ \textcolor{keywordtype}{float}\ pos\_y);}
+\DoxyCodeLine{00124\ }
+\DoxyCodeLine{00127\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classBird_a5dcf0716a99594bb0cc699a19aed3b6b}{reset\_position}}(\textcolor{keywordtype}{float}\ pos\_x,\ \textcolor{keywordtype}{float}\ pos\_y);}
+\DoxyCodeLine{00128\ }
+\DoxyCodeLine{00130\ \ \ \ \ \mbox{\hyperlink{structBirdColor}{BirdColor}}\ \mbox{\hyperlink{classBird_a716ddcc902818e8f17cedad97140c9ad}{getCor}}();}
+\DoxyCodeLine{00131\ }
+\DoxyCodeLine{00134\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classBird_a7964cf52ccff8cc584da1bd57a5cf4c5}{setCor}}(\mbox{\hyperlink{structBirdColor}{BirdColor}}\ cor);}
+\DoxyCodeLine{00135\ \};}
+\DoxyCodeLine{00136\ }
+\DoxyCodeLine{00137\ }
+\DoxyCodeLine{00138\ }
+\DoxyCodeLine{00139\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

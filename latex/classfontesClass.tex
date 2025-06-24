@@ -1,0 +1,93 @@
+\doxysection{fontes\+Class Class Reference}
+\hypertarget{classfontesClass}{}\label{classfontesClass}\index{fontesClass@{fontesClass}}
+
+
+Classe para gerenciar fontes usando Allegro.  
+
+
+
+
+{\ttfamily \#include $<$fontes\+Class.\+hpp$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classfontesClass_a79fd61c85903eb45e619b4d2668f704d}{fontes\+Class}} (const char \texorpdfstring{$\ast$}{*}caminho\+\_\+fonte, int tam\+\_\+fonte)
+\begin{DoxyCompactList}\small\item\em Construtor para carregar uma fonte True\+Type. \end{DoxyCompactList}\item 
+\Hypertarget{classfontesClass_a1caa5f54c03442933acfed74cb37b7e1}\label{classfontesClass_a1caa5f54c03442933acfed74cb37b7e1} 
+{\bfseries \texorpdfstring{$\sim$}{\string~}fontes\+Class} ()
+\begin{DoxyCompactList}\small\item\em Destrutor da classe. Libera a memória da fonte. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classfontesClass_a26a107c4af0109b1d41972e404cc65c3}{escrever}} (const std\+::string \&texto, float x, float y, ALLEGRO\+\_\+\+COLOR cor, int alinhamento=ALLEGRO\+\_\+\+ALIGN\+\_\+\+CENTER)
+\begin{DoxyCompactList}\small\item\em Desenha texto na tela usando a fonte carregada. \end{DoxyCompactList}\item 
+ALLEGRO\+\_\+\+FONT \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classfontesClass_aa6cb623c44bbe723bb8a7aa2fbdf5271}{getfonte}} () const
+\begin{DoxyCompactList}\small\item\em Retorna o ponteiro da fonte carregada. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Classe para gerenciar fontes usando Allegro. 
+
+Essa classe encapsula o carregamento e o uso de fontes True\+Type (.ttf) e fontes bitmap (.fnt) para desenho de texto na tela. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classfontesClass_a79fd61c85903eb45e619b4d2668f704d}\label{classfontesClass_a79fd61c85903eb45e619b4d2668f704d} 
+\index{fontesClass@{fontesClass}!fontesClass@{fontesClass}}
+\index{fontesClass@{fontesClass}!fontesClass@{fontesClass}}
+\doxysubsubsection{\texorpdfstring{fontesClass()}{fontesClass()}}
+{\footnotesize\ttfamily fontes\+Class\+::fontes\+Class (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{caminho\+\_\+fonte,  }\item[{int}]{tam\+\_\+fonte }\end{DoxyParamCaption})}
+
+
+
+Construtor para carregar uma fonte True\+Type. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em caminho\+\_\+fonte} & Caminho para o arquivo da fonte (.ttf). \\
+\hline
+{\em tam\+\_\+fonte} & Tamanho da fonte em pixels. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classfontesClass_a26a107c4af0109b1d41972e404cc65c3}\label{classfontesClass_a26a107c4af0109b1d41972e404cc65c3} 
+\index{fontesClass@{fontesClass}!escrever@{escrever}}
+\index{escrever@{escrever}!fontesClass@{fontesClass}}
+\doxysubsubsection{\texorpdfstring{escrever()}{escrever()}}
+{\footnotesize\ttfamily void fontes\+Class\+::escrever (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{texto,  }\item[{float}]{x,  }\item[{float}]{y,  }\item[{ALLEGRO\+\_\+\+COLOR}]{cor,  }\item[{int}]{alinhamento = {\ttfamily ALLEGRO\+\_\+ALIGN\+\_\+CENTER} }\end{DoxyParamCaption})}
+
+
+
+Desenha texto na tela usando a fonte carregada. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em texto} & Texto a ser desenhado. \\
+\hline
+{\em x} & Coordenada X. \\
+\hline
+{\em y} & Coordenada Y. \\
+\hline
+{\em cor} & Cor do texto. \\
+\hline
+{\em alinhamento} & Alinhamento do texto (padrão\+: centro). \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classfontesClass_aa6cb623c44bbe723bb8a7aa2fbdf5271}\label{classfontesClass_aa6cb623c44bbe723bb8a7aa2fbdf5271} 
+\index{fontesClass@{fontesClass}!getfonte@{getfonte}}
+\index{getfonte@{getfonte}!fontesClass@{fontesClass}}
+\doxysubsubsection{\texorpdfstring{getfonte()}{getfonte()}}
+{\footnotesize\ttfamily ALLEGRO\+\_\+\+FONT \texorpdfstring{$\ast$}{*} fontes\+Class\+::getfonte (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Retorna o ponteiro da fonte carregada. 
+
+\begin{DoxyReturn}{Returns}
+ALLEGRO\+\_\+\+FONT\texorpdfstring{$\ast$}{*} fonte carregada. 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/fontes\+Class.\+hpp\item 
+src/fontes\+Class.\+cpp\end{DoxyCompactItemize}

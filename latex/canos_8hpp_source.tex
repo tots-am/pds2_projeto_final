@@ -1,0 +1,63 @@
+\doxysection{canos.\+hpp}
+\hypertarget{canos_8hpp_source}{}\label{canos_8hpp_source}\index{include/canos.hpp@{include/canos.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ CANOS\_HPP}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ CANOS\_HPP}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <allegro5/allegro.h>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <allegro5/allegro\_primitives.h>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <allegro5/allegro\_ttf.h>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <allegro5/allegro\_font.h>}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <allegro5/allegro\_image.h>}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ <string>}\ }
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{keyword}{using\ namespace\ }std;\ }
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00023\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classCanos}{Canos}}\ \{}
+\DoxyCodeLine{00024\ \ \ \ \ }
+\DoxyCodeLine{00025\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keywordtype}{int}\ x;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keywordtype}{int}\ altura\_cima;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keywordtype}{int}\ altura\_baixo;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{keywordtype}{int}\ largura;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keywordtype}{int}\ tamanho\_buraco;\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keywordtype}{float}\ largura\_sprite;}
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{float}\ VELOCIDADE\_CANO;}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ \ \ \ ALLEGRO\_BITMAP*\ canoCima;}
+\DoxyCodeLine{00035\ \ \ \ ALLEGRO\_BITMAP*\ canoBaixo;}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00049\ \ \ \ \ \mbox{\hyperlink{classCanos_aa6e89f2c21461006449841ab93274705}{Canos}}(\textcolor{keywordtype}{int}\ pos\_x,\ \textcolor{keywordtype}{int}\ index);}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00057\ \ \ \ \ \mbox{\hyperlink{classCanos_aa6e89f2c21461006449841ab93274705}{Canos}}();}
+\DoxyCodeLine{00058\ }
+\DoxyCodeLine{00064\ \ \ \ \ \mbox{\hyperlink{classCanos_ac39e0e56404475e0fda38f963a7f9c35}{\string~Canos}}();}
+\DoxyCodeLine{00065\ }
+\DoxyCodeLine{00074\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classCanos_acca6defd3a89ac2419723b4c70d18e8a}{inicializarCanos}}(\textcolor{keywordtype}{int}\ posX,\ \textcolor{keywordtype}{int}\ index);\ }
+\DoxyCodeLine{00075\ }
+\DoxyCodeLine{00082\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classCanos_a7054ccb454f0b61d7c2df09b347cd408}{desenhar}}();}
+\DoxyCodeLine{00083\ }
+\DoxyCodeLine{00091\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classCanos_af275fc740eceaae6ce1562e1a577d2e5}{atualizar}}(\mbox{\hyperlink{classCanos}{Canos}}*\ canos,\ \textcolor{keywordtype}{int}\ numCanos,\ \textcolor{keywordtype}{double}\ deltaTime,\ \textcolor{keywordtype}{float}\ tempo);}
+\DoxyCodeLine{00092\ }
+\DoxyCodeLine{00093\ }
+\DoxyCodeLine{00099\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classCanos_a811989fa3e15b921ead8ac1fb334e055}{reset\_position}}(\mbox{\hyperlink{classCanos}{Canos}}*\ canos,\ \textcolor{keywordtype}{int}\ numCanos);}
+\DoxyCodeLine{00100\ }
+\DoxyCodeLine{00101\ \ \ \ \ \textcolor{comment}{//\ Métodos\ Getters}}
+\DoxyCodeLine{00102\ }
+\DoxyCodeLine{00108\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classCanos_a9ccf2169ad35f1ee500ad4a54e9e4726}{get\_x}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00109\ }
+\DoxyCodeLine{00114\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classCanos_adb41e65d3d3dacd44d454c4b18c49e5b}{get\_altura\_cima}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00115\ }
+\DoxyCodeLine{00120\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classCanos_ad993391a194f2eb8f3997d0d39f7b8bd}{get\_altura\_baixo}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00121\ }
+\DoxyCodeLine{00126\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classCanos_ab2b4578fefeacf3ddf2ab4468cdbf834}{get\_largura}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00130\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classCanos_a1902bc673c93acf10eccaab11de4ddfd}{get\_y\_baixo}}()\ \textcolor{keyword}{const};\ \textcolor{comment}{//\ Posição\ Y\ do\ topo\ do\ cano\ de\ baixo}}
+\DoxyCodeLine{00131\ \};}
+\DoxyCodeLine{00132\ }
+\DoxyCodeLine{00133\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

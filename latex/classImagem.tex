@@ -1,0 +1,131 @@
+\doxysection{Imagem Class Reference}
+\hypertarget{classImagem}{}\label{classImagem}\index{Imagem@{Imagem}}
+
+
+Classe responsável por carregar, exibir e gerenciar imagens.  
+
+
+
+
+{\ttfamily \#include $<$Imagem.\+hpp$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classImagem_a15e3e69a8c0beef768cf3cd2e8020268}\label{classImagem_a15e3e69a8c0beef768cf3cd2e8020268} 
+{\bfseries Imagem} ()
+\begin{DoxyCompactList}\small\item\em Construtor padrão. Não carrega nenhuma imagem. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classImagem_a5e07f2ae6415e0f829c0d7b861211441}{Imagem}} (const string img\+\_\+path)
+\begin{DoxyCompactList}\small\item\em Construtor que carrega uma imagem a partir do caminho especificado. \end{DoxyCompactList}\item 
+\Hypertarget{classImagem_a5c4e12f27d35568214b6c32af0077876}\label{classImagem_a5c4e12f27d35568214b6c32af0077876} 
+{\bfseries \texorpdfstring{$\sim$}{\string~}\+Imagem} ()
+\begin{DoxyCompactList}\small\item\em Destrutor. Libera a memória associada à imagem carregada. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classImagem_ae170fa6392cd716ead55d55438d7ca51}{exibir}} (float pos\+\_\+x, float pos\+\_\+y)
+\begin{DoxyCompactList}\small\item\em Exibe a imagem na posição especificada. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classImagem_ad648ba3b1133e28a233eec365eca6f36}{is\+Loaded}} ()
+\begin{DoxyCompactList}\small\item\em Verifica se a imagem foi carregada com sucesso. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{classImagem_a4ef3e5aaf6170e7a8fa75146afb0e2b6}{get\+Altura}} () const
+\begin{DoxyCompactList}\small\item\em Obtém a altura da imagem. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{classImagem_a4caba154bd5256fc3769c9e061dd7f87}{get\+Largura}} () const
+\begin{DoxyCompactList}\small\item\em Obtém a largura da imagem. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classImagem_ade692f72813017f854368cb7bfe1c5fa}\label{classImagem_ade692f72813017f854368cb7bfe1c5fa} 
+ALLEGRO\+\_\+\+BITMAP \texorpdfstring{$\ast$}{*} {\bfseries imagem}
+\item 
+\Hypertarget{classImagem_ac58368b258c4470d274b483a2251d9b2}\label{classImagem_ac58368b258c4470d274b483a2251d9b2} 
+const string {\bfseries path}
+\item 
+\Hypertarget{classImagem_a353268ebfe72739eb6b02580e11a9340}\label{classImagem_a353268ebfe72739eb6b02580e11a9340} 
+int {\bfseries largura}
+\item 
+\Hypertarget{classImagem_a96b4c18cb6b992aca08e3ba961eff81b}\label{classImagem_a96b4c18cb6b992aca08e3ba961eff81b} 
+int {\bfseries altura}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Classe responsável por carregar, exibir e gerenciar imagens. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classImagem_a5e07f2ae6415e0f829c0d7b861211441}\label{classImagem_a5e07f2ae6415e0f829c0d7b861211441} 
+\index{Imagem@{Imagem}!Imagem@{Imagem}}
+\index{Imagem@{Imagem}!Imagem@{Imagem}}
+\doxysubsubsection{\texorpdfstring{Imagem()}{Imagem()}}
+{\footnotesize\ttfamily Imagem\+::\+Imagem (\begin{DoxyParamCaption}\item[{const string}]{img\+\_\+path }\end{DoxyParamCaption})}
+
+
+
+Construtor que carrega uma imagem a partir do caminho especificado. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em img\+\_\+path} & Caminho para o arquivo de imagem. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classImagem_ae170fa6392cd716ead55d55438d7ca51}\label{classImagem_ae170fa6392cd716ead55d55438d7ca51} 
+\index{Imagem@{Imagem}!exibir@{exibir}}
+\index{exibir@{exibir}!Imagem@{Imagem}}
+\doxysubsubsection{\texorpdfstring{exibir()}{exibir()}}
+{\footnotesize\ttfamily void Imagem\+::exibir (\begin{DoxyParamCaption}\item[{float}]{pos\+\_\+x,  }\item[{float}]{pos\+\_\+y }\end{DoxyParamCaption})}
+
+
+
+Exibe a imagem na posição especificada. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pos\+\_\+x} & Posição X onde a imagem será desenhada. \\
+\hline
+{\em pos\+\_\+y} & Posição Y onde a imagem será desenhada. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classImagem_a4ef3e5aaf6170e7a8fa75146afb0e2b6}\label{classImagem_a4ef3e5aaf6170e7a8fa75146afb0e2b6} 
+\index{Imagem@{Imagem}!getAltura@{getAltura}}
+\index{getAltura@{getAltura}!Imagem@{Imagem}}
+\doxysubsubsection{\texorpdfstring{getAltura()}{getAltura()}}
+{\footnotesize\ttfamily float Imagem\+::get\+Altura (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Obtém a altura da imagem. 
+
+\begin{DoxyReturn}{Returns}
+Altura da imagem em pixels. 
+\end{DoxyReturn}
+\Hypertarget{classImagem_a4caba154bd5256fc3769c9e061dd7f87}\label{classImagem_a4caba154bd5256fc3769c9e061dd7f87} 
+\index{Imagem@{Imagem}!getLargura@{getLargura}}
+\index{getLargura@{getLargura}!Imagem@{Imagem}}
+\doxysubsubsection{\texorpdfstring{getLargura()}{getLargura()}}
+{\footnotesize\ttfamily float Imagem\+::get\+Largura (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Obtém a largura da imagem. 
+
+\begin{DoxyReturn}{Returns}
+Largura da imagem em pixels. 
+\end{DoxyReturn}
+\Hypertarget{classImagem_ad648ba3b1133e28a233eec365eca6f36}\label{classImagem_ad648ba3b1133e28a233eec365eca6f36} 
+\index{Imagem@{Imagem}!isLoaded@{isLoaded}}
+\index{isLoaded@{isLoaded}!Imagem@{Imagem}}
+\doxysubsubsection{\texorpdfstring{isLoaded()}{isLoaded()}}
+{\footnotesize\ttfamily bool Imagem\+::is\+Loaded (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Verifica se a imagem foi carregada com sucesso. 
+
+\begin{DoxyReturn}{Returns}
+true se a imagem foi carregada corretamente, false caso contrário. 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/\mbox{\hyperlink{Imagem_8hpp}{Imagem.\+hpp}}\item 
+src/Imagem.\+cpp\end{DoxyCompactItemize}

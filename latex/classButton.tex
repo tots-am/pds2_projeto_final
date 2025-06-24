@@ -1,0 +1,183 @@
+\doxysection{Button Class Reference}
+\hypertarget{classButton}{}\label{classButton}\index{Button@{Button}}
+
+
+Representa os botões e caixas de texto que o usuário pode usar.  
+
+
+
+
+{\ttfamily \#include $<$button.\+hpp$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classButton_aad8892f42cdd0779d9d5f0725c1f6484}{Button}} (int altura, int largura, ALLEGRO\+\_\+\+FONT \texorpdfstring{$\ast$}{*}fonte, ALLEGRO\+\_\+\+COLOR cor)
+\begin{DoxyCompactList}\small\item\em Construtor principal que cria o botão com uma altura, largura, fonte do texto, e cor pre-\/definidas. \end{DoxyCompactList}\item 
+\Hypertarget{classButton_a2a001eb9c3cc8ae54768a850dd345002}\label{classButton_a2a001eb9c3cc8ae54768a850dd345002} 
+{\bfseries \texorpdfstring{$\sim$}{\string~}\+Button} ()
+\begin{DoxyCompactList}\small\item\em Destrutor Padrão. \end{DoxyCompactList}\item 
+ALLEGRO\+\_\+\+COLOR \mbox{\hyperlink{classButton_a1d167ace481792390684af3bbebe3a78}{get\+\_\+cor}} ()
+\item 
+void \mbox{\hyperlink{classButton_aa3cfe83c28d74259093f04bbc4c1d417}{set\+\_\+cor}} (ALLEGRO\+\_\+\+COLOR cor)
+\begin{DoxyCompactList}\small\item\em Usado para redefinir a cor de um botão em tempo de execução. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classButton_a08d27ce273db97b80ff8d7ab8d441015}{is\+Mouse\+Hovering}} (int x, int y)
+\begin{DoxyCompactList}\small\item\em Usado para verificar se o cursor do mouse está sobre a superfície do botão. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classButton_acf2ea3a5fea9e6cb24b291fabab033ff}{is\+Active}} ()
+\begin{DoxyCompactList}\small\item\em Usado para verificar se o botão está ativo ou não (se já foi clicado) \end{DoxyCompactList}\item 
+\Hypertarget{classButton_a3d44f7d5c78dd02d9b3de2b0bae90de9}\label{classButton_a3d44f7d5c78dd02d9b3de2b0bae90de9} 
+void {\bfseries switch\+Active} ()
+\begin{DoxyCompactList}\small\item\em Inverte o estado atual, usada para ativar ou desativar o botão. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classButton_aec910af3c12b52213501ee68d78a337c}{draw}} (int x\+\_\+offset, int y\+\_\+offset, int filled)
+\begin{DoxyCompactList}\small\item\em Desenha o botão na tela. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classButton_a389da2a650dd0fe5926a96f8070f13ac}{draw}} (int x\+\_\+offset, int y\+\_\+offset, int filled, std\+::string message, ALLEGRO\+\_\+\+COLOR cor\+\_\+msg)
+\begin{DoxyCompactList}\small\item\em Desenha o botão na tela com uma mensagem centralizada. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Representa os botões e caixas de texto que o usuário pode usar. 
+
+A classe é resposável por criar, destruir, desenhar, e detectar cliques do mouse nos botões 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classButton_aad8892f42cdd0779d9d5f0725c1f6484}\label{classButton_aad8892f42cdd0779d9d5f0725c1f6484} 
+\index{Button@{Button}!Button@{Button}}
+\index{Button@{Button}!Button@{Button}}
+\doxysubsubsection{\texorpdfstring{Button()}{Button()}}
+{\footnotesize\ttfamily Button\+::\+Button (\begin{DoxyParamCaption}\item[{int}]{altura,  }\item[{int}]{largura,  }\item[{ALLEGRO\+\_\+\+FONT \texorpdfstring{$\ast$}{*}}]{fonte,  }\item[{ALLEGRO\+\_\+\+COLOR}]{cor }\end{DoxyParamCaption})}
+
+
+
+Construtor principal que cria o botão com uma altura, largura, fonte do texto, e cor pre-\/definidas. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em altura} & Altura do Botão em pixels \\
+\hline
+{\em largura} & Largura do Botão em pixels \\
+\hline
+{\em fonte} & Fonte que será usada para escrever a mensagem do botão, caso houver. \\
+\hline
+{\em cor} & Cor que será usada para desenhar o botão\\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Note}
+Inicia active como false por default, e calcula x1, x2, y1, y2 por conta propria 
+\end{DoxyNote}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classButton_aec910af3c12b52213501ee68d78a337c}\label{classButton_aec910af3c12b52213501ee68d78a337c} 
+\index{Button@{Button}!draw@{draw}}
+\index{draw@{draw}!Button@{Button}}
+\doxysubsubsection{\texorpdfstring{draw()}{draw()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void Button\+::draw (\begin{DoxyParamCaption}\item[{int}]{x\+\_\+offset,  }\item[{int}]{y\+\_\+offset,  }\item[{int}]{filled }\end{DoxyParamCaption})}
+
+
+
+Desenha o botão na tela. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x\+\_\+offset} & A posição X do canto superior esquerdo do botão na tela \\
+\hline
+{\em y\+\_\+offset} & A posição Y do canto superior esquerdo do botão na tela \\
+\hline
+{\em filled} & Usada para decidir se o botão será desenhado preenchido ou não \\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Note}
+se filled for diferente de 0 ou 1, ele irá ser 0 por default 
+\end{DoxyNote}
+\Hypertarget{classButton_a389da2a650dd0fe5926a96f8070f13ac}\label{classButton_a389da2a650dd0fe5926a96f8070f13ac} 
+\index{Button@{Button}!draw@{draw}}
+\index{draw@{draw}!Button@{Button}}
+\doxysubsubsection{\texorpdfstring{draw()}{draw()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void Button\+::draw (\begin{DoxyParamCaption}\item[{int}]{x\+\_\+offset,  }\item[{int}]{y\+\_\+offset,  }\item[{int}]{filled,  }\item[{std\+::string}]{message,  }\item[{ALLEGRO\+\_\+\+COLOR}]{cor\+\_\+msg }\end{DoxyParamCaption})}
+
+
+
+Desenha o botão na tela com uma mensagem centralizada. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x\+\_\+offset} & A posição X do canto superior esquerdo do botão na tela \\
+\hline
+{\em y\+\_\+offset} & A posição Y do canto superior esquerdo do botão na tela \\
+\hline
+{\em filled} & Usada para decidir se o botão será desenhado preenchido ou não \\
+\hline
+\end{DoxyParams}
+\begin{DoxyNote}{Note}
+se filled for diferente de 0 ou 1, ele irá ser 0 por default 
+\end{DoxyNote}
+
+\begin{DoxyParams}{Parameters}
+{\em message} & A mensagem que irá aparecer dentro do botão \\
+\hline
+{\em cor\+\_\+msg} & A cor da mensagem que irá aparecer dentro do botão \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classButton_a1d167ace481792390684af3bbebe3a78}\label{classButton_a1d167ace481792390684af3bbebe3a78} 
+\index{Button@{Button}!get\_cor@{get\_cor}}
+\index{get\_cor@{get\_cor}!Button@{Button}}
+\doxysubsubsection{\texorpdfstring{get\_cor()}{get\_cor()}}
+{\footnotesize\ttfamily ALLEGRO\+\_\+\+COLOR Button\+::get\+\_\+cor (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyReturn}{Returns}
+Retorna a cor que o botão está, no padrão RBG 
+\end{DoxyReturn}
+\Hypertarget{classButton_acf2ea3a5fea9e6cb24b291fabab033ff}\label{classButton_acf2ea3a5fea9e6cb24b291fabab033ff} 
+\index{Button@{Button}!isActive@{isActive}}
+\index{isActive@{isActive}!Button@{Button}}
+\doxysubsubsection{\texorpdfstring{isActive()}{isActive()}}
+{\footnotesize\ttfamily bool Button\+::is\+Active (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Usado para verificar se o botão está ativo ou não (se já foi clicado) 
+
+\begin{DoxyReturn}{Returns}
+true se botão já foi clicado, false caso contrário 
+\end{DoxyReturn}
+\Hypertarget{classButton_a08d27ce273db97b80ff8d7ab8d441015}\label{classButton_a08d27ce273db97b80ff8d7ab8d441015} 
+\index{Button@{Button}!isMouseHovering@{isMouseHovering}}
+\index{isMouseHovering@{isMouseHovering}!Button@{Button}}
+\doxysubsubsection{\texorpdfstring{isMouseHovering()}{isMouseHovering()}}
+{\footnotesize\ttfamily bool Button\+::is\+Mouse\+Hovering (\begin{DoxyParamCaption}\item[{int}]{x,  }\item[{int}]{y }\end{DoxyParamCaption})}
+
+
+
+Usado para verificar se o cursor do mouse está sobre a superfície do botão. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & Posição X do mouse \\
+\hline
+{\em y} & Posição y do mouse \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true se mouse está acima, false caso constrário 
+\end{DoxyReturn}
+\Hypertarget{classButton_aa3cfe83c28d74259093f04bbc4c1d417}\label{classButton_aa3cfe83c28d74259093f04bbc4c1d417} 
+\index{Button@{Button}!set\_cor@{set\_cor}}
+\index{set\_cor@{set\_cor}!Button@{Button}}
+\doxysubsubsection{\texorpdfstring{set\_cor()}{set\_cor()}}
+{\footnotesize\ttfamily void Button\+::set\+\_\+cor (\begin{DoxyParamCaption}\item[{ALLEGRO\+\_\+\+COLOR}]{cor }\end{DoxyParamCaption})}
+
+
+
+Usado para redefinir a cor de um botão em tempo de execução. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em cor} & A nova cor que o botão terá \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/\mbox{\hyperlink{button_8hpp}{button.\+hpp}}\item 
+src/button.\+cpp\end{DoxyCompactItemize}

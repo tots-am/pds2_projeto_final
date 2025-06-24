@@ -1,0 +1,19 @@
+var searchData=
+[
+  ['get_5faltura_5fbaixo_0',['get_altura_baixo',['../classCanos.html#ad993391a194f2eb8f3997d0d39f7b8bd',1,'Canos']]],
+  ['get_5faltura_5fcima_1',['get_altura_cima',['../classCanos.html#adb41e65d3d3dacd44d454c4b18c49e5b',1,'Canos']]],
+  ['get_5fbitmap_2',['get_bitmap',['../classBird.html#ab4f9952776f74afe9524835eac1a3b58',1,'Bird']]],
+  ['get_5fcor_3',['get_cor',['../classButton.html#a1d167ace481792390684af3bbebe3a78',1,'Button']]],
+  ['get_5flargura_4',['get_largura',['../classCanos.html#ab2b4578fefeacf3ddf2ab4468cdbf834',1,'Canos']]],
+  ['get_5fpath_5',['get_path',['../classBird.html#a6d30c40062b40bfe8b4ef47d1aa75ebb',1,'Bird']]],
+  ['get_5fpos_5fx_6',['get_pos_x',['../classBird.html#a9fc7514f3f92e806b1ef59a5b114e363',1,'Bird']]],
+  ['get_5fpos_5fy_7',['get_pos_y',['../classBird.html#a0e64609736b4d69bc435bffc4a98f094',1,'Bird']]],
+  ['get_5fvel_5fy_8',['get_vel_y',['../classBird.html#aa2c14abb26069e264958d1c29f105fe0',1,'Bird']]],
+  ['get_5fx_9',['get_x',['../classCanos.html#a9ccf2169ad35f1ee500ad4a54e9e4726',1,'Canos']]],
+  ['get_5fy_5fbaixo_10',['get_y_baixo',['../classCanos.html#a1902bc673c93acf10eccaab11de4ddfd',1,'Canos']]],
+  ['getaltura_11',['getAltura',['../classImagem.html#a4ef3e5aaf6170e7a8fa75146afb0e2b6',1,'Imagem']]],
+  ['getcor_12',['getCor',['../classBird.html#a716ddcc902818e8f17cedad97140c9ad',1,'Bird']]],
+  ['getfonte_13',['getfonte',['../classfontesClass.html#aa6cb623c44bbe723bb8a7aa2fbdf5271',1,'fontesClass']]],
+  ['getlargura_14',['getLargura',['../classImagem.html#a4caba154bd5256fc3769c9e061dd7f87',1,'Imagem']]],
+  ['gravity_15',['gravity',['../classBird.html#aac26f9eb787cc6f8e8ba2ad36af66cde',1,'Bird']]]
+];
