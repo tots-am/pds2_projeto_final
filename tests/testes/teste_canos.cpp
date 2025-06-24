@@ -6,7 +6,7 @@
 #include <allegro5/allegro_image.h>
 
 TEST_CASE("Testa construção de Canos e getters") {
-    al_init();                  // Inicializa Allegro
+    al_init();                  // Inicializa   Allegro
     al_init_image_addon();     // Inicializa addon de imagens
 
     Canos c1(SCREEN_WIDTH, 0);
