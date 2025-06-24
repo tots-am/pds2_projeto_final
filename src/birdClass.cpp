@@ -6,15 +6,15 @@
 
 using namespace std;
 
-Bird::Bird(float pos_x_inicial, float pos_y_inicial) : 
+Bird::Bird(float pos_x_inicial, float pos_y_inicial, string spritePath) : 
         vel_y(0.0f),
         pos_x(pos_x_inicial), pos_y(pos_y_inicial),
-        sprite(BIRD_SPRITESHEET_PATH), 
-        bird(al_load_bitmap(BIRD_SPRITESHEET_PATH.c_str())),
+        sprite(spritePath), 
+        bird(al_load_bitmap(spritePath.c_str())),
         cor(Yellow)
     {
         if (bird == nullptr) {
-            throw std::runtime_error("Erro ao inicializar o pássaro: " + BIRD_SPRITESHEET_PATH);
+            throw std::runtime_error("Erro ao inicializar o pássaro: " + spritePath);
         }
         
         this->largura_obj = 34;

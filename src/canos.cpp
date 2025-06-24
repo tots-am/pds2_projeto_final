@@ -15,20 +15,20 @@ float Canos::VELOCIDADE_CANO = 100;
 
 // Construtores e destrutores
 
-Canos::Canos(int pos_x_inicial, int index) : 
+Canos::Canos(int pos_x_inicial, int index, string cano_cima_path, string cano_baixo_path) : 
     x(pos_x_inicial + (index * ESPACO_ENTRE_OS_CANOS)), 
     altura_cima(rand() % 200 + 50),
     tamanho_buraco(TAMANHO_BURACO_CANOS),
-    canoCima(al_load_bitmap(PIPE1_IMG_PATH.c_str())),
-    canoBaixo(al_load_bitmap(PIPE2_IMG_PATH.c_str()))
+    canoCima(al_load_bitmap(cano_cima_path.c_str())),
+    canoBaixo(al_load_bitmap(cano_baixo_path.c_str()))
     
 {
 
     if (!canoCima) {
-        throw runtime_error("Erro ao carregar a imagem do cano de cima: " + PIPE1_IMG_PATH);
+        throw runtime_error("Erro ao carregar a imagem do cano de cima: " + cano_cima_path);
     }
     if (!canoBaixo) {
-        throw runtime_error("Erro ao carregar a imagem do cano de baixo: " + PIPE2_IMG_PATH);
+        throw runtime_error("Erro ao carregar a imagem do cano de baixo: " + cano_baixo_path);
     }
     
     altura_baixo = SCREEN_HEIGHT - altura_cima - tamanho_buraco - ALTURA_BASE;

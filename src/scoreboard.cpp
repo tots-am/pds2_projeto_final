@@ -1,6 +1,7 @@
 #include "scoreboard.hpp"
 #include "fontesClass.hpp"
 #include "constants.hpp"
+#include <exception>
 
 const int NUM_LETRAS = 32;
 
@@ -10,6 +11,10 @@ Scoreboard::Scoreboard(ALLEGRO_FONT *fonte, ALLEGRO_FONT *fonteCabecalho, std::s
     fonteCabecalho(fonteCabecalho),
     database(db_path)
 {
+    if(fonte == nullptr) throw std::runtime_error("Fonte não carregada");
+    if(fonteCabecalho == nullptr) throw std::runtime_error("Fonte do Cabecalho não carregada");
+    if(db_path.empty()) throw std::runtime_error("Arquivo db não encontrado");
+    
     this->updateNumPlayers();
 }
 void Scoreboard::updateNumPlayers(){

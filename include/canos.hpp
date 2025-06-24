@@ -46,7 +46,7 @@ public:
      * Inicializa um objeto Canos com os caminhos das imagens e suas posições iniciais.
      * Carrega os bitmaps das imagens e inicializa as dimensões dos canos.
      */
-    Canos(int pos_x, int index);
+    Canos(int pos_x, int index, string cano_cima_path, string cano_baixo_path);
 
     /**
      * @brief Construtor padrão da classe Canos.

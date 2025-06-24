@@ -9,7 +9,7 @@ TEST_CASE("Testa construção de Canos e getters") {
     al_init();                  // Inicializa   Allegro
     al_init_image_addon();     // Inicializa addon de imagens
 
-    Canos c1(SCREEN_WIDTH, 0);
+    Canos c1(SCREEN_WIDTH, 0, "../assets/sprites/pipe-green.png", "../assets/sprites/pipe-green-down.png");
 
     CHECK(c1.get_x() >= SCREEN_WIDTH); // x deve ser maior ou igual à tela
     CHECK(c1.get_altura_cima() >= 50);
@@ -25,9 +25,9 @@ TEST_CASE("Testa reset_position dos canos") {
 
     const int numCanos = 3;
     Canos* canos = new Canos[numCanos]{
-        Canos(SCREEN_WIDTH, 0),
-        Canos(SCREEN_WIDTH, 1),
-        Canos(SCREEN_WIDTH, 2)
+        Canos(SCREEN_WIDTH, 0, "../assets/sprites/pipe-green.png", "../assets/sprites/pipe-green-down.png"),
+        Canos(SCREEN_WIDTH, 1, "../assets/sprites/pipe-green.png", "../assets/sprites/pipe-green-down.png"),
+        Canos(SCREEN_WIDTH, 2, "../assets/sprites/pipe-green.png", "../assets/sprites/pipe-green-down.png")
     };
 
     canos[0].reset_position(canos, numCanos);
@@ -46,8 +46,8 @@ TEST_CASE("Testa atualização da posição dos canos") {
 
     const int numCanos = 2;
     Canos* canos = new Canos[numCanos]{
-        Canos(SCREEN_WIDTH, 0),
-        Canos(SCREEN_WIDTH, 1)
+        Canos(SCREEN_WIDTH, 0, "../assets/sprites/pipe-green.png", "../assets/sprites/pipe-green-down.png"),
+        Canos(SCREEN_WIDTH, 1, "../assets/sprites/pipe-green.png", "../assets/sprites/pipe-green-down.png")
     };
 
     float tempoInicial = 0.0;

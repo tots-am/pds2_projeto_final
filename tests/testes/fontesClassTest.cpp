@@ -9,7 +9,7 @@
 bool iniciar_al(){
     return al_init() && al_init_font_addon() && al_init_ttf_addon();
 }
-const char* caminho = "assets/fonts/arial.ttf";
+const char* caminho = "../assets/fonts/arial.ttf";
 TEST_CASE("Teste de inicialização da fontesClass"){
     fontesClass fonte(caminho, 32);
     CHECK(fonte.getfonte() != nullptr);

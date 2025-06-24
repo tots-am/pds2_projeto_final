@@ -29,6 +29,14 @@ TEST_CASE("Teste Scoreboard - Informação do jogador") {
     REQUIRE_MESSAGE(display != nullptr, "Falha ao criar display Allegro");
 
     ALLEGRO_FONT* fonte = al_create_builtin_font();
+
+    SUBCASE("Tenta criar com fonte = null"){
+        CHECK_THROWS_AS(Scoreboard s(nullptr, nullptr, "caminho"), std::runtime_error);
+    }
+    SUBCASE("Tenta criar com caminho vazio"){
+        CHECK_THROWS_AS(Scoreboard s(fonte, fonte, ""), std::runtime_error);
+    }
+
     Scoreboard sb(fonte, fonte, arquivo_teste);
 
     SUBCASE("Funcão draw"){

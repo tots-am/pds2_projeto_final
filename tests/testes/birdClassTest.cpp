@@ -18,7 +18,7 @@ struct AllegroInit {
 TEST_SUITE("Bird Class Teste"){
 
     TEST_CASE_FIXTURE(AllegroInit, "Construtor Estado Inicial"){
-        Bird p(100, 150);
+        Bird p(100, 150, "../assets/sprites/bird_spritesheet.png");
 
         CHECK(p.get_bitmap());
         CHECK(p.get_pos_x() == 100);
@@ -38,7 +38,7 @@ TEST_SUITE("Bird Class Teste"){
     };
 
     TEST_CASE_FIXTURE(AllegroInit, "Gravidade isolada - Posição e Velocidade"){
-        Bird p(100, 150);
+        Bird p(100, 150, "../assets/sprites/bird_spritesheet.png");
         
         float delta_time = 1.0f / 30.0f;
 
@@ -54,7 +54,7 @@ TEST_SUITE("Bird Class Teste"){
     }
 
     TEST_CASE_FIXTURE(AllegroInit, "Jump - Velocidade"){
-        Bird p(100, 150);
+        Bird p(100, 150, "../assets/sprites/bird_spritesheet.png");
         float delta_time = 1.0f / 30.0f;
 
         REQUIRE(p.get_vel_y() == 0);

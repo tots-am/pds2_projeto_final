@@ -44,7 +44,7 @@ class Bird{
      * @param pos_y_inicial Coordenada vertical inicial
      * @throw std::runtime_error caso o carregamento do bitmap do passáro falhar.
      */
-    Bird(float pos_x_inicial, float pos_y_inicial);
+    Bird(float pos_x_inicial, float pos_y_inicial, string path);
 
     /**
      * @brief Construtor padrão

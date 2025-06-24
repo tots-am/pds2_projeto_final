@@ -105,9 +105,14 @@ int main(){
     //Imagem gameover(GAMEOVER_IMG_PATH);
 
     // Instanciando Entidades
-    Bird bird((float)SCREEN_WIDTH/4, (float)SCREEN_HEIGHT/2);
+    Bird bird((float)SCREEN_WIDTH/4, (float)SCREEN_HEIGHT/2, BIRD_SPRITESHEET_PATH);
     Scoreboard scoreboard(fontePixelify.getfonte(), fonteFlappy.getfonte(), DB_PATH);
-    Canos canos[NUM_CANOS] = {Canos(SCREEN_WIDTH, 0), Canos(SCREEN_WIDTH, 1), Canos(SCREEN_WIDTH, 2), Canos(SCREEN_WIDTH, 3)};
+    Canos canos[NUM_CANOS] = {
+        Canos(SCREEN_WIDTH, 0, PIPE1_IMG_PATH, PIPE2_IMG_PATH),
+        Canos(SCREEN_WIDTH, 1, PIPE1_IMG_PATH, PIPE2_IMG_PATH),
+        Canos(SCREEN_WIDTH, 2, PIPE1_IMG_PATH, PIPE2_IMG_PATH),
+        Canos(SCREEN_WIDTH, 3, PIPE1_IMG_PATH, PIPE2_IMG_PATH)
+    };
 
     // Especificar de onde vem os eventos
     al_register_event_source(eventQueue, al_get_display_event_source(display));
