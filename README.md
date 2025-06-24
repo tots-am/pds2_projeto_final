@@ -96,6 +96,26 @@ Para remover os arquivos gerados:
 make clean
 ```
 
+## Como Testar o Projeto
+
+### Compilação
+
+O diretório de testes inclui um `Makefile` para facilitar a construção. Execute os seguintes comandos no terminal:
+
+```bash
+cd tests
+make
+../build/test_exec
+```
+
+### Limpeza
+
+Para remover os arquivos gerados:
+
+```bash
+make clean
+```
+
 ## Estrurura de Diretorórios
 
 ```
