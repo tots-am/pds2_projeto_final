@@ -1,0 +1,199 @@
+\doxysection{Canos Class Reference}
+\hypertarget{classCanos}{}\label{classCanos}\index{Canos@{Canos}}
+
+
+Gerencia a criação, desenho e atualização dos canos no jogo.  
+
+
+
+
+{\ttfamily \#include $<$canos.\+hpp$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classCanos_a4ff269859a247412c528c8431f97a099}{Canos}} (int pos\+\_\+x, int index)
+\begin{DoxyCompactList}\small\item\em Construtor da classe \doxylink{classCanos}{Canos}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classCanos_aa6e89f2c21461006449841ab93274705}{Canos}} ()
+\begin{DoxyCompactList}\small\item\em Construtor padrão da classe \doxylink{classCanos}{Canos}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classCanos_ac39e0e56404475e0fda38f963a7f9c35}{\texorpdfstring{$\sim$}{\string~}\+Canos}} ()
+\begin{DoxyCompactList}\small\item\em Destrutor da classe \doxylink{classCanos}{Canos}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classCanos_acca6defd3a89ac2419723b4c70d18e8a}{inicializar\+Canos}} (int posX, int index)
+\begin{DoxyCompactList}\small\item\em Inicializa a posição e altura dos canos. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classCanos_a7054ccb454f0b61d7c2df09b347cd408}{desenhar}} ()
+\begin{DoxyCompactList}\small\item\em Desenha os canos na tela. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classCanos_af275fc740eceaae6ce1562e1a577d2e5}{atualizar}} (\mbox{\hyperlink{classCanos}{Canos}} \texorpdfstring{$\ast$}{*}canos, int num\+Canos, double delta\+Time, float tempo)
+\begin{DoxyCompactList}\small\item\em Atualiza a posição dos canos na tela e os recicla. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classCanos_a811989fa3e15b921ead8ac1fb334e055}{reset\+\_\+position}} (\mbox{\hyperlink{classCanos}{Canos}} \texorpdfstring{$\ast$}{*}canos, int num\+Canos)
+\begin{DoxyCompactList}\small\item\em Reinicia a posição dos canos depois de Game\+Over. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classCanos_a9ccf2169ad35f1ee500ad4a54e9e4726}{get\+\_\+x}} () const
+\begin{DoxyCompactList}\small\item\em Retorna a posição X do cano. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classCanos_adb41e65d3d3dacd44d454c4b18c49e5b}{get\+\_\+altura\+\_\+cima}} () const
+\begin{DoxyCompactList}\small\item\em Retorna a altura do cano de cima. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classCanos_ad993391a194f2eb8f3997d0d39f7b8bd}{get\+\_\+altura\+\_\+baixo}} () const
+\begin{DoxyCompactList}\small\item\em Retorna a altura do cano de baixo. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classCanos_ab2b4578fefeacf3ddf2ab4468cdbf834}{get\+\_\+largura}} () const
+\begin{DoxyCompactList}\small\item\em Retorna a largura do cano. \end{DoxyCompactList}\item 
+\Hypertarget{classCanos_a1902bc673c93acf10eccaab11de4ddfd}\label{classCanos_a1902bc673c93acf10eccaab11de4ddfd} 
+int {\bfseries get\+\_\+y\+\_\+baixo} () const
+\begin{DoxyCompactList}\small\item\em Retorna a posição y do cano baixo. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Gerencia a criação, desenho e atualização dos canos no jogo. 
+
+A classe \doxylink{classCanos}{Canos} é responsável por controlar a lógica de geração e movimento dos obstáculos (canos) que o pássaro deve desviar. Ela mantém o estado de cada cano, incluindo sua posição e altura, e gerencia sua reciclagem na tela para simular um fluxo contínuo. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classCanos_a4ff269859a247412c528c8431f97a099}\label{classCanos_a4ff269859a247412c528c8431f97a099} 
+\index{Canos@{Canos}!Canos@{Canos}}
+\index{Canos@{Canos}!Canos@{Canos}}
+\doxysubsubsection{\texorpdfstring{Canos()}{Canos()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Canos\+::\+Canos (\begin{DoxyParamCaption}\item[{int}]{pos\+\_\+x,  }\item[{int}]{index }\end{DoxyParamCaption})}
+
+
+
+Construtor da classe \doxylink{classCanos}{Canos}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em cano\+Cima\+Path} & Caminho para o arquivo de imagem do cano de cima. \\
+\hline
+{\em cano\+Baixo\+Path} & Caminho para o arquivo de imagem do cano de baixo. \\
+\hline
+{\em pos\+\_\+x} & Posição X inicial do cano. \\
+\hline
+{\em index} & Índice do cano na array de canos (usado para espaçamento inicial).\\
+\hline
+\end{DoxyParams}
+Inicializa um objeto \doxylink{classCanos}{Canos} com os caminhos das imagens e suas posições iniciais. Carrega os bitmaps das imagens e inicializa as dimensões dos canos. \Hypertarget{classCanos_aa6e89f2c21461006449841ab93274705}\label{classCanos_aa6e89f2c21461006449841ab93274705} 
+\index{Canos@{Canos}!Canos@{Canos}}
+\index{Canos@{Canos}!Canos@{Canos}}
+\doxysubsubsection{\texorpdfstring{Canos()}{Canos()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Canos\+::\+Canos (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Construtor padrão da classe \doxylink{classCanos}{Canos}. 
+
+Inicializa um objeto \doxylink{classCanos}{Canos} com valores padrão. Utilizado principalmente para inicialização de arrays de objetos \doxylink{classCanos}{Canos} antes da atribuição de valores. \Hypertarget{classCanos_ac39e0e56404475e0fda38f963a7f9c35}\label{classCanos_ac39e0e56404475e0fda38f963a7f9c35} 
+\index{Canos@{Canos}!````~Canos@{\texorpdfstring{$\sim$}{\string~}Canos}}
+\index{````~Canos@{\texorpdfstring{$\sim$}{\string~}Canos}!Canos@{Canos}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}Canos()}{\string~Canos()}}
+{\footnotesize\ttfamily Canos\+::\texorpdfstring{$\sim$}{\string~}\+Canos (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Destrutor da classe \doxylink{classCanos}{Canos}. 
+
+Libera a memória alocada para os bitmaps dos canos. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classCanos_af275fc740eceaae6ce1562e1a577d2e5}\label{classCanos_af275fc740eceaae6ce1562e1a577d2e5} 
+\index{Canos@{Canos}!atualizar@{atualizar}}
+\index{atualizar@{atualizar}!Canos@{Canos}}
+\doxysubsubsection{\texorpdfstring{atualizar()}{atualizar()}}
+{\footnotesize\ttfamily void Canos\+::atualizar (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classCanos}{Canos}} \texorpdfstring{$\ast$}{*}}]{canos,  }\item[{int}]{num\+Canos,  }\item[{double}]{delta\+Time,  }\item[{float}]{tempo }\end{DoxyParamCaption})}
+
+
+
+Atualiza a posição dos canos na tela e os recicla. 
+
+Move os canos horizontalmente para a esquerda. Se um cano sair da tela, ele é reposicionado no final da fila com novas alturas aleatórias, criando um efeito de rolagem contínua. \Hypertarget{classCanos_a7054ccb454f0b61d7c2df09b347cd408}\label{classCanos_a7054ccb454f0b61d7c2df09b347cd408} 
+\index{Canos@{Canos}!desenhar@{desenhar}}
+\index{desenhar@{desenhar}!Canos@{Canos}}
+\doxysubsubsection{\texorpdfstring{desenhar()}{desenhar()}}
+{\footnotesize\ttfamily void Canos\+::desenhar (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Desenha os canos na tela. 
+
+Utiliza os bitmaps carregados para desenhar o cano de cima e o cano de baixo em suas posições e dimensões atuais. \Hypertarget{classCanos_ad993391a194f2eb8f3997d0d39f7b8bd}\label{classCanos_ad993391a194f2eb8f3997d0d39f7b8bd} 
+\index{Canos@{Canos}!get\_altura\_baixo@{get\_altura\_baixo}}
+\index{get\_altura\_baixo@{get\_altura\_baixo}!Canos@{Canos}}
+\doxysubsubsection{\texorpdfstring{get\_altura\_baixo()}{get\_altura\_baixo()}}
+{\footnotesize\ttfamily int Canos\+::get\+\_\+altura\+\_\+baixo (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Retorna a altura do cano de baixo. 
+
+\begin{DoxyReturn}{Returns}
+A altura do cano inferior. 
+\end{DoxyReturn}
+\Hypertarget{classCanos_adb41e65d3d3dacd44d454c4b18c49e5b}\label{classCanos_adb41e65d3d3dacd44d454c4b18c49e5b} 
+\index{Canos@{Canos}!get\_altura\_cima@{get\_altura\_cima}}
+\index{get\_altura\_cima@{get\_altura\_cima}!Canos@{Canos}}
+\doxysubsubsection{\texorpdfstring{get\_altura\_cima()}{get\_altura\_cima()}}
+{\footnotesize\ttfamily int Canos\+::get\+\_\+altura\+\_\+cima (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Retorna a altura do cano de cima. 
+
+\begin{DoxyReturn}{Returns}
+A altura do cano superior. 
+\end{DoxyReturn}
+\Hypertarget{classCanos_ab2b4578fefeacf3ddf2ab4468cdbf834}\label{classCanos_ab2b4578fefeacf3ddf2ab4468cdbf834} 
+\index{Canos@{Canos}!get\_largura@{get\_largura}}
+\index{get\_largura@{get\_largura}!Canos@{Canos}}
+\doxysubsubsection{\texorpdfstring{get\_largura()}{get\_largura()}}
+{\footnotesize\ttfamily int Canos\+::get\+\_\+largura (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Retorna a largura do cano. 
+
+\begin{DoxyReturn}{Returns}
+A largura de um cano. 
+\end{DoxyReturn}
+\Hypertarget{classCanos_a9ccf2169ad35f1ee500ad4a54e9e4726}\label{classCanos_a9ccf2169ad35f1ee500ad4a54e9e4726} 
+\index{Canos@{Canos}!get\_x@{get\_x}}
+\index{get\_x@{get\_x}!Canos@{Canos}}
+\doxysubsubsection{\texorpdfstring{get\_x()}{get\_x()}}
+{\footnotesize\ttfamily int Canos\+::get\+\_\+x (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Retorna a posição X do cano. 
+
+\begin{DoxyReturn}{Returns}
+A coordenada X do cano. 
+\end{DoxyReturn}
+\Hypertarget{classCanos_acca6defd3a89ac2419723b4c70d18e8a}\label{classCanos_acca6defd3a89ac2419723b4c70d18e8a} 
+\index{Canos@{Canos}!inicializarCanos@{inicializarCanos}}
+\index{inicializarCanos@{inicializarCanos}!Canos@{Canos}}
+\doxysubsubsection{\texorpdfstring{inicializarCanos()}{inicializarCanos()}}
+{\footnotesize\ttfamily void Canos\+::inicializar\+Canos (\begin{DoxyParamCaption}\item[{int}]{posX,  }\item[{int}]{index }\end{DoxyParamCaption})}
+
+
+
+Inicializa a posição e altura dos canos. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em posX} & Posição X base para o conjunto de canos. \\
+\hline
+{\em index} & Índice do cano na array, usado para calcular o espaçamento.\\
+\hline
+\end{DoxyParams}
+Este método é chamado para configurar a posição horizontal e as alturas aleatórias para o cano de cima e de baixo, garantindo o espaço para o pássaro passar. \Hypertarget{classCanos_a811989fa3e15b921ead8ac1fb334e055}\label{classCanos_a811989fa3e15b921ead8ac1fb334e055} 
+\index{Canos@{Canos}!reset\_position@{reset\_position}}
+\index{reset\_position@{reset\_position}!Canos@{Canos}}
+\doxysubsubsection{\texorpdfstring{reset\_position()}{reset\_position()}}
+{\footnotesize\ttfamily void Canos\+::reset\+\_\+position (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classCanos}{Canos}} \texorpdfstring{$\ast$}{*}}]{canos,  }\item[{int}]{num\+Canos }\end{DoxyParamCaption})}
+
+
+
+Reinicia a posição dos canos depois de Game\+Over. 
+
+\begin{DoxyReturn}{Returns}
+Void 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/canos.\+hpp\item 
+src/\mbox{\hyperlink{canos_8cpp}{canos.\+cpp}}\end{DoxyCompactItemize}

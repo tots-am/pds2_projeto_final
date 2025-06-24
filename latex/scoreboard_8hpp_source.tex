@@ -1,0 +1,44 @@
+\doxysection{scoreboard.\+hpp}
+\hypertarget{scoreboard_8hpp_source}{}\label{scoreboard_8hpp_source}\index{include/scoreboard.hpp@{include/scoreboard.hpp}}
+\mbox{\hyperlink{scoreboard_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#ifndef\ SCOREBOARD\_H}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#define\ SCOREBOARD\_H}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <allegro5/allegro5.h>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <allegro5/allegro\_font.h>}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <allegro5/allegro\_primitives.h>}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ <fstream>}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ "{}fontesClass.hpp"{}}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{db_8hpp}{db.hpp}}"{}}}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \textcolor{keyword}{using\ namespace\ }std;}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00025\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classScoreboard}{Scoreboard}}\{}
+\DoxyCodeLine{00026\ \ \ \ \ }
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keywordtype}{int}\ num\_players;}
+\DoxyCodeLine{00028\ \ \ \ \ ALLEGRO\_FONT\ *fonte;}
+\DoxyCodeLine{00029\ \ \ \ \ ALLEGRO\_FONT\ *fonteCabecalho;}
+\DoxyCodeLine{00030\ \ \ \ \ \mbox{\hyperlink{classDB}{DB}}\ database;}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00042\ \ \ \ \ \mbox{\hyperlink{classScoreboard}{Scoreboard}}(ALLEGRO\_FONT\ *fonte,\ ALLEGRO\_FONT\ *fonteCabecalho);}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00047\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classScoreboard_ae1927177d49a06c89beb2446789a889f}{drawScoreboard}}();}
+\DoxyCodeLine{00052\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classScoreboard_abda112fc9b0e3d02d5ee97684a265457}{exibeInfos}}();}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00060\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classScoreboard_a31599183308e998209cf7675705cae38}{updatePlayerInfo}}(\textcolor{keywordtype}{string}\ player,\ \textcolor{keywordtype}{int}\ score);}
+\DoxyCodeLine{00061\ }
+\DoxyCodeLine{00062\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00066\ \ \ \ \ \textcolor{keywordtype}{void}\ updateNumPlayers();}
+\DoxyCodeLine{00067\ \};}
+\DoxyCodeLine{00068\ }
+\DoxyCodeLine{00069\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

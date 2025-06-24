@@ -1,0 +1,54 @@
+\doxysection{constants.\+hpp}
+\hypertarget{constants_8hpp_source}{}\label{constants_8hpp_source}\index{include/constants.hpp@{include/constants.hpp}}
+\mbox{\hyperlink{constants_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#ifndef\ CONSTANTS\_H}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#define\ CONSTANTS\_H}}
+\DoxyCodeLine{00004\ }
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ \textcolor{comment}{//\ Tamanho\ maximo\ que\ o\ nome\ do\ jogador\ pode\ ter}}
+\DoxyCodeLine{00008\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{int}\ MAX\_NAME\_SIZE\ =\ 16;}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{comment}{//\ Caminho\ para\ Assets}}
+\DoxyCodeLine{00011\ \textcolor{keyword}{const}\ std::string\ PIPE1\_IMG\_PATH\ =\ \textcolor{stringliteral}{"{}./assets/sprites/pipe-\/green.png"{}};}
+\DoxyCodeLine{00012\ \textcolor{keyword}{const}\ std::string\ PIPE2\_IMG\_PATH\ =\ \textcolor{stringliteral}{"{}./assets/sprites/pipe-\/green-\/down.png"{}};}
+\DoxyCodeLine{00013\ \textcolor{keyword}{const}\ std::string\ TITLE\_IMG\_PATH\ =\ \textcolor{stringliteral}{"{}./assets/sprites/title.png"{}};}
+\DoxyCodeLine{00014\ \textcolor{keyword}{const}\ std::string\ GAMEOVER\_IMG\_PATH\ =\ \textcolor{stringliteral}{"{}./assets/sprites/gameover.png"{}};}
+\DoxyCodeLine{00015\ \textcolor{keyword}{const}\ std::string\ BACKGROUND\_IMG\_PATH\ =\ \textcolor{stringliteral}{"{}./assets/sprites/background-\/800-\/600.png"{}};}
+\DoxyCodeLine{00016\ \textcolor{keyword}{const}\ std::string\ BASE\_IMG\_PATH\ =\ \textcolor{stringliteral}{"{}./assets/sprites/base-\/800-\/50.png"{}};}
+\DoxyCodeLine{00017\ \textcolor{keyword}{const}\ std::string\ BIRD\_SPRITESHEET\_PATH\ =\ \textcolor{stringliteral}{"{}./assets/sprites/bird\_spritesheet.png"{}};}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \textcolor{comment}{//\ Cores}}
+\DoxyCodeLine{00020\ \textcolor{keyword}{const}\ ALLEGRO\_COLOR\ BLACK\ =\ al\_map\_rgb(0,0,0);}
+\DoxyCodeLine{00021\ \textcolor{keyword}{const}\ ALLEGRO\_COLOR\ WHITE\ =\ al\_map\_rgb(255,255,255);}
+\DoxyCodeLine{00022\ \textcolor{keyword}{const}\ ALLEGRO\_COLOR\ ORANGE\ =\ al\_map\_rgb(255,\ 165,\ 0);}
+\DoxyCodeLine{00023\ \textcolor{keyword}{const}\ ALLEGRO\_COLOR\ PASTEL\_WHITE\ =\ al\_map\_rgb(253,253,150);}
+\DoxyCodeLine{00024\ \textcolor{keyword}{const}\ ALLEGRO\_COLOR\ LIGHT\_GREY\ =\ al\_map\_rgb(192,\ 192,\ 192);}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00026\ \textcolor{comment}{//\ Fontes}}
+\DoxyCodeLine{00027\ \textcolor{keyword}{const}\ std::string\ ARIAL\_FONT\_PATH\ =\ \textcolor{stringliteral}{"{}./assets/fonts/arial.ttf"{}};}
+\DoxyCodeLine{00028\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{int}\ ARIAL\_FONT\_SIZE\ =\ 32;}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ \textcolor{keyword}{const}\ std::string\ FLAPPY\_FONT\_PATH\ =\ \textcolor{stringliteral}{"{}assets/fonts/flappy-\/font.ttf"{}};}
+\DoxyCodeLine{00031\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{int}\ FLAPPY\_FONT\_SIZE\ =\ 60;}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ \textcolor{keyword}{const}\ std::\ string\ PIXELIFY\_FONT\_PATH\ =\ \textcolor{stringliteral}{"{}assets/fonts/PixelifySans-\/Regular.ttf"{}};}
+\DoxyCodeLine{00034\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{int}\ PIXELIFY\_FONT\_SIZE\ =\ 32;}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00036\ \textcolor{comment}{//\ Configurações\ do\ Jogo}}
+\DoxyCodeLine{00037\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{float}\ FPS\ =\ 30;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Define\ FPS\ do\ Jogo}}
+\DoxyCodeLine{00038\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{int}\ SCREEN\_WIDTH\ =\ 800;\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Define\ o\ comprimento\ da\ janela\ do\ Jogo\ (pixels)}}
+\DoxyCodeLine{00039\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{int}\ SCREEN\_HEIGHT\ =\ 600;\ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Define\ a\ largura\ da\ janela\ do\ jogo\ (pixels)}}
+\DoxyCodeLine{00040\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ ALTURA\_BASE\ =\ 50;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Altura\ da\ base\ (pixels)}}
+\DoxyCodeLine{00041\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{int}\ NUM\_CANOS\ =\ 4;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Numero\ de\ canos\ renderizados\ simultaneamente}}
+\DoxyCodeLine{00042\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{int}\ ESPACO\_ENTRE\_OS\_CANOS\ =\ 250;\ \ \ \textcolor{comment}{//\ Espaço\ entre\ os\ Canos\ (pixels)}}
+\DoxyCodeLine{00043\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{int}\ TAMANHO\_BURACO\_CANOS\ =\ 200;\ \ \ \ \textcolor{comment}{//\ Tamanho\ do\ buraco\ entre\ o\ cano\ superior\ e\ inferior\ (pixels)}}
+\DoxyCodeLine{00044\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{float}\ GRAVIDADE\ =\ 800.0f;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Define\ a\ aceleração\ da\ gravidade}}
+\DoxyCodeLine{00045\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{float}\ JUMPSPEED\ =\ -\/350.0f;\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Define\ a\ velocidade\ instantanea\ ao\ pular}}
+\DoxyCodeLine{00046\ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{float}\ FATOR\_DIFICULDADE\ =\ 0.84f;\ \textcolor{comment}{//Aumenta\ a\ velocidade\ dos\ canos}}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00048\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

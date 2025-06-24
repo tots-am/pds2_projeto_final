@@ -1,0 +1,39 @@
+\doxysection{Imagem.\+hpp}
+\hypertarget{Imagem_8hpp_source}{}\label{Imagem_8hpp_source}\index{include/Imagem.hpp@{include/Imagem.hpp}}
+\mbox{\hyperlink{Imagem_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ IMAGEM\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ IMAGEM\_H}}
+\DoxyCodeLine{00004\ }
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <allegro5/allegro.h>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <allegro5/allegro\_image.h>}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{keyword}{using\ namespace\ }std;}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00016\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classImagem}{Imagem}}\ \{}
+\DoxyCodeLine{00017\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00018\ \ \ \ \ ALLEGRO\_BITMAP*\ imagem;}
+\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\ path;}
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{keywordtype}{int}\ largura;}
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keywordtype}{int}\ altura;}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00026\ \ \ \ \ \mbox{\hyperlink{classImagem_a15e3e69a8c0beef768cf3cd2e8020268}{Imagem}}();}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00032\ \ \ \ \ \mbox{\hyperlink{classImagem_a15e3e69a8c0beef768cf3cd2e8020268}{Imagem}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\ img\_path);}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00037\ \ \ \ \ \mbox{\hyperlink{classImagem_a5c4e12f27d35568214b6c32af0077876}{\string~Imagem}}();}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00044\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classImagem_ae170fa6392cd716ead55d55438d7ca51}{exibir}}(\textcolor{keywordtype}{float}\ pos\_x,\ \textcolor{keywordtype}{float}\ pos\_y);}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00050\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classImagem_ad648ba3b1133e28a233eec365eca6f36}{isLoaded}}();}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00056\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{classImagem_a4ef3e5aaf6170e7a8fa75146afb0e2b6}{getAltura}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00057\ }
+\DoxyCodeLine{00062\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{classImagem_a4caba154bd5256fc3769c9e061dd7f87}{getLargura}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00063\ \};}
+\DoxyCodeLine{00064\ }
+\DoxyCodeLine{00065\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

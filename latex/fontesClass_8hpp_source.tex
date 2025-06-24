@@ -1,0 +1,30 @@
+\doxysection{fontes\+Class.\+hpp}
+\hypertarget{fontesClass_8hpp_source}{}\label{fontesClass_8hpp_source}\index{include/fontesClass.hpp@{include/fontesClass.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ FONTESCLASS\_HPP}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ FONTESCLASS\_HPP}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <allegro5/allegro.h>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <allegro5/allegro\_font.h>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <allegro5/allegro\_ttf.h>}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00016\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classfontesClass}{fontesClass}}\ \{}
+\DoxyCodeLine{00017\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00018\ \ \ \ \ ALLEGRO\_FONT*\ fonte\_principal;\ }
+\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keywordtype}{int}\ tam\_fonte;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00027\ \ \ \ \ \mbox{\hyperlink{classfontesClass}{fontesClass}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ caminho\_fonte,\ \textcolor{keywordtype}{int}\ tam\_fonte);}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00032\ \ \ \ \ \mbox{\hyperlink{classfontesClass_a1caa5f54c03442933acfed74cb37b7e1}{\string~fontesClass}}();}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classfontesClass_a26a107c4af0109b1d41972e404cc65c3}{escrever}}(\textcolor{keyword}{const}\ std::string\&\ texto,\ \textcolor{keywordtype}{float}\ x,\ \textcolor{keywordtype}{float}\ y,\ ALLEGRO\_COLOR\ cor,\ \textcolor{keywordtype}{int}\ alinhamento\ =\ ALLEGRO\_ALIGN\_CENTER);}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00048\ \ \ \ \ ALLEGRO\_FONT*\ \mbox{\hyperlink{classfontesClass_aa6cb623c44bbe723bb8a7aa2fbdf5271}{getfonte}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00049\ \};}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00051\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ FONTESCLASS\_HPP}}
+
+\end{DoxyCode}

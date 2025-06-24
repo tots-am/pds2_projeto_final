@@ -1,0 +1,149 @@
+\doxysection{DB Class Reference}
+\hypertarget{classDB}{}\label{classDB}\index{DB@{DB}}
+
+
+Representa o arquivo de texto usado para salvar as informações dos jogadores no fomato key value.  
+
+
+
+
+{\ttfamily \#include $<$db.\+hpp$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classDB_a18d83ec530a4da674a93da71f0decf9e}{DB}} (const std\+::string \&path="{}./db/db.\+txt"{})
+\begin{DoxyCompactList}\small\item\em Construtor Principal que instancia a classe \doxylink{classDB}{DB} com caminho pre-\/definido. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classDB_a583aa4310177b9677da21d9d4e9f130d}{adicionar}} (const std\+::string \&nome, int high\+\_\+score)
+\begin{DoxyCompactList}\small\item\em Usada para adicionar uma nova linha no arquivo de texto, ou seja, um novo player. \end{DoxyCompactList}\item 
+std\+::vector$<$ std\+::pair$<$ std\+::string, int $>$ $>$ \mbox{\hyperlink{classDB_a3047ecc1a9b96f05733508dacf388602}{ler\+Todos}} () const
+\begin{DoxyCompactList}\small\item\em Usada para ler todas as informações do arquivo. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classDB_ab89d4f78d73a41a349b9083ee3e5ef96}{buscar\+High\+Score}} (const std\+::string \&nome) const
+\begin{DoxyCompactList}\small\item\em Usada para buscar um jogador no arquivo. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classDB_a2eb29d1962db7c2c7c64c19cc8f38905}{atualizar}} (const std\+::string \&nome, int novo\+\_\+high\+\_\+score)
+\begin{DoxyCompactList}\small\item\em Usada para atualizar as informações de um jogador que já está presente no banco. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classDB_a5818484db7a99c18219834611ae8c63a}{remover}} (const std\+::string \&nome)
+\begin{DoxyCompactList}\small\item\em Usada para deletar as informações de um jogador do arquivo. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Representa o arquivo de texto usado para salvar as informações dos jogadores no fomato key value. 
+
+A classe é responsável por realizar as operações de CRUD no arquivo de texto, e interagir com a classe \doxylink{classScoreBoard}{Score\+Board} Cada linha no arquivo representa um player 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classDB_a18d83ec530a4da674a93da71f0decf9e}\label{classDB_a18d83ec530a4da674a93da71f0decf9e} 
+\index{DB@{DB}!DB@{DB}}
+\index{DB@{DB}!DB@{DB}}
+\doxysubsubsection{\texorpdfstring{DB()}{DB()}}
+{\footnotesize\ttfamily DB\+::\+DB (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{path = {\ttfamily "{}./db/db.txt"{}} }\end{DoxyParamCaption})}
+
+
+
+Construtor Principal que instancia a classe \doxylink{classDB}{DB} com caminho pre-\/definido. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em path} & Caminho para o arquivo Database \\
+\hline
+\end{DoxyParams}
+\begin{DoxySeeAlso}{See also}
+\doxylink{constants_8hpp}{constants.\+hpp} 
+\end{DoxySeeAlso}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classDB_a583aa4310177b9677da21d9d4e9f130d}\label{classDB_a583aa4310177b9677da21d9d4e9f130d} 
+\index{DB@{DB}!adicionar@{adicionar}}
+\index{adicionar@{adicionar}!DB@{DB}}
+\doxysubsubsection{\texorpdfstring{adicionar()}{adicionar()}}
+{\footnotesize\ttfamily void DB\+::adicionar (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{nome,  }\item[{int}]{high\+\_\+score }\end{DoxyParamCaption})}
+
+
+
+Usada para adicionar uma nova linha no arquivo de texto, ou seja, um novo player. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em nome} & Nome do Player \\
+\hline
+{\em high\+\_\+score} & O maior score desse player ate o momento \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classDB_a2eb29d1962db7c2c7c64c19cc8f38905}\label{classDB_a2eb29d1962db7c2c7c64c19cc8f38905} 
+\index{DB@{DB}!atualizar@{atualizar}}
+\index{atualizar@{atualizar}!DB@{DB}}
+\doxysubsubsection{\texorpdfstring{atualizar()}{atualizar()}}
+{\footnotesize\ttfamily void DB\+::atualizar (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{nome,  }\item[{int}]{novo\+\_\+high\+\_\+score }\end{DoxyParamCaption})}
+
+
+
+Usada para atualizar as informações de um jogador que já está presente no banco. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em nome} & Nome do jogador \\
+\hline
+{\em novo\+\_\+high\+\_\+score} & Nova maior pontuação do Jogador \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classDB_ab89d4f78d73a41a349b9083ee3e5ef96}\label{classDB_ab89d4f78d73a41a349b9083ee3e5ef96} 
+\index{DB@{DB}!buscarHighScore@{buscarHighScore}}
+\index{buscarHighScore@{buscarHighScore}!DB@{DB}}
+\doxysubsubsection{\texorpdfstring{buscarHighScore()}{buscarHighScore()}}
+{\footnotesize\ttfamily int DB\+::buscar\+High\+Score (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{nome }\end{DoxyParamCaption}) const}
+
+
+
+Usada para buscar um jogador no arquivo. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em nome} & O nome do jogador que se quer buscar \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+-\/1, caso o jogador não está no arquivo 
+
+maior pontuação, caso o jogador tenha o nome no arquivo 
+\end{DoxyReturn}
+\Hypertarget{classDB_a3047ecc1a9b96f05733508dacf388602}\label{classDB_a3047ecc1a9b96f05733508dacf388602} 
+\index{DB@{DB}!lerTodos@{lerTodos}}
+\index{lerTodos@{lerTodos}!DB@{DB}}
+\doxysubsubsection{\texorpdfstring{lerTodos()}{lerTodos()}}
+{\footnotesize\ttfamily std\+::vector$<$ std\+::pair$<$ std\+::string, int $>$ $>$ DB\+::ler\+Todos (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Usada para ler todas as informações do arquivo. 
+
+\begin{DoxyReturn}{Returns}
+Um vetor ordenado com os players 
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+Retorna o vetor ordenado, usando redefinição do operador \texorpdfstring{$>$}{>} 
+\end{DoxyNote}
+\begin{DoxySeeAlso}{See also}
+\doxylink{functions_8hpp}{functions.\+hpp} 
+\end{DoxySeeAlso}
+\Hypertarget{classDB_a5818484db7a99c18219834611ae8c63a}\label{classDB_a5818484db7a99c18219834611ae8c63a} 
+\index{DB@{DB}!remover@{remover}}
+\index{remover@{remover}!DB@{DB}}
+\doxysubsubsection{\texorpdfstring{remover()}{remover()}}
+{\footnotesize\ttfamily bool DB\+::remover (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{nome }\end{DoxyParamCaption})}
+
+
+
+Usada para deletar as informações de um jogador do arquivo. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em nome} & O nome do jogador que será removido \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/\mbox{\hyperlink{db_8hpp}{db.\+hpp}}\item 
+src/db.\+cpp\end{DoxyCompactItemize}
